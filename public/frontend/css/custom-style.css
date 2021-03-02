@@ -1,0 +1,83 @@
+/* your custom style goes here */
+/* your custom style goes here */
+
+.circle {
+    
+    background: #9e9e9e1c;
+    border-radius: 20px;
+    
+
+    
+}
+.card:hover{
+    box-shadow: 2px 2px 1px #7b6c92;
+    background-color: rgba(0, 0, 128, 0);
+    color: rgb(191, 192, 191);
+}
+
+
+/* .col-lg-3{
+    height: 40px;
+    top: 8px;
+    background-color: white;
+} */
+/* .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    padding: 7px;
+} */
+
+
+
+.card-channels.hp-mod-card.birthday {
+    margin-top: 36px;
+}
+.hp-mod-card {
+    display: block;
+    clear: both;
+    width: 1188px;
+    padding-top: 24px;
+}
+.hp-mod-card-header {
+    background: 0 0;
+    height: 38px;
+    line-height: 38px;
+}
+.card-channels-content {
+    height: 40px;
+}
+
+
+.card-channels-link {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.card-channels-img-wrap .image {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+} 
+
+.card-channels-length-5 {
+    width: 19.19%;
+}
+
+.card-channels-item {
+    height: 40px;
+    background: #fff;
+    margin-right: 12px;
+    border-radius: 20px;
+}
+
+.card-channels-name {
+    margin-left: 4px;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+}
+
+
