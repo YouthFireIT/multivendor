@@ -324,6 +324,9 @@
             </div>
         </div>
     </section>
+
+
+
     <!-- Flash Deal -->
     <section id="flash_deal">
         <div class="container">
@@ -348,7 +351,7 @@
                 <div class="product_wrap">
                     @foreach($flashDealProducts as $flashDealProduct)
                     <div class="flash_product">
-                        <a href="single_product_page.html" class="">
+                        <a href="{{ route('single.product', $flashDealProduct->product_slug) }}" class="">
                             <div class="img_wrap">
                                 <img src="{{ my_asset($flashDealProduct->flash_deal_img) }}" alt="" class="img-fluid">
                             </div>
@@ -369,6 +372,9 @@
             </div>
         </div>
     </section>
+
+
+
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
     {{-- <section id="free_ship_brazil">

@@ -32,14 +32,15 @@
                   </div>
                   <div class="col-lg-6">
                       <div class="flash_deal_link">
-                          
+
                       </div>
                   </div>
               </div>
+
               <div class="product_wrap">
                   @foreach($flashDealProducts as $flashDealProduct)
                   <div class="flash_product">
-                      <a href="single_product_page.html" class="">
+                      <a href="{{ route('single.product', $flashDealProduct->product_slug) }}" class="">
                           <div class="img_wrap">
                               <img src="{{ my_asset($flashDealProduct->flash_deal_img) }}" alt="" class="img-fluid">
                           </div>
@@ -57,6 +58,7 @@
                   </div>
                   @endforeach
               </div>
+              
           </div>
       </div>
   </section>

@@ -821,8 +821,9 @@ class HomeController extends Controller
         $flashDealProducts = DB::table('flash_deal_products')
             ->join('products', 'flash_deal_products.product_id', '=', 'products.id')
             ->join('flash_deals', 'flash_deal_products.flash_deal_id', '=', 'flash_deals.id')
-            ->select('flash_deal_products.*', 'products.*', 'flash_deals.*')
+            ->select('flash_deal_products.*', 'products.*','products.slug as product_slug', 'flash_deals.*')
             ->where('products.featured', 1)
+            ->limit(5)
             ->get();
         $allCategory = Category::get();
 
@@ -841,14 +842,19 @@ class HomeController extends Controller
         return view('frontend.alibaba.randomLoveProducts', compact('loveProducts'));
     }
 
+
+    /**
+     * Return Flash Deal all products
+     *
+     */
+
     public function flash_deal_products()
     {
         // dd("dfsgfd");
         $flashDealProducts = DB::table('flash_deal_products')
             ->join('products', 'flash_deal_products.product_id', '=', 'products.id')
             ->join('flash_deals', 'flash_deal_products.flash_deal_id', '=', 'flash_deals.id')
-            ->select('flash_deal_products.*', 'products.*', 'flash_deals.*')
-            ->where('products.featured', 1)
+            ->select('flash_deal_products.*', 'products.*','products.slug as product_slug','flash_deals.*')
             ->get();
         return view('frontend.alibaba.flashDealProducts', compact('flashDealProducts'));
     }
