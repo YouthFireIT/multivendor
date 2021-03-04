@@ -436,7 +436,7 @@
     </section> --}}
     <!-- Top Ranking -->
     <section id="flash_deal">
-        <div class="container">
+        <div class="container" style="max-height: 290px">
             <div class="flash_deal_wrap">
                 <div class="row">
                     <div class="col-lg-6">
@@ -469,19 +469,20 @@
                                             <div class="d-flex justify-content-between">
                                                 <div class="col-lg-8 p-0">
                                                     <p class="pij-text1">{{ $subcategory->name }}</p>
-                                                    <span class="pij-text2">{{ $subcategory->meta_title }}</span>
+                                                    {{-- <span class="pij-text2">{{ $subcategory->meta_title }}</span> --}}
                                                 </div>
                                                 <div class="col-lg-4 p-0">
-                                                    <span class="pij-text3">TOP_IDEAL_2020</span>
+                                                    <span class="pij-text3">top sale 2021</span>
                                                 </div>
                                             </div>
                                         </div>
                                         @php
-                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('featured', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
+                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('published', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
                                         @endphp
                                         <div class="top-ranking-bottompart">
                                             <div class="d-flex justify-content-between">
-                                                @foreach($sProduct as $key => $product)
+                                                @foreach( $sProduct as $key => $product)
+                                                <a href="{{ route('topRankingProducts') }}">
                                                     <div class="col-lg-4 p-0 top-ranking-bottompart-img">
                                                         <img src="{{ $product->thumbnail_img }}"
                                                             alt="">
@@ -491,6 +492,7 @@
                                                             <i>&nbsp;</i>
                                                         @endif
                                                     </div>
+                                                </a>
                                                 @endforeach
                                             </div>
                                         </div>

@@ -284,7 +284,7 @@ Route::any('/payhere/customer_package_payment/cancel', 'PayhereController@custom
 Route::get('random/products', 'HomeController@fetch_random_products');
 Route::get('allFlash/products', 'HomeController@flash_deal_products')->name('allFlashProducts');
 // top ranking part ////
-Route::get('topRanking/products', 'HomeController@top_ranking_products')->name('topRankingProducts');
+Route::get('top-ranking/products', 'HomeController@top_ranking_products')->name('topRankingProducts');
 Route::get('single-category/{categoryId}', 'HomeController@fetch_single_category');
 /// top selection part ////
 Route::get('topSelected/products', 'HomeController@top_selected_products')->name('topSelectedProducts');
