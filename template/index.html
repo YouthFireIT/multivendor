@@ -4846,6 +4846,7 @@
             </div>
         </div>
     </section>
+
     <!-- More To Love -->
     <section id="more_to_love">
         <div class="container p-0">
@@ -5016,6 +5017,7 @@
             </div>
         </div>
     </section>
+
     <!-- fotter widget one -->
     <section id="fotter_widget_one">
         <div class="container p-0">
@@ -5118,6 +5120,7 @@
             </div>
         </div>
     </section>
+
     <!-- fotter widget two -->
     <section id="fotter_widget_two">
         <div class="container p-0">
@@ -5180,7 +5183,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- fotter widget thress -->
     <div class="fw2_bottom_space"></div>
     <section id="fotter_widget_three" style="background: #E8E8E8 !important;">
@@ -5275,6 +5278,59 @@
             }
         });
     </script>
+
+
+
+
+
+
+
+
+     <!-- More To Love -->
+     <section id="more_to_love">
+        <div class="container p-0">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="more_to_love_title">
+                        More To Love
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                @if (!empty($loveProducts))
+                    @foreach($loveProducts as $loveProduct)
+                    <div class="col-lg-2 pb-1">
+                        <div class="mtl_product_item">
+                            <a href="#" class="">
+                                <div class="mtl_product_item_img_wrap">
+                                    <img src="{{ my_asset($loveProduct->featured_img) }}" alt="" class="img-fluid c_center">
+                                </div>
+                                @if($loveProduct->num_of_sale > 0)
+                                <span class="mtl_txt_sale">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                @endif
+                                <h2 class="mtl_product_price">
+                                    BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
+                                </h2>
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                @endif
+            </div>
+
+            <div class="row" id="loveProducts"></div>
+
+            <div class="row">
+                <a onclick="fetch_random_product()" class="btn btn-danger view_more_button shadow-none c_center">
+                    <button class="btn btn-danger view_more_button shadow-none c_center">
+                        View More
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </section>
 </body>
 
 </html>

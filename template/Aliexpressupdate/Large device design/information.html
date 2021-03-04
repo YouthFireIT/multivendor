@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Information</title>
+	<script src="https://kit.fontawesome.com/993b1433c6.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/edit.css">
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="edit_title">
+						<h1><a href="#">Edit Member Profile</a></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="container">
+		<div class="required_c">
+				<span class="star">* </span>
+				<h6 class="d-inline"> required information</h6>
+				
+			</div>
+	<div class="input_body py-2">
+	<form action=""  method="post" onsubmit="return myform()">
+		<div class="form-row">
+			<div class="form-group col-md-2  text-right">
+				<h6 class="font-weight-bold"><span class="star">* </span> Name:</h6>
+			</div>
+			<div class="form-group col-md-4 ">
+				<input type="text"  class="name_box" id="fname" value="">
+				<p id="name_error" class="signup_error"></p>
+			</div>
+
+			<div class="form-group col-md-2 ">
+				<input type="text" id="lname" class="name_box user_box" value="">
+				<p id="name_error" class="signup_error"></p>
+			</div>
+		</div>
+
+
+		<div class="form-row">
+			<div class="form-group col-md-2 m-0 text-right">
+				<h6 class="font-weight-bold"> <span class="star">* </span> Gender:</h6>
+			</div>
+			<div class="form-group col-md-6 m-0 pb-1">
+				<input type="radio" id="male" name="Gender">
+				<label for="male" class="maye"><h5 class="m">Male</h5></label>
+			
+				
+					<input type="radio" id="female" name="Gender">
+					<label for="female"><h5 class="m">Female</h5></label>
+				<p id="gender_error"  class="signup_error m-0"></p>
+				
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 m-0 text-right">
+				<h6 class="font-weight-bold"> <span class="star">* </span> Email Address:</h6>
+			</div>
+			<div class="form-group col-md-10">
+				<h6>ahsanhabib994814@gmail.com  ( <span style="color:red;" class="font-weight-bold"> Email address unconfirmed</span>, <a href="#">click here to confirm</a>  or  <a href="#">change email address</a> ) </h6>
+			</div>
+
+		
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 text-right">
+				<h6 class="font-weight-bold">Member ID:</h6>
+			</div>
+			<div class="form-group col-md-2">
+				<h6>bd1591189665erhae </h6>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 text-right">
+				<h6 class="font-weight-bold"> <span class="star">* </span>Contact Address:</h6>
+			</div>
+			<div class="form-group col-md-2">
+				<h6>Street Address:</h6>
+			</div>
+
+			<div class="form-group col-md-5">
+				<input type="text" id="address" class="contact_widh" >
+				<p id="address_error"  class="signup_error pt-1"></p>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2">
+				
+			</div>
+			<div class="form-group col-md-2">
+				<h6>City:</h6>
+			</div>
+
+			<div class="form-group col-md-5">
+				<input type="text" id="city" class="contact_widh" >
+				<p id="city_error"  class="signup_error pt-1"></p>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2">
+				
+			</div>
+			<div class="form-group col-md-2">
+				<h6>Country/Region:</h6>
+			</div>
+
+			<div class="form-group col-md-5">
+				<h6>Bangladesh</h6>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2">
+				
+			</div>
+			<div class="form-group col-md-2">
+				<h6>Zip/Postal Code:</h6>
+			</div>
+
+			<div class="form-group col-md-5">
+				<input type="text" class="contact_widh" >
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-2 text-right">
+				<h6 class="font-weight-bold"> <span class="star">* </span> Phone:</h6>
+			</div>
+			<div class="form-group col-md-4">
+				<input type="text" id="phone">
+			<p id="phone_error" class="signup_error"></p>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-primary my_btn_sub d-block m-auto">Submit</button>
+	</form>
+	</div>
+	</div>	
+	
+
+
+
+
+
+
+
+	<script src="js/slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/edit.js"></script>
+
+</body>
+</html>
