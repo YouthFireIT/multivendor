@@ -825,8 +825,14 @@
                     @endforeach
                 @endif
             </div>
-            <div class="row" id="loveProducts"></div>
 
+           
+
+        </div>
+    </section>
+    <!-- <section class="container-fluid">
+        <div class="container">
+            <div class="row" id="loveProducts"></div>
             <div class="row">
                 <a onclick="fetch_random_product()" class="btn btn-danger view_more_button shadow-none c_center">
                     <button class="btn btn-danger view_more_button shadow-none c_center">
@@ -836,9 +842,10 @@
             </div>
         </div>
     </section>
-    <!-- fotter widget one -->
+    
     <script>
         function fetch_random_product(){
+            alert('hello world')
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',
@@ -848,7 +855,7 @@
                 }
             });
         }
-    </script>
+    </script> -->
 @endsection
 
 
