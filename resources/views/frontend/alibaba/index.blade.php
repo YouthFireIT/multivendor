@@ -257,6 +257,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @php
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
                          @endphp
@@ -328,7 +329,8 @@
 
 
     <!-- Flash Deal -->
-    <section id="flash_deal">
+    <section id="flash_deal"> 
+        @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <div class="container">
             <div class="flash_deal_wrap">
                 <div class="row">
@@ -339,6 +341,8 @@
                                     <i class="fas fa-bolt"></i>
                                 </div>
                                 <span class="">Flash Deals</span>
+                                <div class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
+                              
                             </div>
                         </div>
                     </div>
@@ -371,10 +375,9 @@
                 </div>
             </div>
         </div>
+        @endif
     </section>
-
-
-
+ 
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
     {{-- <section id="free_ship_brazil">
@@ -440,6 +443,8 @@
             </span>
         </div>
     </section> --}}
+
+
     <!-- Top Ranking -->
     <section id="flash_deal">
         <div class="container" style="max-height: 290px">
@@ -846,6 +851,13 @@
 
             </div>
 
+           
+
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row" id="loveProducts"></div>
             <div class="row">
                 <a onclick="fetch_random_product()" href="javascript:void(0)" class="view_more_button_wrap">
                     <button class="btn btn-danger view_more_button shadow-none c_center">
@@ -854,7 +866,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> 
 
 
 
@@ -862,6 +874,7 @@
     <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
+            
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',

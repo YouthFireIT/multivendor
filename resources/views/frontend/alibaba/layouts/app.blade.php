@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.sproducts_page.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/flags.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/flaticons/flaticon.css">
@@ -53,12 +54,6 @@
 
     @yield('content')
 
-
-
-
-
-
-
     @include('frontend.alibaba.inc.footer')
 
         <!-- =========bootstrap js framework========  -->
@@ -69,6 +64,9 @@
         <script src="{{ asset('alibaba') }}/js/jquery.flagstrap.js"></script>
         <script src="{{ asset('alibaba') }}/js/jquery.nicemenu.js"></script>
         <script src="{{ asset('alibaba') }}/js/owl.carousel.min.js"></script>
+        <script src="{{ my_asset('frontend/js/jquery.countdown.min.js') }}"></script>
+        <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
+         
         <script src="{{ asset('alibaba') }}/js/jquery.simple.timer.js"></script>
         <script src="{{ asset('alibaba') }}/js/main.js"></script>
         <script>
