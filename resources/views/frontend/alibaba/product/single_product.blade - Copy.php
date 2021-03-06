@@ -65,16 +65,11 @@
 
 <!-- jQuery -->
 <script src="{{ my_asset('frontend/js/vendor/jquery.min.js') }}"></script>
-
-
-
-
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/style.sproducts_page.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
-    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
-    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/style.sproducts_page.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
+<link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
+<link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
 @endsection
 
 @section('scroll_menu')

@@ -1,5 +1,6 @@
 @extends('frontend.alibaba.layouts.app')
 @section('custom_css')
+@section('title',$detailedProduct->name)
 <meta itemprop="name" content="{{ $detailedProduct->meta_title }}">
 <meta itemprop="description" content="{{ $detailedProduct->meta_description }}">
 <meta itemprop="image" content="{{ my_asset($detailedProduct->meta_img) }}">
@@ -114,33 +115,33 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
-                    <div class="ali-zoom-img">
-                        <img src="img/11.webp" class="big_img rounded">
-                        <ul>
-                            <li><img src="img/11.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/12.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/13.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/14.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/15.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/16.webp" class="small_img img-thumbnail"></li>
-                        </ul>
-                    </div>
-
+                    @if(is_array(json_decode($detailedProduct->photos)) && count(json_decode($detailedProduct->photos)) > 0)
+                        <div class="ali-zoom-img">
+                            <img src="{{ my_asset(json_decode($detailedProduct->photos)[0]) }}" class="big_img rounded">
+                            <ul>
+                                @foreach (json_decode($detailedProduct->photos) as $key => $photo)
+                                    <li><img src="{{ my_asset($photo) }}" class="small_img img-thumbnail"></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-6 col-md-8">
                     <div class="ali-content">
-                        <p>KOTION EACH Gaming Headset Deep Bass Stereo Game Headphone with Microphone LED Light for PS4 PC Laptop+Gaming Mouse+Mice Pad</p>
+                        <p>{{  __($detailedProduct->name) }}</p>
                         <div class="ali-review">
+                            @php
+                                $total = 0;
+                                $total += $detailedProduct->reviews->count();
+                            @endphp
                             <ul class="nav">
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#">4.8</a></li>
-                                <li><a href="#"><i class="fas fa-angle-down"></i></a></li>
-                                <li><span><a href="#">229 Reviews</a></span></li>
-                                <li><span>516 orders</span></li>
+                                
+                                <li><a href="#"><i class="fas fa-star">{{renderStarRating($detailedProduct->rating)}}</i></a></li>
+
+                                <li><a href="#">({{ $total }} {{ translate('reviews')}})</a></li>
+                                <!-- <li><a href="#"><i class="fas fa-angle-down"></i></a></li> -->
+                                <!-- <li><span><a href="#">229 Reviews</a></span></li>
+                                <li><span>516 orders</span></li> -->
                             </ul>
                         </div>
                         <!-- increament - decrement count button area -->
