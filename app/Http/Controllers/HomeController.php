@@ -695,6 +695,7 @@ class HomeController extends Controller
         $products = Product::where('user_id', Auth::user()->id)->where('digital', 1)->orderBy('created_at', 'desc')->paginate(10);
         return view('frontend.seller.digitalproducts.products', compact('products'));
     }
+
     public function show_digital_product_upload_form(Request $request)
     {
         if(\App\Addon::where('unique_identifier', 'seller_subscription')->first() != null && \App\Addon::where('unique_identifier', 'seller_subscription')->first()->activated){
@@ -855,7 +856,7 @@ class HomeController extends Controller
             ->join('products', 'flash_deal_products.product_id', '=', 'products.id')
             ->join('flash_deals', 'flash_deal_products.flash_deal_id', '=', 'flash_deals.id')
             ->select('flash_deal_products.*', 'products.*','products.slug as product_slug','flash_deals.*')
-            ->get();
+            ->paginate(16);
         return view('frontend.alibaba.flashDealProducts', compact('flashDealProducts'));
     }
 
