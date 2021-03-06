@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.sproducts_page.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/flags.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/flaticons/flaticon.css">
@@ -52,12 +53,6 @@
     @include('frontend.alibaba.inc.sidemenu')
 
     @yield('content')
-
-
-
-
-
-
 
     @include('frontend.alibaba.inc.footer')
 

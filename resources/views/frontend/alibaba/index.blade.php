@@ -846,6 +846,13 @@
 
             </div>
 
+           
+
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row" id="loveProducts"></div>
             <div class="row">
                 <a onclick="fetch_random_product()" href="javascript:void(0)" class="view_more_button_wrap">
                     <button class="btn btn-danger view_more_button shadow-none c_center">
@@ -854,7 +861,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section> 
 
 
 
@@ -862,6 +869,7 @@
     <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
+            
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',
