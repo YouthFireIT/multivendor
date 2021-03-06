@@ -794,7 +794,14 @@
             </div>
         </div>
     </section>
-    <!-- More To Love -->
+
+
+
+
+
+
+
+<!-- More To Love -->
     <section id="more_to_love">
         <div class="container p-0">
             <div class="row">
@@ -804,12 +811,13 @@
                     </h1>
                 </div>
             </div>
+
             <div class="row mt-3">
                 @if (!empty($loveProducts))
                     @foreach($loveProducts as $loveProduct)
                     <div class="col-lg-2 pb-1">
                         <div class="mtl_product_item">
-                            <a href="#" class="">
+                            <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
                                 <div class="mtl_product_item_img_wrap">
                                     <img src="{{ my_asset($loveProduct->featured_img) }}" alt="" class="img-fluid c_center">
                                 </div>
@@ -826,26 +834,34 @@
                 @endif
             </div>
 
+            <div id="loveProducts" class="row mt-3">
+
+            </div>
+
            
 
         </div>
     </section>
-    <!-- <section class="container-fluid">
+    <section class="container-fluid">
         <div class="container">
             <div class="row" id="loveProducts"></div>
             <div class="row">
-                <a onclick="fetch_random_product()" class="btn btn-danger view_more_button shadow-none c_center">
+                <a onclick="fetch_random_product()" href="javascript:void(0)" class="view_more_button_wrap">
                     <button class="btn btn-danger view_more_button shadow-none c_center">
                         View More
                     </button>
                 </a>
             </div>
         </div>
-    </section>
-    
+    </section> 
+
+
+
+
+    <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
-            alert('hello world')
+            
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',
@@ -855,7 +871,7 @@
                 }
             });
         }
-    </script> -->
+    </script>
 @endsection
 
 

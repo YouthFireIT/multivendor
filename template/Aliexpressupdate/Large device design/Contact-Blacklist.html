@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Notifications</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+    <link rel="stylesheet" href="css/Contact-Blacklist.css">
+  </head>
+  <body>
+      <div class="site-wrapper mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-3">
+              <div class="left-menu border">
+                  <div class="single-option">
+                      <h4 class="message-header"><a href="#">Message Center 
+                        <span><i class="fa fa-minus" aria-hidden="true"></i></span>
+                        </a>
+                      </h4>
+                    <div id="chat-hide" class="ms-submenu"><h6 class="submenu-text"><a href="../Message center2/Massage-center2.html">Chats</a></h6></div>
+                  </div>
+                  <div class="single-option">
+                      <h4 onclick="show_hide()" class="Service-header"><a href="#">Service Notification 
+                        <span><i class="fa fa-minus" aria-hidden="true"></i></span>
+                        </a>
+                      </h4>
+                    <div id="sr-hide" class="sr-submenu"><h6 class="submenu-text2"><a href="../Notification/Notification.html">Notifications</a></h6></div>
+                  </div>
+                  <div class="single-option">
+                      <h4 onclick="show_hide()" class="setting-header"><a href="#">Setting 
+                        <span><i class="fa fa-minus" aria-hidden="true"></i></span>
+                        </a>
+                      </h4>
+                    <div id="st-hide" class="st-submenu"><h6 class="submenu-text3"><a href="../Contact blacklist/Contact-Blacklist.html">Contact Blacklist</a></h6></div>
+                  </div>
+              </div>
+              <div class="download-section">
+                  <div class="download-wrapper">
+                    <h4>AliExpress Mobile App</h4>
+                  <span>Search Anywhere, Anytime!</span>
+                  <a href="#">
+                    <img src="images/Aliexpress-download-QR.png" alt="">
+                    <h6>Scan or click to download</h6>
+                  </a>
+                  </div>
+              </div>
+            </div>
+            <!-- blacklist-section -->
+            <div class="col-9">
+              <div class="blacklist-section">
+                <div class="blacklist-header">
+                  <h6>Contact Blacklist</h6>
+                </div>
+                  <div class="main-section">
+                    <div class="main-header">
+                      <span>Name</span>
+                      <span>Date</span>
+                      <span>Option</span>
+                    </div>
+                    <div class="pagination-wrapper">
+                      <div class="sort-section">
+                        <button id="sub"><i class="fas fa-caret-left"></i></button>
+                        <input type="text" id="qtyBox" readonly="" value="0">
+                        <button id="add"><i class="fas fa-caret-right"></i></button>
+                      </div>
+                      <div class="go-page">
+                        <span>Go to page</span>
+                        <input type="text">
+                        <button>Go</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <!-- blaklist-section -->
+        </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Contact-Blacklist.js"></script>
+  </body>
+</html>

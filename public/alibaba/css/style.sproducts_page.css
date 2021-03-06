@@ -369,6 +369,7 @@ li {
 .ali-award-color-footer .ali-award-color-order ul li {}
 
 .ali-award-color-footer .ali-award-color-order ul li a {
+    
     background-color: #B09BA3;
     height: 20px;
     width: 20px;
@@ -483,3 +484,5 @@ li {
 .right-side-img p {
     font-weight: 600;
 }
+
+/**/

@@ -1,5 +1,4 @@
 @extends('frontend.layouts.app')
-
 @section('content')
     <section class="home-banner-area mb-4">
         <div class="container-fluid">
@@ -104,15 +103,6 @@
                     </div>     
                                   
                 </div>
-
-
-            
-            
-
-
-
-                
-
             </div>
         </div>
     </section>
