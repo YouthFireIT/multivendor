@@ -7,11 +7,11 @@
       <div class="collapse navbar-collapse d-flex justify-content-center" style="" id="navbarNav">
         <ul class="navbar-nav">
         @php
-            $CategoriesName =  App\Categoty::where('is_featured',1)->orderBy('name', 'desc')->get()->take(20);
+            $categories =  App\Category::where('featured',1)->orderBy('name', 'desc')->get()->take(8);
           @endphp
-          @foreach($brandNames as $brandName)
+          @foreach($categories as $category)
           <li class="nav-item">
-            <a class="nav-link active" id="{{ $brandName->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_brand(`{{ $brandName->id }}`)">{{ $brandName->name }}</a>
+            <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)">{{ $category->name }}</a>
           </li>
           @endforeach
         </ul>
@@ -19,7 +19,7 @@
     </div>
   </nav>
 
-  <section id="feature_brand">
+  <section id="feature_Category">
     <div class="container p-0">
         <div class="row">
             @foreach($featuredCategotyProducts as $featuredCategotyProduct)
@@ -51,13 +51,13 @@
 </section>
 <script>
 
-  function get_single_brand(brandId){
+  function get_single_category(categotyId){
     $.ajax({
         type: "get",
-        url : '{{url("single-brand-products")}}/'+brandId,
+        url : '{{url("single-category-products")}}/'+categotyId,
         success:function(data) {
             console.log(data);
-            $('#feature_brand').empty().html(data);
+            $('#feature_Category').empty().html(data);
 
             // document.getElementById(categoryId).style.color = "blue";
         }

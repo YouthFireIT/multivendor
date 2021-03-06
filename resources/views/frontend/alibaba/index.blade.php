@@ -329,7 +329,7 @@
 
 
     <!-- Flash Deal -->
-    <section id="flash_deal"> 
+    <section id="flash_deal">
         @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <div class="container">
             <div class="flash_deal_wrap">
@@ -342,7 +342,7 @@
                                 </div>
                                 <span class="">Flash Deals</span>
                                 <div class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
-                              
+
                             </div>
                         </div>
                     </div>
@@ -377,7 +377,7 @@
         </div>
         @endif
     </section>
- 
+
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
     {{-- <section id="free_ship_brazil">
@@ -783,7 +783,7 @@
                         @foreach($featuredCategories as $featuredCategory)
                         <div class="col-lg-4 mb-2">
                             <div class="cat_item">
-                                <a href="#" class="">
+                                <a href="{{ route('featured.category.product', $featuredCategory->id) }}" class="">
                                     <p class="cat_item_title light_blue">
                                         {{ $featuredCategory->name }}
                                     </p>
@@ -851,7 +851,7 @@
 
             </div>
 
-           
+
 
         </div>
     </section>
@@ -866,7 +866,7 @@
                 </a>
             </div>
         </div>
-    </section> 
+    </section>
 
 
 
@@ -874,7 +874,7 @@
     <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
-            
+
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',
