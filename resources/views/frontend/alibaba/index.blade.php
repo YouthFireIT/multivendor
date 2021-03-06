@@ -638,7 +638,7 @@
                                 <div class="product_wrap">
                                     @foreach($featuredBrands as $featuredBrand)
                                     <div class="feature_brand_item pr-3">
-                                        <a href="#" class="">
+                                        <a href="{{ route('featured.brand.product', $featuredBrand->id) }}" class="">
                                             <div class="feature_brand_item_img_wrap">
                                                 <img src="{{ my_asset($featuredBrand->logo) }}" alt="" class="img-fluid rounded">
                                             </div>

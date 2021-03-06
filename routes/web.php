@@ -294,3 +294,7 @@ Route::get('latest/products', 'HomeController@latest_products')->name('latestPro
 
 /////// Single product route ///////
 Route::get('/single/product/{slug}', 'ProductController@singleProduct')->name('single.product');
+
+// Featured Brand part ////
+Route::get('featured-brand/products/{id}', 'HomeController@featured_brand')->name('featured.brand.product');
+Route::get('single-brand-products/{brandId}', 'HomeController@fetch_single_brand');

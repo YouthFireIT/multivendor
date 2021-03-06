@@ -892,5 +892,14 @@ class HomeController extends Controller
         return view('frontend.alibaba.latestProducts', compact('latestProducts'));
     }
 
+    //// Featured Brand ////
+    public function featured_brand($id){
+        $featuredBrandsProducts = DB::table('products')->select('*')->where('featured', 1)->where('brand_id',$id)->orderBy('id', 'desc')->get()->take(20);
+        return view('frontend.alibaba.featureBrandProduct', compact('featuredBrandsProducts'));
+    }
+    public function fetch_single_brand($brandId){
+        $featuredBrandsProducts = DB::table('products')->select('*')->where('featured', 1)->where('brand_id',$brandId)->paginate(20);
+        return view('frontend.alibaba.brandwiseProduct', compact('featuredBrandsProducts'));
+    }
 
 }
