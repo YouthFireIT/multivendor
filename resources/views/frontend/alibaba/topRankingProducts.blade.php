@@ -19,31 +19,31 @@
   <section id="top_selection_and_new_arrival">
     <div class="container p-0">
       @foreach($allCategory as $category)
-        
+
         <div class="pt-2 text-center ">
           <h3 class="font-weight-bold">{{ $category->name }}</h3>
         </div>
-        <div class="row">          
+        <div class="row">
             @php
               $subCategories = App\SubCategory::where('category_id',$category->id)->get()->take(4);
             @endphp
             @foreach($subCategories as $subcategory)
             <div class="col-lg-6">
                 <section id="flash_deal">
-                    <div class="container">
+                    <div class="container" style="min-height: 296px">
                         <div class="flash_deal_wrap">
-                          
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="flash_deal_title">
                                         <div class="row">
-                                            <span class="" style="margin-left: 0;">{{ $subcategory->name }}</span>
+                                            <a href="" class="text-dark" style="margin-left: 0;">{{ $subcategory->name }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="product_wrap">
+
+                            <div class="product_wrap d-flex justify-content-between">
                               @php
                                 $products = App\Product::where('subcategory_id',$subcategory->id)->where('featured', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
                               @endphp
@@ -51,23 +51,23 @@
                                 <div class="t_selection_product">
                                     <a href="" class="">
                                         <div class="img_wrap_tselection">
-                                            <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="img-fluid">
+                                            <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="" style="height:152px;width:140px">
                                         </div>
                                         <div class="row">
                                             <div class="pricing_wrap_ts">
-                                                <span class="product_price_ts">{{ single_price($product->unit_price) }}</span><br>                                               
+                                                <span class="product_price_ts">{{ single_price($product->unit_price) }}</span><br>
                                             </div>
                                         </div>
                                     </a>
-                                </div>
+                                </div>  
                                 @endforeach
                             </div>
-                            
+
                         </div>
                     </div>
                 </section>
             </div>
-            @endforeach 
+            @endforeach
         </div>
           <div class="pt-2 text-center ">
             <a class="font-weight-bold btn btn-success" onclick="get_single_category(`{{ $category->id }}`)">View More</a>
