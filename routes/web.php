@@ -300,5 +300,5 @@ Route::get('featured-brand/products/{id}', 'HomeController@featured_brand')->nam
 Route::get('single-brand-products/{brandId}', 'HomeController@fetch_single_brand');
 
 // Featured Category part ////
-Route::get('featured-category/products/{categoryId}', 'HomeController@featured_category')->name('featured.category.product');
+Route::get('featured-category/categoryId/{categoryId}', 'HomeController@featured_category')->name('featured.category.categoryId');
 Route::get('single-category-products/{categoryId}', 'HomeController@fetch_single_category_product');
