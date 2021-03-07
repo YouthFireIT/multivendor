@@ -34,6 +34,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
+<link rel="stylesheet" href="{{ asset('frontend') }}/css/active-shop.css">
 @endsection
 
 @section('scroll_menu')
@@ -115,33 +116,33 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4">
-                    <div class="ali-zoom-img">
-                        <img src="img/11.webp" class="big_img rounded">
-                        <ul>
-                            <li><img src="img/11.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/12.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/13.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/14.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/15.webp" class="small_img img-thumbnail"></li>
-                            <li><img src="img/16.webp" class="small_img img-thumbnail"></li>
-                        </ul>
-                    </div>
-
+                    @if(is_array(json_decode($detailedProduct->photos)) && count(json_decode($detailedProduct->photos)) > 0)
+                        <div class="ali-zoom-img">
+                            <img src="{{ my_asset(json_decode($detailedProduct->photos)[0]) }}" class="big_img rounded">
+                            <ul>
+                                @foreach (json_decode($detailedProduct->photos) as $key => $photo)
+                                    <li><img src="{{ my_asset($photo) }}" class="small_img img-thumbnail"></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-6 col-md-8">
                     <div class="ali-content">
-                        <p>KOTION EACH Gaming Headset Deep Bass Stereo Game Headphone with Microphone LED Light for PS4 PC Laptop+Gaming Mouse+Mice Pad</p>
+                        <p>{{  __($detailedProduct->name) }}</p>
                         <div class="ali-review">
+                            @php
+                                $total = 0;
+                                $total += $detailedProduct->reviews->count();
+                            @endphp
                             <ul class="nav">
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                <li><a href="#">4.8</a></li>
-                                <li><a href="#"><i class="fas fa-angle-down"></i></a></li>
-                                <li><span><a href="#">229 Reviews</a></span></li>
-                                <li><span>516 orders</span></li>
+
+                                <li><a href="#"><i class="fas fa-star">{{renderStarRating($detailedProduct->rating)}}</i></a></li>
+
+                                <li><a href="#">({{ $total }} {{ translate('reviews')}})</a></li>
+                                <!-- <li><a href="#"><i class="fas fa-angle-down"></i></a></li> -->
+                                <!-- <li><span><a href="#">229 Reviews</a></span></li>
+                                <li><span>516 orders</span></li> -->
                             </ul>
                         </div>
                         <!-- increament - decrement count button area -->
@@ -166,24 +167,34 @@
 
                             <div class="count-button nav justify-content-between">
                                 <div class="count-model">
-                                    <h6>MODEL NUMBER</h6>
-                                    <span>Tenda AC6</span>
+                                    <h6>Brand</h6>
+                                    <span>{{__($detailedProduct->brand->name)}}</span>
                                 </div>
                                 <div class="count-price">
                                     <h6>Price</h6>
-                                    <span id="pricetoggle">1445</span>
+                                    @if(home_price($detailedProduct->id) != home_discounted_price($detailedProduct->id))
+                                        <span id="pricetoggle">
+                                            <del>{{ home_price($detailedProduct->id) }}</del>
+
+                                        </span><br>
+                                        <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
+                                    @else
+                                        <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
+                                    @endif
                                 </div>
                                 <div class="count-qty">
                                     <h6>QTY</h6>
                                     <div class="quantity">
-                                        <button onclick="myFunction1()" class="btn minus-btn disabled" type="button">-</button>
-                                        <input type="text" id="quantity" value="1">
-                                        <button onclick="myFunction()" id="plus" class="btn plus-btn" type="button">+</button>
+                                        <button  class="btn minus-btn btn-number" type="button" data-type="minus" data-field="quantity" disabled="disabled">-</button>
+
+                                        <input type="text" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
+
+                                        <button id="plus" class="btn plus-btn btn-number" type="button" data-type="plus" data-field="quantity">+</button>
                                     </div>
 
                                     <!--will calculate price---->
                                     <p class="total-price">
-                                        <span id="price">9999</span>
+                                        <span id="price"></span>
                                     </p>
 
                                 </div>
@@ -192,24 +203,23 @@
 
 
                         <div class="ali-award-color">
+                            @if (count(json_decode($detailedProduct->colors)) > 0)
                             <div class="ali-award-color-text nav">
                                 <span>Color:</span>
-                                <p>G2000 3 item Combo</p>
                             </div>
 
                             <div class="ali-award-color-item">
                                 <ul>
-                                    <li><img src="img/21.webp" class="m-img img-thumbnail"></li>
-                                    <li><img src="img/22.webp" class="m-img img-thumbnail"></li>
-                                    <li><img src="img/23.webp" class="m-img img-thumbnail"></li>
-                                    <li><img src="img/24.webp" class="m-img img-thumbnail"></li>
-                                    <li><img src="img/25.webp" class="m-img img-thumbnail"></li>
-                                    <li><img src="img/26.webp" class="m-img img-thumbnail"></li>
-                                    <li class="mr-0"><img src="img/27.webp" class="m-img img-thumbnail"></li>
+                                    @foreach (json_decode($detailedProduct->colors) as $key => $color)
+                                        <li>
+                                            <input type="radio" id="{{ $detailedProduct->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key == 0) checked @endif>
+                                            <label style="background: {{ $color }};" for="{{ $detailedProduct->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
-
-                            <div class="ali-award-shiping">
+                            @endif
+                            <!-- <div class="ali-award-shiping">
                                 <h6>Shipping: US $76.59</h6>
                                 <ul class="nav">
                                     <li><a href="#">to Bangladesh via AliExpress Premium Shipping</a></li>
@@ -224,7 +234,7 @@
                                     <li><span>days</span></li>
                                     <li><a href="#">?</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
 
                             <div class="ali-button">
                                 <button class="btn btn-danger">Buy Now</button>
@@ -251,22 +261,19 @@
                         <p>Recommended For You</p>
 
                     </div>
-
+                    @php
+                        $recommended_products = App\Product::where('subcategory_id',$detailedProduct->subcategory_id)->where('id', '<>', $detailedProduct->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
+                    @endphp
                     <div class="right-side-img">
-                        <div class="right-side-img-item">
-                            <a href="#"><img src="img/31.webp" class="img-thumbnail"></a>
-                            <p>US $2.75</p>
-                        </div>
-
-                        <div class="right-side-img-item">
-                            <a href="#"><img src="img/32.webp" class="img-thumbnail"></a>
-                            <p>US $4.99</p>
-                        </div>
-
-                        <div class="right-side-img-item">
-                            <a href="#"><img src="img/33.webp" class="img-thumbnail"></a>
-                            <p>US $2.88</p>
-                        </div>
+                        @foreach ($recommended_products as $recommended_product)
+                        {{-- {{ $recommended_product->slug }} --}}
+                            <div class="right-side-img-item">
+                                <a href="{{ route('single.product', $recommended_product->slug) }}">
+                                    <img src="{{ my_asset('') }}{{ $recommended_product->thumbnail_img }}" class="img-thumbnail">
+                                </a>
+                                <p> {{ home_price($recommended_product->id)  }}</p>
+                            </div>
+                        @endforeach
                     </div>
 
                 </div>
@@ -1157,23 +1164,25 @@
 
 <script>
         $("#plus").click(function(){
-        var quantity =$("#quantity").val();
-        var unit_price = $("#unit_price").html();
-        var total_price = parseInt(unit_price * quantity);
-        document.getElementById('price').innerHTML = total_price;
-        var total_quantity = $("#total_quantity").val();
-        var stock_or_not = total_quantity - quantity;
-        if (stock_or_not < 0) {
-        document.getElementById('in_stock').innerHTML = 'Out of stock';
-        document.getElementById('in_stock').innerHTML = 'Out of stock';
-        $("#in_stock").addClass('bg-danger');
-        }else{
-        document.getElementById('in_stock').innerHTML = 'In stock';
-        $("#in_stock").addClass('bg-warning');
+            var quantity =$("#quantity").val();
+
+            var unit_price = $("#unit_price").html();
+            var total_price = parseInt(unit_price * quantity);
+            document.getElementById('price').innerHTML = total_price;
+            var total_quantity = $("#total_quantity").val();
+            var stock_or_not = total_quantity - quantity;
+            if (stock_or_not < 0) {
+            document.getElementById('in_stock').innerHTML = 'Out of stock';
+            document.getElementById('in_stock').innerHTML = 'Out of stock';
+            $("#in_stock").addClass('bg-danger');
+            }else{
+            document.getElementById('in_stock').innerHTML = 'In stock';
+            $("#in_stock").addClass('bg-warning');
         }
 
     });
     $("#minus").click(function(){
+        alert('hello world');
         var quantity =$("#quantity").val();
         var unit_price = $("#unit_price").html();
         var total_price = parseInt(unit_price * quantity);

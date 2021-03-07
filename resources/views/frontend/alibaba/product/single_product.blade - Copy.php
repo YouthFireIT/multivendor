@@ -65,16 +65,11 @@
 
 <!-- jQuery -->
 <script src="{{ my_asset('frontend/js/vendor/jquery.min.js') }}"></script>
-
-
-
-
-
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/style.sproducts_page.css">
-	<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
-    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
-    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/style.sproducts_page.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
+<link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
+<link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
 @endsection
 
 @section('scroll_menu')
@@ -380,7 +375,7 @@
                             <div class="col-10">
                                 <div class="product-price">
                                     <strong id="chosen_price">
-
+                                        
                                     </strong>
                                 </div>
                             </div>
@@ -455,6 +450,7 @@
                             </div>
                         </div>
                     @endif
+
                     @if ($detailedProduct->added_by == 'seller')
                         <div class="row no-gutters mt-3">
                             <div class="col-2">
@@ -479,9 +475,6 @@
                     </div>
                 </div>
             </div>
-
-
-
 
             <div class="col-lg-2 col-12">
                 <div class="right-side-content">
