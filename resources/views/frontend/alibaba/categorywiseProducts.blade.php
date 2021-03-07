@@ -2,7 +2,7 @@
   <div class="container p-0">
       <div class="row">
           @foreach($products as $product)
-          <div class="col-lg-2 pb-1">
+          <div class="col-lg-3 pb-1">
               <div class="mtl_product_item">
                   <a href="#" class="">
                       <div class="mtl_product_item_img_wrap">
@@ -15,7 +15,7 @@
                   </a>
               </div>
           </div>
-          @endforeach          
-      </div>  
+          @endforeach
+      </div>
   </div>
 </section>
