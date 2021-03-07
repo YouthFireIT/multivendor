@@ -375,7 +375,7 @@
                             <div class="col-10">
                                 <div class="product-price">
                                     <strong id="chosen_price">
-
+                                        
                                     </strong>
                                 </div>
                             </div>
@@ -450,6 +450,7 @@
                             </div>
                         </div>
                     @endif
+
                     @if ($detailedProduct->added_by == 'seller')
                         <div class="row no-gutters mt-3">
                             <div class="col-2">
@@ -474,9 +475,6 @@
                     </div>
                 </div>
             </div>
-
-
-
 
             <div class="col-lg-2 col-12">
                 <div class="right-side-content">
