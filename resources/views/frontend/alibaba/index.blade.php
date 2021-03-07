@@ -257,6 +257,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @php
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
                          @endphp
@@ -329,6 +330,7 @@
 
     <!-- Flash Deal -->
     <section id="flash_deal">
+        @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <div class="container">
             <div class="flash_deal_wrap">
                 <div class="row">
@@ -339,6 +341,8 @@
                                     <i class="fas fa-bolt"></i>
                                 </div>
                                 <span class="">Flash Deals</span>
+                                <div class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
+
                             </div>
                         </div>
                     </div>
@@ -371,9 +375,8 @@
                 </div>
             </div>
         </div>
+        @endif
     </section>
-
-
 
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
@@ -440,6 +443,8 @@
             </span>
         </div>
     </section> --}}
+
+
     <!-- Top Ranking -->
     <section id="flash_deal">
         <div class="container" style="max-height: 290px">
@@ -638,7 +643,7 @@
                                 <div class="product_wrap">
                                     @foreach($featuredBrands as $featuredBrand)
                                     <div class="feature_brand_item pr-3">
-                                        <a href="#" class="">
+                                        <a href="{{ route('featured.brand.product', $featuredBrand->id) }}" class="">
                                             <div class="feature_brand_item_img_wrap">
                                                 <img src="{{ my_asset($featuredBrand->logo) }}" alt="" class="img-fluid rounded">
                                             </div>
@@ -778,7 +783,7 @@
                         @foreach($featuredCategories as $featuredCategory)
                         <div class="col-lg-4 mb-2">
                             <div class="cat_item">
-                                <a href="#" class="">
+                                <a href="{{ route('featured.category.product', $featuredCategory->id) }}" class="">
                                     <p class="cat_item_title light_blue">
                                         {{ $featuredCategory->name }}
                                     </p>
@@ -846,7 +851,7 @@
 
             </div>
 
-           
+
 
         </div>
     </section>
@@ -861,7 +866,7 @@
                 </a>
             </div>
         </div>
-    </section> 
+    </section>
 
 
 
@@ -869,7 +874,7 @@
     <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
-            
+
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',

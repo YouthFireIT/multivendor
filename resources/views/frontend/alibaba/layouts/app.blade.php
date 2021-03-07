@@ -64,6 +64,9 @@
         <script src="{{ asset('alibaba') }}/js/jquery.flagstrap.js"></script>
         <script src="{{ asset('alibaba') }}/js/jquery.nicemenu.js"></script>
         <script src="{{ asset('alibaba') }}/js/owl.carousel.min.js"></script>
+        <script src="{{ my_asset('frontend/js/jquery.countdown.min.js') }}"></script>
+        <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
+         
         <script src="{{ asset('alibaba') }}/js/jquery.simple.timer.js"></script>
         <script src="{{ asset('alibaba') }}/js/main.js"></script>
         <script>
