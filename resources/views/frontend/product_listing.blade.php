@@ -75,8 +75,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="media-banner mb-lg-0">
-                    <a href="{{ asset('public/'.$category->banner) }}" target="_blank" class="banner-container">
-                        <img src="{{ asset('frontend/images/placeholder-rect.jpg') }}" data-src="{{ asset('public/'.$category->banner) }}" alt="{{ env('APP_NAME') }} promo" class="d-block w-100 lazyload" height="300" width="100">
+                    <a href="@if(!empty($category->banner)) {{ asset('public/'.$category->banner) }} @endif" target="_blank" class="banner-container">
+                        <img src="{{ asset('frontend/images/placeholder-rect.jpg') }}" data-src="@if(!empty($category->banner)) {{ asset('public/'.$category->banner) }} @endif" alt="{{ env('APP_NAME') }} promo" class="d-block w-100 lazyload" height="300" width="100">
                     </a>
                 </div>
             </div>
