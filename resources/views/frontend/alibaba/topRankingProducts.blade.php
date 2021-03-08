@@ -49,17 +49,16 @@
                               @endphp
                                 @foreach($products as $product)
                                 <div class="t_selection_product">
-                                    <a href="" class="">
+                                    <a href="{{ route('single.product', $product->slug) }}" class="">
                                         <div class="img_wrap_tselection">
                                             <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="" style="height:152px;width:140px">
                                         </div>
-                                        <div class="row">
-                                            <div class="pricing_wrap_ts">
-                                                <span class="product_price_ts">{{ single_price($product->unit_price) }}</span><br>
-                                            </div>
-                                        </div>
+                                        <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($product->name,18) }}</h2>
+                                        <h2 class="mtl_product_price">
+                                            {{ single_price($product->unit_price) }}
+                                        </h2>
                                     </a>
-                                </div>  
+                                </div>
                                 @endforeach
                             </div>
 

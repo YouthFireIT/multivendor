@@ -22,19 +22,19 @@
   <section id="feature_Category">
     <div class="container p-0">
         <div class="row">
-            @foreach($featuredCategotyProducts as $featuredCategotyProduct)
-            <div class="col-md-3 pb-1">
+            @foreach($featuredCategoryProducts as $featuredCategoryProduct)
+            <div class="col-md-2 pb-1">
                 <div class="mtl_product_item">
-                    <a href="{{ route('single.product', $featuredCategotyProduct->slug) }}" class="">
+                    <a href="{{ route('single.product', $featuredCategoryProduct->slug) }}" class="">
                         <div class="mtl_product_item_img_wrap">
-                            <img src="{{ my_asset($featuredCategotyProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
+                            <img src="{{ my_asset($featuredCategoryProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                         </div>
-                        <div class="mtl_product_item_detail">
-                            <h2 class="text-dark">{{ Str::limit($featuredCategotyProduct->name,25) }}</h2>
+                        <div class="mtl_product_item_detail border-top">
+                            <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($featuredCategoryProduct->name,18) }}</h2>
                             <h2 class="mtl_product_price">
-                                 {{ single_price($featuredCategotyProduct->unit_price) }}
+                                 {{ single_price($featuredCategoryProduct->unit_price) }}
                             </h2>
-                            @if ($featuredCategotyProduct->shipping_type == 'free')
+                            @if ($featuredCategoryProduct->shipping_type == 'free')
                             <span class="mtl_product_shipping">Free Shipping</span>
                             @endif
                         </div>
@@ -51,10 +51,10 @@
 </section>
 <script>
 
-  function get_single_category(categotyId){
+  function get_single_category(categoryId){
     $.ajax({
         type: "get",
-        url : '{{url("single-category-products")}}/'+categotyId,
+        url : '{{url("single-category-products")}}/'+categoryId,
         success:function(data) {
             console.log(data);
             $('#feature_Category').empty().html(data);
