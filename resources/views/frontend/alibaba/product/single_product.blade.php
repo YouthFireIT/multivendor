@@ -1,9 +1,9 @@
 @extends('frontend.alibaba.layouts.app')
 @section('custom_css')
-@section('title',$detailedProduct->name)
-<meta itemprop="name" content="{{ $detailedProduct->meta_title }}">
-<meta itemprop="description" content="{{ $detailedProduct->meta_description }}">
-<meta itemprop="image" content="{{ my_asset($detailedProduct->meta_img) }}">
+<meta itemprop="name" content="{{ $detailedProduct->meta_title ?? '' }}">
+
+<meta itemprop="description" content="{{ $detailedProduct->meta_description ?? ''  }}">
+<meta itemprop="image" content="{{ my_asset($detailedProduct->meta_img ?? '' ) }}">
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="product">
@@ -12,17 +12,17 @@
 {{-- <meta name="twitter:description" content="{{ $detailedProduct->meta_description }}"> --}}
 <meta name="twitter:creator" content="@author_handle">
 {{-- <meta name="twitter:image" content="{{ my_asset($detailedProduct->meta_img) }}"> --}}
-<meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price) }}">
+<meta name="twitter:data1" content="{{ single_price($detailedProduct->unit_price ?? '' ) }}">
 <meta name="twitter:label1" content="Price">
 
 <!-- Open Graph data -->
-<meta property="og:title" content="{{ $detailedProduct->meta_title }}" />
+    <meta property="og:title" content="{{ $detailedProduct->meta_title ?? '' }}" />
 <meta property="og:type" content="og:product" />
-<meta property="og:url" content="{{ route('product', $detailedProduct->slug) }}" />
-<meta property="og:image" content="{{ my_asset($detailedProduct->meta_img) }}" />
-<meta property="og:description" content="{{ $detailedProduct->meta_description }}" />
+<meta property="og:url" content="{{ route('product', $detailedProduct->slug ?? '' ) }}" />
+<meta property="og:image" content="{{ my_asset($detailedProduct->meta_img ?? '' ) }}" />
+<meta property="og:description" content="{{ $detailedProduct->meta_description ?? '' }}" />
 <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-<meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price) }}" />
+<meta property="og:price:amount" content="{{ single_price($detailedProduct->unit_price ?? '' ) }}" />
 <meta property="product:price:currency" content="{{ \App\Currency::findOrFail(\App\BusinessSetting::where('type', 'system_default_currency')->first()->value)->code }}" />
 <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
 <link type="image/x-icon" href="{{ my_asset(\App\GeneralSetting::first()->favicon) }}" rel="shortcut icon" />
@@ -136,7 +136,7 @@
                                 $total += $detailedProduct->reviews->count();
                             @endphp
                             <ul class="nav">
-                                
+
                                 <li><a href="#"><i class="fas fa-star">{{renderStarRating($detailedProduct->rating)}}</i></a></li>
 
                                 <li><a href="#">({{ $total }} {{ translate('reviews')}})</a></li>
@@ -176,7 +176,7 @@
                                     @if(home_price($detailedProduct->id) != home_discounted_price($detailedProduct->id))
                                         <span id="pricetoggle">
                                             <del>{{ home_price($detailedProduct->id) }}</del>
-                                            
+
                                         </span><br>
                                         <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
                                     @else
@@ -927,7 +927,7 @@
         $("#plus").click(function(){
             alert('dsafasf');
             var quantity =$("#quantity").val();
-            
+
             var unit_price = $("#unit_price").html();
             var total_price = parseInt(unit_price * quantity);
             document.getElementById('price').innerHTML = total_price;

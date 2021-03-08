@@ -15,9 +15,7 @@
                                     $brands = array();
                                 @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
-
-
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
                         <div class="nicemenu-sub">
 
                          {{--
@@ -88,8 +86,7 @@
                                                 src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item20.webp" alt=""></a></li>
                                 </ul>
                             </div> --}}
-
-
+ 
                         </div>
 
                     </div>
@@ -141,7 +138,7 @@
                         $brands = array();
                     @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
 
                         <div class="nicemenu-sub">
                             @foreach ($category->subcategories as $subcategory)
@@ -783,21 +780,23 @@
                         @foreach($featuredCategories as $featuredCategory)
                         <div class="col-lg-4 mb-2">
                             <div class="cat_item">
-                                <a href="{{ route('featured.category.product', $featuredCategory->id) }}" class="">
+                                <a href="{{ route('featured.category.categoryId', $featuredCategory->id) }}" class="">
                                     <p class="cat_item_title light_blue">
                                         {{ $featuredCategory->name }}
                                     </p>
-                                    <span class="cat_item_img_wrap">
+                                </a>
+                                    <div class="cat_item_img_wrap">
                                         @php
-                                           $featureProducts = App\Product::where('category_id',$featuredCategory->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
+                                        $featureProducts = App\Product::where('category_id',$featuredCategory->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
                                         @endphp
                                         @foreach($featureProducts as $featureProduct)
-                                            <span class="cat_item_img">
-                                                <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
-                                            </span>
+                                            <div class="cat_item_img">
+                                                <a href="{{ route('single.product', $featuredCategory->slug) }}">
+                                                  <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
+                                                </a>
+                                            </div>
                                         @endforeach
-                                    </span>
-                                </a>
+                                    </div>
                             </div>
                         </div>
                         @endforeach
