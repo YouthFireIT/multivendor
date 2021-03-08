@@ -15,9 +15,7 @@
                                     $brands = array();
                                 @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
-
-
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
                         <div class="nicemenu-sub">
 
                          {{--
@@ -88,8 +86,7 @@
                                                 src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item20.webp" alt=""></a></li>
                                 </ul>
                             </div> --}}
-
-
+ 
                         </div>
 
                     </div>
@@ -141,7 +138,7 @@
                         $brands = array();
                     @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
 
                         <div class="nicemenu-sub">
                             @foreach ($category->subcategories as $subcategory)

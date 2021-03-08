@@ -82,7 +82,9 @@
                 }
             });
         </script>
+
     @yield('customjs')
+    
     </body>
 
 
