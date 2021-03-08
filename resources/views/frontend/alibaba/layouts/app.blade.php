@@ -31,7 +31,6 @@
     <style>
 
     </style>
-
     @yield('custom_css')
 </head>
 

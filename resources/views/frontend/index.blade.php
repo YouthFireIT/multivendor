@@ -40,21 +40,12 @@
                     </div>
                 </div>
 
-
-
-
-
                 @php
                     $num_todays_deal = count(filter_products(\App\Product::where('published', 1)->where('todays_deal', 1 ))->get());
                     
                     $featured_categories = \App\Category::where('featured', 1)->get();
                 @endphp
-
-
-
-
-
-            
+                
                 <div class="@if($num_todays_deal > 0) col-lg-7 @else col-lg-9 @endif order-1 order-lg-0 @if(count($featured_categories) == 0) home-slider-full @endif">
                     <div class="home-slide">
                         <div class="home-slide">

@@ -143,6 +143,7 @@
                                 <!-- <li><a href="#"><i class="fas fa-angle-down"></i></a></li> -->
                                 <!-- <li><span><a href="#">229 Reviews</a></span></li>
                                 <li><span>516 orders</span></li> -->
+
                             </ul>
                         </div>
                         <!-- increament - decrement count button area -->
@@ -201,8 +202,8 @@
                             </div>
                         </div>
 
-
                         <div class="ali-award-color">
+
                             @if (count(json_decode($detailedProduct->colors)) > 0)
                             <div class="ali-award-color-text nav">
                                 <span>Color:</span>
@@ -442,61 +443,7 @@
 
                 </div>
                 <div class="col-lg-10 pr-0">
-                    <div class="teclast_direct_store_part mb-3">
-                        <div class="row">
-                            <div class="col-lg-3 pr-0">
-
-                                <div class="tdc"><a href="#">Teclast Direct Store </a></div>
-                                <div class="top_seler_level"><a href="#"><i class="fas fa-ribbon"></i>Top Brands</a></div>
-                                <div class="positive-fdbk">96.5% <span class="positive_info_text">Positive Feedback</span></div>
-                                <div class="positive-fdbk">156.9K <span class="positive_info_text">Followers</span></div>
-                                <div class="top_seler_level2"><a href="#"><i class="far fa-comment-dots"></i>Contact</a></div>
-                                <div class="button-2">
-                                    <button class="follow_btn">+ Follow</button>
-                                    <button class="follow_btn2">Visit Store</button>
-
-                                </div>
-
-
-                            </div>
-                            <div class="col-lg-9 p-0">
-                                <div class="laptop_6img">
-                                    <div class="row">
-
-                                        <div class="simple_card_container ">
-                                            <img src="images/Ha2d2fd562ace4fdd8c79b98fcc630668M.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $359.99</h6>
-                                        </div>
-                                        <div class="simple_card_container ">
-                                            <img src="images/Hf0fdac7b56234870bdcea7949fa57d8eK.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $359.99</h6>
-                                        </div>
-
-
-                                        <div class="simple_card_container ">
-                                            <img src="images/H90c69d4abff445cc9a979912d09078a3W.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $179.99</h6>
-                                        </div>
-
-                                        <div class="simple_card_container ">
-                                            <img src="images/Ha2d2fd562ace4fdd8c79b98fcc630668M.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $146.99</h6>
-                                        </div>
-
-                                        <div class="simple_card_container ">
-                                            <img src="images/Ha2d2fd562ace4fdd8c79b98fcc630668M.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $299.66</h6>
-                                        </div>
-
-                                        <div class="simple_card_container">
-                                            <img src="images/Ha2d2fd562ace4fdd8c79b98fcc630668M.jpg_480x480q90.webp" width="108px">
-                                            <h6 class="">US $329.99</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <!--three_tab_part-->
 
@@ -517,212 +464,7 @@
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="col-lg-12">
 
-                                        <div class="product_details_description pt-4">
-                                            <img src="images/Haadf777ea7704f85a1c8c2a77556aaf61.webp">
-                                        </div>
-
-                                        <!--product_details_description-->
-
-                                        <div class="product_details_description">
-                                            <img src="images/HTB1PjFPXoY1gK0jSZFCq6AwqXXad.webp">
-                                            <img src="images/H5e474b58977445aba94aab33b66a283eA.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>15.6 inch Full HD Display</h3>
-                                                <p>The 1920 x 1080 resolution boasts impressive color and clarity.</p>
-                                                <p>IPS technology for wide viewing angles.</p>
-                                            </div>
-                                            <img src="images/H9ba6c428307d4edab4d914d180546838W.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>Aluminum Alloy Metal Body</h3>
-                                                <p>Metal body laptop is much stronger and more durable than the plastic one,</p>
-                                                <p>and it also achieves less weight and thickness. </p>
-                                                <p> (Note: 7mm is measured from the thinnest place of a closed laptop.)</p>
-                                            </div>
-                                            <img src="images/Hb7a73bd194be4f7b8b28253d5c8d9054c.webp">
-                                            <img src="images/Hed96582e32494d02b7a85406fc3330ccr.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>Integrated Design Glass Panel Gorgeous Visuals</h3>
-                                                <p>F15S comes with an integrated glass panel, making the screen slicker and more modern. </p>
-                                                <p>With super narrow bezels and a 2.5D edge, you will enjoy more screen real estate and less clutter. </p>
-                                            </div>
-                                            <img src="images/H8dbee2197c3046c5a0040e6b98e9c2f3h.webp">
-                                            <div class="product_details_description_text">
-                                                <h3> Low Power Consumption High Performance CPU
-                                                </h3>
-                                                <p>F15S is powered by Intel Apollo Lake processor. </p>
-                                                <p>2.4GHz frequency offers you excellent daily productivity performance. </p>
-                                            </div>
-                                            <img src="images/H983a3429cf9d4274a11f1baf677d5638Z.webp">
-                                            <div class="product_details_description_text">
-                                                <h3> HD Graphics 4K Video Playback
-                                                </h3>
-                                                <p>Intel HD Graphics allows F15S to smoothly play 4K videos with stunning ease. </p>
-                                            </div>
-                                            <img src="images/H4996c0b81f6d401885579b630f31cbe3U.webp">
-                                            <div class="product_details_description_text">
-                                                <h3> 8GB Memory 128GB Storage
-                                                </h3>
-                                                <p>8GB memory gives you the power to handle most applications and multimedia workflow. </p>
-                                                <p>128GB storage offers ample storage for your person data. </p>
-                                                <p>And you can expand the storage by Micro SD card and SSD. </p>
-                                            </div>
-
-                                            <img src="images/H53fdf0660c8946ea9da4333c3e2686570.webp">
-                                            <div class="product_details_description_text">
-                                                <h3> Full Size Keyboard with Narrow Bezel Large Trackpad
-                                                </h3>
-                                                <p>F15S comes with a full size keyboard with number pad, </p>
-                                                <p>allowing you to type fast and work conveniently.</p>
-                                                <p>Large size trackpad gives you a smooth operating experience.</p>
-                                            </div>
-
-                                            <img src="images/H1355759f9e45434e8830d9b9cc1c0c61D.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>High Capacity Long Battery Life
-                                                </h3>
-                                                <p>38000mWh Li-polymer battery allows for battery life of up to 7 hours mix-use,</p>
-                                                <p>gives you a better work and entertainment experience.</p>
-                                            </div>
-
-                                            <img src="images/H32601619725a49f7b4d82547566b36adw.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>For Productivity and Entertainment
-                                                </h3>
-                                                <p>With Windows 10, you will experience fast boot-ups, </p>
-                                                <p>a familiar yet expanded start menu, and great new ways to get stuff done.</p>
-                                            </div>
-
-                                            <img src="images/He0b98200d84b41868323351171aca63cY.webp">
-                                            <div class="product_details_description_text">
-                                                <h3>Stay Connected
-                                                </h3>
-                                                <p>Two Standard USB3.0 for Connectivity. </p>
-                                                <p>Mini HDMI for high definition video and audio output. </p>
-                                                <p>Dual Band Wi-Fi and Bluetooth 4.2 enable you to work with wireless transfers.</p>
-                                                <p>Front camera allows for crisp clear call anywhere. </p>
-                                            </div>
-
-                                            <img src="images/H8f3f1b4eef4245fcaf366ff4a0690899J.webp"> <img src="images/HTB1PjFPXoY1gK0jSZFCq6AwqXXad.webp">
-
-                                            <!--tablespecific-->
-
-
-                                            <table border="1" height="50" width="900" align="center" cellpadding="0" cellspacing="0" style="border-collapse: collapse">
-
-                                                <tr>
-                                                    <td width="150" align="center">Basic Information</td>
-                                                    <td>Brand: Teclast<br>
-                                                        Model: F15S<br>
-                                                        Material of back cover: Metal<br>
-                                                        OS: Windows 10<br>
-                                                        CPU:Intel Apollo Lake N3350<br>
-                                                        Graphics Chipset: Intel HD<br> Graphics 500
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Storage</td>
-                                                    <td> RAM: 8GB<br>
-                                                        ROM: 128GB<br>
-                                                        Storage Expansion: Micro SD card and SSD (not included)
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Network</td>
-                                                    <td> Bluetooth: 4.2<br>
-                                                        LAN Card: No<br>
-                                                        Support Network: Dual WiFi 2.4GHz/5.0GHz,WiFi<br>
-                                                        WIFI: 802.11 ac<br>
-                                                        WLAN Card: Yes
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="150" align="center">Display</td>
-                                                    <td> Screen type: FHD,IPS<br>
-                                                        Screen size: 15.6 inch<br>
-                                                        Display Ratio: 16:9<br>
-                                                        Screen resolution: 1920 x 1080 (FHD)
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Camera</td>
-                                                    <td> Camera type: Single camera <br>
-                                                        Front camera: 2.0MP
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td width="150" align="center">Connectivity</td>
-                                                    <td> 3.5mm Headphone Jack: Yes<br>
-                                                        Audio Jack: 3.5mm Earphone / Mic<br>
-                                                        Card Reader Interface: Yes<br>
-                                                        DC Jack: Yes<br>
-                                                        Mini HDMI slot: Yes<br>
-                                                        TF card slot: Yes<br>
-                                                        USB Host: Yes (2x USB 3.0 Host)
-
-
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">General</td>
-                                                    <td> Battery type: 45600mWh, Li-on polymer battery<br>
-                                                        Power device Type: AC Adapter, 100-240V / 12V 4A<br>
-                                                        Languages: Supports multi-language
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Media Formats</td>
-                                                    <td> 3D Games: Supported<br>
-                                                        MS Office format: Excel,PPT,Word<br>
-                                                        Music format: AAC,FLAC,MP3,WMA <br>
-                                                        Picture format: BMP,GIF,JPEG,JPG,PNG <br>
-                                                        Video format: 1080P,AVI,H.264,MP4,MPEG4
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Dimensions</td>
-                                                    <td> Product weight: 1.8000 kg <br>
-                                                        Package weight: 2.6800 kg <br>
-                                                        Product size (L x W x H): 33.10 x 22.00 x 1.49 cm / 13.03 x 8.66 x 0.59 inches<br>
-                                                        Package size (L x W x H): 36.00 x 25.30 x 6.80 cm / 14.17 x 9.96 x 2.68 inches
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="150" align="center">Package Contents</td>
-                                                    <td> 1 x Notebook<br>
-                                                        1 x User Manual<br>
-                                                        1 x Charger
-                                                    </td>
-                                                </tr>
-
-
-                                            </table>
-
-                                            <img src="images/HTB19zhRXhD1gK0jSZFsq6zldVXar.webp">
-                                            <img src="images/Hf6c63e248291475ba96256c2450e4f80k.webp"> <img src="images/HTB1DXtSXa61gK0jSZFlq6xDKFXaC.webp">
-                                            <img src="images/HTB1fMXSXkH0gK0jSZPiq6yvapXaT.webp">
-                                            <div class="product_details_description_text">
-                                                <h5>1. For non-man-made quality problems, we provide a 12-month warranty for all products except accessories. </h5>
-                                                <h5>2. Under the premise of ensuring that the goods are in good condition, we accept 7 days for no reason to return, but the customer needs to pay the return shipping fee. </h5>
-                                                <h5> 3. Please feel free to contact us if there is any problem after receipt of the goods, please don’t open the dispute first, thank you. </h5>
-                                            </div>
-
-                                            <img src="images/HTB1vjFRXoY1gK0jSZFCq6AwqXXaS.webp">
-                                            <div class="product_details_description_text">
-                                                <h5>1. Your feedback is really important to us, if you are satisfied with our product and service, please take a few seconds to leave 5 stars feedback, thank you very much.</h5>
-                                                <h5> 2. If you are not satisfied with our products or service, please feel free to contact us, we will try our best to solve your problem. Please do not leave a negative feedback without any communication.
-                                                </h5>
-                                            </div>
-
-                                            <img src="images/H647b1c6d521748fcb328ba04f71057c5n.webp" class="my-4">
-
-                                        </div>
+                                        {!! $detailedProduct->description !!}
                                     </div>
                                 </div>
 
@@ -1160,10 +902,30 @@
 	<script src="{{ asset('alibaba') }}/js/custom2.js"></script>
     <script src="{{ asset('alibaba') }}/js/jquery.barChart.js"></script>
 
+    <script src="{{ my_asset('frontend/js/vendor/popper.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
 
+    <!-- Plugins: Sorted A-Z -->
+    <script src="{{ my_asset('frontend/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/select2.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/nouislider.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/sweetalert2.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/slick.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/jssocials.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/jodit.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/xzoom.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/fb-script.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/lazysizes.min.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/intlTelInput.min.js') }}"></script>
+
+    <!-- App JS -->
+    <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
+    <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
 <script>
         $("#plus").click(function(){
+            alert('dsafasf');
             var quantity =$("#quantity").val();
             
             var unit_price = $("#unit_price").html();
