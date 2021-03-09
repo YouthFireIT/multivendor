@@ -258,6 +258,7 @@
                             </div>
                         </div>
                         @php
+
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
                          @endphp
 
@@ -273,6 +274,8 @@
                                 $outputString = preg_replace('/[^0-9]/', '', $totalDuration);
                                 dd($outputString);
                         @endphp --}}
+
+                       
 
                         <div class="banner-slider-3">
 
@@ -324,6 +327,32 @@
             </div>
         </div>
     </section>
+
+     <section class="mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Free Shipping</a>
+            </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Digital Sheba</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Grocery</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Ali Express Mall</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Global Collection</a> </div>
+
+
+        </div>
+    </div>
+     </section>
+
     <!-- Flash Deal -->
     <section id="flash_deal">
         <div class="container">
