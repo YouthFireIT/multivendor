@@ -256,6 +256,7 @@
                         </div>
 
                         @php
+
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
                          @endphp
 
@@ -271,6 +272,8 @@
                                 $outputString = preg_replace('/[^0-9]/', '', $totalDuration);
                                 dd($outputString);
                         @endphp --}}
+
+                       
 
                         <div class="banner-slider-3">
 
@@ -323,8 +326,36 @@
         </div>
     </section>
 
+<<<<<<< HEAD
+     <section class="mt-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Free Shipping</a>
+            </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Digital Sheba</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Grocery</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Ali Express Mall</a> </div>
+            <div class="col-lg-2 mr-4 shadow-sm" style="padding: 17px 31px;
+            border-radius: 82px;
+            background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 15px;font-weight: 500;">Global Collection</a> </div>
 
 
+        </div>
+    </div>
+     </section>
+
+=======
+
+
+>>>>>>> 209fb238d1e535c37f101462124365911689b2d2
     <!-- Flash Deal -->
     <section id="flash_deal">
         @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
@@ -551,7 +582,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($topSelectionProduct->name,15) }}</span>
+                                                    <span class="product_price_ts mt-3">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
                                                     {{-- <span class="product_seletion_number rounded-pill">
                                                         <i class="far fa-smile-beam"></i>
                                                         <span class="">7</span>
@@ -597,7 +629,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($newArrivalProduct->name,15) }}</span>
+                                                    <span class="product_price_ts  mt-3"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
                                                 </div>
                                             </div>
                                         </a>
@@ -646,7 +679,7 @@
                                             </div>
                                         </a>
                                         <div class="feature_brand_item_text_wrap">
-                                            <h2>{{ $featuredBrand->slug }}</h2>
+                                            <h2>{{ Str::limit($featuredBrand->name,15) }}</h2>
                                             <p class="feature_brand_item_btext">
                                                 <i class="far fa-clock"></i> &nbsp;
                                                 Sale ends in: 4 days
@@ -791,10 +824,11 @@
                                         @endphp
                                         @foreach($featureProducts as $featureProduct)
                                             <div class="cat_item_img">
-                                                <a href="{{ route('single.product', $featuredCategory->slug) }}">
+                                                <a href="{{ route('single.product', $featureProduct->slug) }}">
                                                   <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
                                                 </a>
                                             </div>
+
                                         @endforeach
                                     </div>
                             </div>
@@ -831,14 +865,18 @@
                         <div class="mtl_product_item">
                             <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
                                 <div class="mtl_product_item_img_wrap">
-                                    <img src="{{ my_asset($loveProduct->featured_img) }}" alt="" class="img-fluid c_center">
+                                    <img src="{{ my_asset($loveProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                                 </div>
-                                @if($loveProduct->num_of_sale > 0)
-                                <span class="mtl_txt_sale">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
-                                @endif
+                                <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
                                 <h2 class="mtl_product_price">
                                     BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                 </h2>
+                                @if ($loveProduct->num_of_sale > 0)
+                                    <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                @endif
+                                @if ($loveProduct->shipping_type == 'free')
+                                <span class="mtl_product_shipping d-block">Free Shipping</span>
+                                @endif
                             </a>
                         </div>
                     </div>

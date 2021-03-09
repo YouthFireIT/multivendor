@@ -895,7 +895,7 @@ class HomeController extends Controller
 
     //// Feature Brand ////
     public function featured_brand($id){
-        $featuredBrandsProducts = DB::table('products')->select('*')->where('featured', 1)->where('brand_id',$id)->orderBy('id', 'desc')->get()->take(20);
+        $featuredBrandsProducts = DB::table('products')->select('*')->where('featured', 1)->where('brand_id',$id)->orderBy('id', 'desc')->paginate(20);
         return view('frontend.alibaba.featureBrandProduct', compact('featuredBrandsProducts'));
     }
     public function fetch_single_brand($brandId){
@@ -904,8 +904,8 @@ class HomeController extends Controller
     }
     //// Feature Category ////
     public function featured_category($categoryId){
-        $featuredCategotyProducts = DB::table('products')->select('*')->where('published', 1)->where('category_id',$categoryId)->orderBy('id', 'desc')->paginate(20);
-        return view('frontend.alibaba.category_section.productByCategory', compact('featuredCategotyProducts'));
+        $featuredCategoryProducts = DB::table('products')->select('*')->where('published', 1)->where('category_id',$categoryId)->orderBy('id', 'desc')->paginate(20);
+        return view('frontend.alibaba.category_section.productByCategory', compact('featuredCategoryProducts'));
     }
     public function fetch_single_category_product($categoryId){
         $featuredCategoryProducts = DB::table('products')->select('*')->where('published', 1)->where('category_id',$categoryId)->paginate(20);
