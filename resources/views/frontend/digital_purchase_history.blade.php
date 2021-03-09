@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 @section('robots'){{  translate('index') }}@stop
 @section('content')
     <section class="gry-bg py-4 profile">

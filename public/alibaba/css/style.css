@@ -237,6 +237,7 @@ body {
 	transform: translateX(-40px);
 	text-align-last: left;
 	padding: 10px;
+    margin-left: 40px;
 	box-shadow: none !important;
 }
 
@@ -881,11 +882,11 @@ section #flash_deal .container{
 
 .mtl_product_item {
 	width: 100%;
-	height: 337px;
-	padding: 10px;
+	height: 330px;
+	padding: 4px;
 	background: #fff;
 	box-shadow: 0 0 8px #ddd;
-	border-radius: 10px;
+	border-radius: 5px;
     margin-bottom:20px ;
     border: 0px solid black;
     box-sizing: border-box;
@@ -895,19 +896,17 @@ section #flash_deal .container{
     align-content: flex-start;
     flex-shrink: 0;
     position: relative;
-    padding: 0px 8px 16px;
     cursor: pointer;
 }
 span.mtl_product_shipping {
     background: #e6e6e6;
     width: 90px;
     font-size: 14px;
-    padding: 2px 37xp;
     padding: 3px 2px;
+    margin: 3px 0px -3px -12px;
     color: #8a8a8a;
 }
 span.mtl_product_sale {
-    background: #e6e6e6;
     width: 50px;
     font-size: 14px;
     padding: 2px 37xp;

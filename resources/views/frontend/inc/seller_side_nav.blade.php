@@ -63,15 +63,15 @@
                         </span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('seller.digitalproducts') }}" class="{{ areActiveRoutesHome(['seller.digitalproducts', 'seller.digitalproducts.upload', 'seller.digitalproducts.edit'])}}">
                         <i class="la la-diamond"></i>
                         <span class="category-name">
                             {{ translate('Digital Products')}}
                         </span>
                     </a>
-                </li>
-                @if(\App\BusinessSetting::where('type', 'classified_product')->first()->value == 1)
+                </li> --}}
+                {{-- @if(\App\BusinessSetting::where('type', 'classified_product')->first()->value == 1)
                 <li>
                     <a href="{{ route('customer_products.index') }}" class="{{ areActiveRoutesHome(['customer_products.index', 'customer_products.create', 'customer_products.edit'])}}">
                         <i class="la la-diamond"></i>
@@ -92,15 +92,15 @@
                             </a>
                         </li>
                     @endif
-                @endif
-                <li>
+                @endif --}}
+                {{-- <li>
                     <a href="{{route('product_bulk_upload.index')}}" class="{{ areActiveRoutesHome(['product_bulk_upload.index'])}}">
                         <i class="la la-upload"></i>
                         <span class="category-name">
                             {{ translate('Product Bulk Upload')}}
                         </span>
                     </a>
-                </li>
+                </li> --}}
                 @php
                     $orders = DB::table('orders')
                                 ->orderBy('code', 'desc')
@@ -207,7 +207,7 @@
                         </span>
                     </a>
                 </li>
-                @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
+                {{-- @if (\App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
                     <li>
                         <a href="{{ route('wallet.index') }}" class="{{ areActiveRoutesHome(['wallet.index'])}}">
                             <i class="la la-dollar"></i>
@@ -236,7 +236,7 @@
                             </span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
                 @php
                     $support_ticket = DB::table('tickets')
                                 ->where('client_viewed', 0)

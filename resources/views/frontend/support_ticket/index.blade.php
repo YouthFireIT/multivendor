@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 <section class="gry-bg py-4 profile">
@@ -100,7 +100,7 @@
     </div>
 </section>
 
-<div class="modal fade" id="ticket_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-5" id="ticket_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 11111111">
     <div class="modal-dialog modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
         <div class="modal-content position-relative">
             <div class="modal-header">

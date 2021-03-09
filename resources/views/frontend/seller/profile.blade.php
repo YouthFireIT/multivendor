@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 
@@ -73,10 +73,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mt-3">
                                             <label>{{ translate('Your Password')}}</label>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 mt-3">
                                             <input type="password" class="form-control mb-3" placeholder="{{ translate('New Password')}}" name="new_password">
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@
     </section>
 
     <div class="modal fade" id="new-address-modal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-zoom" role="document">
+        <div class="modal-dialog modal-dialog-zoom modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="exampleModalLabel">{{ translate('New Address')}}</h6>
@@ -327,8 +327,6 @@
     </div>
 
 @endsection
-
-@section('script')
     <script type="text/javascript">
         function add_new_address(){
             $('#new-address-modal').modal('show');
@@ -352,4 +350,3 @@
             });
         });
     </script>
-@endsection
