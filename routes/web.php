@@ -284,7 +284,7 @@ Route::any('/payhere/customer_package_payment/cancel', 'PayhereController@custom
 Route::get('random/products', 'HomeController@fetch_random_products');
 Route::get('allFlash/products', 'HomeController@flash_deal_products')->name('allFlashProducts');
 // top ranking part ////
-Route::get('topRanking/products', 'HomeController@top_ranking_products')->name('topRankingProducts');
+Route::get('top-ranking/products', 'HomeController@top_ranking_products')->name('topRankingProducts');
 Route::get('single-category/{categoryId}', 'HomeController@fetch_single_category');
 /// top selection part ////
 Route::get('topSelected/products', 'HomeController@top_selected_products')->name('topSelectedProducts');
@@ -294,3 +294,11 @@ Route::get('latest/products', 'HomeController@latest_products')->name('latestPro
 
 /////// Single product route ///////
 Route::get('/single/product/{slug}', 'ProductController@singleProduct')->name('single.product');
+
+// Featured Brand part ////
+Route::get('featured-brand/products/{id}', 'HomeController@featured_brand')->name('featured.brand.product');
+Route::get('single-brand-products/{brandId}', 'HomeController@fetch_single_brand');
+
+// Featured Category part ////
+Route::get('featured-category/categoryId/{categoryId}', 'HomeController@featured_category')->name('featured.category.categoryId');
+Route::get('single-category-products/{categoryId}', 'HomeController@fetch_single_category_product');

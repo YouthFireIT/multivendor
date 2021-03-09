@@ -15,9 +15,7 @@
                                     $brands = array();
                                 @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
-
-
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
                         <div class="nicemenu-sub">
 
                          {{--
@@ -88,8 +86,7 @@
                                                 src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item20.webp" alt=""></a></li>
                                 </ul>
                             </div> --}}
-
-
+ 
                         </div>
 
                     </div>
@@ -141,7 +138,7 @@
                         $brands = array();
                     @endphp
                     <div class="nicemenu-item">
-                        <h6><a href="#"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
+                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="{{ my_asset($category->icon) }}" alt="">{{ __($category->name) }}</a></h6>
 
                         <div class="nicemenu-sub">
                             @foreach ($category->subcategories as $subcategory)
@@ -257,6 +254,7 @@
                                 </div>
                             </div>
                         </div>
+
                         @php
 
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
@@ -328,6 +326,7 @@
         </div>
     </section>
 
+<<<<<<< HEAD
      <section class="mt-5 mb-5">
     <div class="container">
         <div class="row">
@@ -353,8 +352,13 @@
     </div>
      </section>
 
+=======
+
+
+>>>>>>> 209fb238d1e535c37f101462124365911689b2d2
     <!-- Flash Deal -->
     <section id="flash_deal">
+        @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
         <div class="container">
             <div class="flash_deal_wrap">
                 <div class="row">
@@ -365,6 +369,8 @@
                                     <i class="fas fa-bolt"></i>
                                 </div>
                                 <span class="">Flash Deals</span>
+                                <div class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
+
                             </div>
                         </div>
                     </div>
@@ -377,7 +383,7 @@
                 <div class="product_wrap">
                     @foreach($flashDealProducts as $flashDealProduct)
                     <div class="flash_product">
-                        <a href="single_product_page.html" class="">
+                        <a href="{{ route('single.product', $flashDealProduct->product_slug) }}" class="">
                             <div class="img_wrap">
                                 <img src="{{ my_asset($flashDealProduct->flash_deal_img) }}" alt="" class="img-fluid">
                             </div>
@@ -397,7 +403,9 @@
                 </div>
             </div>
         </div>
+        @endif
     </section>
+
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
     {{-- <section id="free_ship_brazil">
@@ -463,9 +471,11 @@
             </span>
         </div>
     </section> --}}
+
+
     <!-- Top Ranking -->
     <section id="flash_deal">
-        <div class="container">
+        <div class="container" style="max-height: 290px">
             <div class="flash_deal_wrap">
                 <div class="row">
                     <div class="col-lg-6">
@@ -498,19 +508,20 @@
                                             <div class="d-flex justify-content-between">
                                                 <div class="col-lg-8 p-0">
                                                     <p class="pij-text1">{{ $subcategory->name }}</p>
-                                                    <span class="pij-text2">{{ $subcategory->meta_title }}</span>
+                                                    {{-- <span class="pij-text2">{{ $subcategory->meta_title }}</span> --}}
                                                 </div>
                                                 <div class="col-lg-4 p-0">
-                                                    <span class="pij-text3">TOP_IDEAL_2020</span>
+                                                    <span class="pij-text3">top sale 2021</span>
                                                 </div>
                                             </div>
                                         </div>
                                         @php
-                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('featured', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
+                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('published', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
                                         @endphp
                                         <div class="top-ranking-bottompart">
                                             <div class="d-flex justify-content-between">
-                                                @foreach($sProduct as $key => $product)
+                                                @foreach( $sProduct as $key => $product)
+                                                <a href="{{ route('topRankingProducts') }}">
                                                     <div class="col-lg-4 p-0 top-ranking-bottompart-img">
                                                         <img src="{{ $product->thumbnail_img }}"
                                                             alt="">
@@ -520,6 +531,7 @@
                                                             <i>&nbsp;</i>
                                                         @endif
                                                     </div>
+                                                </a>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -570,7 +582,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($topSelectionProduct->name,15) }}</span>
+                                                    <span class="product_price_ts mt-3">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
                                                     {{-- <span class="product_seletion_number rounded-pill">
                                                         <i class="far fa-smile-beam"></i>
                                                         <span class="">7</span>
@@ -616,7 +629,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($newArrivalProduct->name,15) }}</span>
+                                                    <span class="product_price_ts  mt-3"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
                                                 </div>
                                             </div>
                                         </a>
@@ -659,13 +673,13 @@
                                 <div class="product_wrap">
                                     @foreach($featuredBrands as $featuredBrand)
                                     <div class="feature_brand_item pr-3">
-                                        <a href="#" class="">
+                                        <a href="{{ route('featured.brand.product', $featuredBrand->id) }}" class="">
                                             <div class="feature_brand_item_img_wrap">
                                                 <img src="{{ my_asset($featuredBrand->logo) }}" alt="" class="img-fluid rounded">
                                             </div>
                                         </a>
                                         <div class="feature_brand_item_text_wrap">
-                                            <h2>{{ $featuredBrand->slug }}</h2>
+                                            <h2>{{ Str::limit($featuredBrand->name,15) }}</h2>
                                             <p class="feature_brand_item_btext">
                                                 <i class="far fa-clock"></i> &nbsp;
                                                 Sale ends in: 4 days
@@ -799,21 +813,24 @@
                         @foreach($featuredCategories as $featuredCategory)
                         <div class="col-lg-4 mb-2">
                             <div class="cat_item">
-                                <a href="#" class="">
+                                <a href="{{ route('featured.category.categoryId', $featuredCategory->id) }}" class="">
                                     <p class="cat_item_title light_blue">
                                         {{ $featuredCategory->name }}
                                     </p>
-                                    <span class="cat_item_img_wrap">
+                                </a>
+                                    <div class="cat_item_img_wrap">
                                         @php
-                                           $featureProducts = App\Product::where('category_id',$featuredCategory->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
+                                        $featureProducts = App\Product::where('category_id',$featuredCategory->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
                                         @endphp
                                         @foreach($featureProducts as $featureProduct)
-                                            <span class="cat_item_img">
-                                                <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
-                                            </span>
+                                            <div class="cat_item_img">
+                                                <a href="{{ route('single.product', $featureProduct->slug) }}">
+                                                  <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
+                                                </a>
+                                            </div>
+
                                         @endforeach
-                                    </span>
-                                </a>
+                                    </div>
                             </div>
                         </div>
                         @endforeach
@@ -823,7 +840,14 @@
             </div>
         </div>
     </section>
-    <!-- More To Love -->
+
+
+
+
+
+
+
+<!-- More To Love -->
     <section id="more_to_love">
         <div class="container p-0">
             <div class="row">
@@ -833,31 +857,46 @@
                     </h1>
                 </div>
             </div>
+
             <div class="row mt-3">
                 @if (!empty($loveProducts))
                     @foreach($loveProducts as $loveProduct)
                     <div class="col-lg-2 pb-1">
                         <div class="mtl_product_item">
-                            <a href="#" class="">
+                            <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
                                 <div class="mtl_product_item_img_wrap">
-                                    <img src="{{ my_asset($loveProduct->featured_img) }}" alt="" class="img-fluid c_center">
+                                    <img src="{{ my_asset($loveProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                                 </div>
-                                @if($loveProduct->num_of_sale > 0)
-                                <span class="mtl_txt_sale">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
-                                @endif
+                                <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
                                 <h2 class="mtl_product_price">
                                     BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                 </h2>
+                                @if ($loveProduct->num_of_sale > 0)
+                                    <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                @endif
+                                @if ($loveProduct->shipping_type == 'free')
+                                <span class="mtl_product_shipping d-block">Free Shipping</span>
+                                @endif
                             </a>
                         </div>
                     </div>
                     @endforeach
                 @endif
             </div>
-            <div class="row" id="loveProducts"></div>
 
+            <div id="loveProducts" class="row mt-3">
+
+            </div>
+
+
+
+        </div>
+    </section>
+    <section class="container-fluid">
+        <div class="container">
+            <div class="row" id="loveProducts"></div>
             <div class="row">
-                <a onclick="fetch_random_product()" class="btn btn-danger view_more_button shadow-none c_center">
+                <a onclick="fetch_random_product()" href="javascript:void(0)" class="view_more_button_wrap">
                     <button class="btn btn-danger view_more_button shadow-none c_center">
                         View More
                     </button>
@@ -865,9 +904,14 @@
             </div>
         </div>
     </section>
+
+
+
+
     <!-- fotter widget one -->
     <script>
         function fetch_random_product(){
+
             $.ajax({
                 type: "get",
                 url : '{{url("random/products")}}',

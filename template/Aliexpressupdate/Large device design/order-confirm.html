@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Ali Express | Order Confirm</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://kit.fontawesome.com/4c97c770fc.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/order-confirm.css">
+</head>
+
+<body>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 pr-0">
+                <div class="shipping-information">
+                    <p class="main-title">Shipping Information</p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="add-new-address" data-toggle="modal" data-target="#staticBackdrop">
+                        &#43; Add new address
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header ps-modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Select other addresses</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body ps-modal-body">
+                                    <form onsubmit="return orderconfirm();">
+                                        <label for="" class="modal-htext">Contact</label>
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <input type="text" id="sp-name" class="form-control" placeholder="Name">
+                                                <span id="name-text"></span>
+                                                <span class="tips-newTips">Example: Ivanov Ivan Ivanovich</span>
+                                            </div>
+                                            <p id="name-text"></p>
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1">+1</span>
+                                                    </div>
+                                                    <input type="number" id="sp-number" class="form-control"
+                                                        placeholder="Phone Number">
+                                                </div>
+                                                <span id="phone-text"></span>
+                                            </div>
+                                        </div>
+                                        <label for="" class="modal-htext">Address</label>
+                                        <div class="form-row mb-3">
+                                            <div class="col">
+                                                <input type="text" id="sp-address" class="form-control"
+                                                    placeholder="Street, house/apartment/unit">
+                                                <span id="address-text"></span>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control"
+                                                    placeholder="Apt, Suite, Unit, etc. (Optional)">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-3">
+                                                <select id="inputState" class="form-control">
+                                                    <option selected>Bangladesh</option>
+                                                    <option>United States</option>
+                                                    <option>Afghanistan</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <select id="inputState" class="form-control">
+                                                    <option selected>Dhaka</option>
+                                                    <option>Narayangonj</option>
+                                                    <option>Munsigonj</option>
+                                                    <option>Sylet</option>
+                                                    <option>Borisal</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <select id="inputState" class="form-control">
+                                                    <option selected>3 notch</option>
+                                                    <option>5 points</option>
+                                                    <option>8 mile</option>
+                                                    <option>Abel</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <input type="text" class="form-control" id="inputZip"
+                                                    placeholder="Zip Code">
+                                                <span id="zip-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="">
+                                            <label class="form-check-label ml-3" for="">Set as default</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save and continue</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-methods">
+                    <p class="main-title">Payment Methods</p>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="add-new-address" data-toggle="modal" data-target="#staticBackdrop1">
+                        &#43; Select payment method
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header ps1-modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Payment Methods</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body ps1-modal-body px-4">
+                                    <div class="row">
+                                        <div class="col-3 p-2">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Card</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img1.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img2.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img3.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img4.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img5.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img6.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img7.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img8.png" alt="">
+                                                    <img src="images/order-confirm-img/pay-img9.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">PayPal</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img10.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">iDeal</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img11.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="show">
+                                            <div class="modal-card-body modal-card-body-method">
+                                                <p class="pay-method">Show all payment methods</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="Przelewy24">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Przelewy24</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img12.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="WebMoney">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">WebMoney</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img13.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="Mobile-Payment">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Mobile Payment</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img14.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="QIWI-Account">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">QIWI Account</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img15.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="PayU">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">PayU</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img16.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="Sofort-Bank">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Sofort Bank</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img17.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="Bancontact">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Bancontact</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img18.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="Online-Banks">
+                                            <div class="modal-card-body">
+                                                <p class="pay-name">Online Banks</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img19.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 p-2" id="YooMoney">
+                                            <div class="modal-card-body modal-card-body-method1">
+                                                <p class="pay-name">YooMoney</p>
+                                                <div class="pay-icon-list">
+                                                    <img src="images/order-confirm-img/pay-img20.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-review">
+                    <p class="main-title">Order Review</p>
+                    <p class="store-name">Seller: Angol Store</p>
+                    <div class="shopping-cart-product py-2 border-bottom mb-3">
+                        <div class="row">
+                            <div class="col-2 product-image">
+                                <img class="rounded-3" src="images/order-confirm-img/order-confirm-product.webp" alt="">
+                            </div>
+                            <div class="col-8 product-main">
+                                <a href="#" class="product-title">Luxury Female White Crystal Pendant Necklace Cute 925
+                                    Sterling Silver Chain Necklaces For Women Charm Vintage Wedding Necklace</a>
+                                <span class="product-price">US $<span id="price">6.99</span></span>
+                                <div class="product-field">
+                                    <a class="logistics-cost" href="#">Shipping: US $<span
+                                            id="shipping">28.77</span></a>
+                                    <span class="logistics-delivery">via Estimated Delivery Time:7-15 Days
+                                        &#8250;</span>
+                                </div>
+                                <a class="seller-message-title" href="#">+ Leave message</a>
+                            </div>
+                            <div class="col-2 product-opt">
+                                <div class="quantity d-flex justify-content-center">
+                                    <button class="btn minus-btn disabled" type="button">&minus;</button>
+                                    <input type="text" id="quantity" value="1" autocomplete="off">
+                                    <button class="btn plus-btn" type="button">&plus;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5 offset-7">
+                        <div class="seller-charges">
+                            <div>
+                                <div class="charge-item d-flex justify-content-between">
+                                    <p class="charge-title">Subtotal</p>
+                                    <p class="charge-cost">US $ <span id="ps-price">6.99</span></p>
+                                </div>
+                                <div class="charge-item d-flex justify-content-between">
+                                    <p class="charge-title">Shipping</p>
+                                    <p class="charge-cost">US $<span id="shippingvalue">28.77</span></p>
+                                </div>
+                                <div class="order-coupon d-flex justify-content-between">
+                                    <span class="total-title">Store Coupons</span>
+                                    <span class="total-cost"><i class="fas fa-angle-down"></i></span>
+                                </div>
+                                <div class="charge-item d-flex justify-content-between">
+                                    <span class="total-title">Total</span>
+                                    <span class="total-cost">US $ <span id="total-price">35.76</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4" id="order-summary">
+                <div class="order-summary mb-3">
+                    <p class="main-title">Order Summary</p>
+                    <div class="charge-item d-flex justify-content-between">
+                        <p class="charge-title">Select Coupon</p>
+                        <p class="charge-cost"><i class="fas fa-angle-down"></i></p>
+                    </div>
+                    <div class="charge-item d-flex justify-content-between">
+                        <p class="charge-title">AliExpress Coupon</p>
+                        <p class="charge-cost"><i class="fas fa-angle-down"></i></p>
+                    </div>
+                    <p class="coupon-code-title">Promo Code</p>
+                    <div class="charge-item d-flex justify-content-between border-bottom pb-3 mb-3">
+                        <input class="coupon-code-input" type="number" name="" id="" minlength="4" maxlength="6"
+                            min="1">
+                        <button class="coupon-code-button" type="button">Apply</button>
+                    </div>
+                    <div class="charge-item d-flex justify-content-between mb-3">
+                        <p class="charge-title text-dark">Total</p>
+                        <h3 class="charge-cost charge-cost1">US $<span id="total-price1">35.76</span></h3>
+                    </div>
+                    <button type="submit" class="place-order-btn">Place Order</button>
+                </div>
+                <p class="confirm-tips">Upon clicking "Place Order", I confirm I have read and acknowledge all <a
+                        href="#">terms and
+                        policies</a></p>
+                <div class="safe-info-hook">
+                    <img class="o5bQ1" src="images/order-confirm-img/H8e0188e31d864f94ab796d13535dd096g.webp">
+                    <span class="o28lVk">AliExpress keeps your information and payment safe</span>
+                    <img class="o5bQ1" src="images/order-confirm-img/H5ebd67335c2c4725b0f7e7d501482657Q.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/order-confirm.js"></script>
+</body>
+
+</html>

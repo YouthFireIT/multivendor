@@ -20,25 +20,30 @@
     <div class="container p-0">
         <div class="row">
             @foreach($latestProducts as $latestProduct)
-            <div class="col-lg-2 pb-1">
+            <div class="col-md-2 pb-1">
                 <div class="mtl_product_item">
                     <a href="#" class="">
                         <div class="mtl_product_item_img_wrap">
-                            <img src="{{ my_asset($latestProduct->featured_img) }}" alt="" class="img-fluid c_center">
+                            <img src="{{ my_asset($latestProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                         </div>
-                        <h2 class="" style="font-size: 12px; color: #99A6C4;">{{ $latestProduct->name }}</h2>
-                        <h2 class="mtl_product_price">
-                             {{ single_price($latestProduct->unit_price) }}
-                        </h2>
+                        <div class="mtl_product_item_detail border-top">
+                            <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($latestProduct->name,18) }}</h2>
+                            <h2 class="mtl_product_price">
+                                 {{ single_price($latestProduct->unit_price) }}
+                            </h2>
+                            @if ($latestProduct->shipping_type == 'free')
+                            <span class="mtl_product_shipping d-block">Free Shipping</span>
+                            @endif
+                        </div>
                     </a>
                 </div>
             </div>
             @endforeach
-            
+
         </div>
         <div class="row" id="latestProduct"></div>
-        
-        
+
+
     </div>
     <div class="text-center" style=>
       <a onclick="fetch_random_product()" style="text-align: center" class="btn btn-danger text-center">

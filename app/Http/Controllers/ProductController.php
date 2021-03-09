@@ -242,11 +242,11 @@ class ProductController extends Controller
             }
         }
 
-        
+
 
         //Generates the combinations of customer choice options
         $combinations = combinations($options);
-        
+
         if(count($combinations[0]) > 0){
             $product->variant_product = 1;
             foreach ($combinations as $key => $combination){
@@ -265,7 +265,7 @@ class ProductController extends Controller
                         }
                     }
                 }
-                
+
                 // $item = array();
                 // $item['price'] = $request['price_'.str_replace('.', '_', $str)];
                 // $item['sku'] = $request['sku_'.str_replace('.', '_', $str)];
