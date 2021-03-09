@@ -266,8 +266,10 @@
 
                     </div>
                     @php
-                        $recommended_products = App\Product::where('subcategory_id',$detailedProduct->subcategory_id)->where('id', '<>', $detailedProduct->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
+                        $recommended_products = App\Product::where('subcategory_id',$detailedProduct->subcategory_id)->where('id','<>',$detailedProduct->id)->where('featured', 1)->orderBy('id', 'desc')->get()->take(3);
+                        
                     @endphp
+
                     <div class="right-side-img">
                         @foreach ($recommended_products as $recommended_product)
                         {{-- {{ $recommended_product->slug }} --}}
@@ -299,74 +301,44 @@
 
             <div class="row">
                 <div class="col-lg-2 p-0">
-
-                    <div class="top_sel_part">
+                    <div class="sell-title" style="background: #fff;">
                         <h6>Top Selling</h6>
-                        <img src="images/H90cbd0da5dde4dfeb921552e4058b3d7u.jpg_480x480q90.webp" width="100%">
-                        <h6>US $146.99</h6>
-                        <div class="item_rating">
-                            <div class="row star_main ">
-                                <div class="col-lg-6">
-                                    <div class="star_cls"> <i class="fas fa-star"></i>4.8</div>
-                                </div>
-                                <div class="col-lg-6">6873 Sold</div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php
+                            $topSellProduct = App\Product::where('subcategory_id',$detailedProduct->subcategory_id)->where('id','<>',$detailedProduct->id)->orderBy('num_of_sale', 'desc')->get()->take(4);
 
+                        ?>
+                    </div>
+                    @foreach($topSellProduct as $topProduct)
                     <div class="top_sel_part">
-                        <img src="images/H6cfe2d81aa934316be1aafe492874333e.jpg_480x480q90.webp" width="100%">
-                        <h6>US $146.99</h6>
-                        <div class="item_rating">
-                            <div class="row star_main">
-                                <div class="col-lg-6">
-                                    <div class="star_cls"> <i class="fas fa-star"></i>4.8</div>
+                        <a href="{{ route('single.product', $topProduct->slug) }}" style="text-decoration: none;">
+                            
+                            <img src="{{ my_asset('') }}{{ $topProduct->thumbnail_img }}" class="img-thumbnail" width="100%">
+                            <h6>{{substr($topProduct->name,0,20)}} {{$topProduct->id}}</h6>
+                            <h6 class="top-sell-price">{{ home_price($recommended_product->id)  }}</h6>
+                            <div class="item_rating">
+                                <div class="row star_main ">
+                                    <div class="col-lg-6">
+                                        <div class="star_cls">
+                                              @php
+                                                $productRating = $topProduct->reviews->sum('rating');
+                                                $productId = $topProduct->reviews->count('product_id');
+                                                
+                                            @endphp
+                                            @if($productId !=0)
+                                                <?php
+                                                    $ratingCalculate = $productRating / $productId;
+                                                ?>
+                                             <i class="fas fa-star"></i> {{ number_format($ratingCalculate,1)}}
+                                            @endif
+                                         </div>
+                                    </div>
+                                    <div class="col-lg-6"><span class="text-right">{{$topProduct->num_of_sale}} Sold</span></div>
                                 </div>
-                                <div class="col-lg-6">6873 Sold</div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-
-                    <div class="top_sel_part">
-                        <img src="images/Hb3541114a22b4c07afe29ca55d3fb4fea.jpg_480x480q90.webp" width="100%">
-                        <h6>US $146.99</h6>
-                        <div class="item_rating">
-                            <div class="row star_main">
-                                <div class="col-lg-6">
-                                    <div class="star_cls"> <i class="fas fa-star"></i>4.8</div>
-                                </div>
-                                <div class="col-lg-6">6873 Sold</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="top_sel_part">
-                        <img src="images/Hf0fdac7b56234870bdcea7949fa57d8eK.jpg_480x480q90.webp" width="100%">
-                        <h6>US $146.99</h6>
-                        <div class="item_rating">
-                            <div class="row star_main">
-                                <div class="col-lg-6">
-                                    <div class="star_cls"> <i class="fas fa-star"></i>4.8</div>
-                                </div>
-                                <div class="col-lg-6">6873 Sold</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="top_sel_part">
-                        <img src="images/H9adaa532fe974df886a552e98f100340m.jpg_480x480q90.webp" width="100%">
-                        <h6>US $146.99</h6>
-                        <div class="item_rating">
-                            <div class="row star_main">
-                                <div class="col-lg-6">
-                                    <div class="star_cls"> <i class="fas fa-star"></i>4.8</div>
-                                </div>
-                                <div class="col-lg-6">6873 Sold</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <span class="view_more"><a href="#"> View More ></a></span>
+                    @endforeach
+                    <!-- <span class="view_more"><a href="#"> View More ></a></span> -->
 
 
                 </div>
@@ -381,12 +353,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link active " id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">OVERVIEW</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">CUSTOMER REVIEWS (154)</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">SPECIFICATIONS</a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -396,368 +368,51 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                </div>
-
-
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                                    <div class="product_details_description">
-                                        <div class="row">
-                                            <div class="col-lg-6 pr-0">
-                                                <div class="product_spcfc pl-4 py-4">
-                                                    <ul>
-                                                        <li> Brand Name:<a href="#"> Teclast</a></li>
-                                                        <li> Port:<a href="#"> 2*USB3.0</a></li>
-                                                        <li> Video Memory Capacity:<a href="#"> Main memory allocated memory</a></li>
-                                                        <li> Display Ratio:<a href="#"> 16:9</a></li>
-                                                        <li> Dimensions (WxHxD):<a href="#"> 361mmx249.5mmx14.95mm</a></li>
-                                                        <li> Weight (Battery Included):<a href="#"> 1.8Kg-2.0Kg</a></li>
-                                                        <li> Certification:<a href="#"> CE</a></li>
-                                                        <li> Operating System:<a href="#"> Windows 10</a></li>
-                                                        <li> Model Number:<a href="#"> F15S</a></li>
-                                                        <li> Type:<a href="#"> Slim Laptop</a></li>
-                                                        <li> Panel Type:<a href="#"> IPS</a></li>
-                                                        <li> Average Battery Life(in hours):<a href="#"> 7 hours (video)</a></li>
-                                                        <li> Body Material:<a href="#"> Metal</a></li>
-                                                        <li> Thickness: <a href="#"> ＜15mm</a></li>
-                                                        <li> Graphics Card Type:<a href="#"> Integrated Card</a></li>
-                                                        <li> Feature:<a href="#"> Camera</a></li>
-                                                        <li> CPU:<a href="#"> Intel Apollo Lake N3350</a></li>
-                                                        <li> External Memory:<a href="#"> Support TF card</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="col-lg-6">
-                                                <div class="product_spcfc pl-4 py-4">
-                                                    <ul>
-                                                        <li> Port:<a href="#"> 3.5 mm Audio Jack</a></li>
-                                                        <li> Port: <a href="#"> HDMI </a></li>
-                                                        <li> Display Size: <a href="#"> 15.6" </a></li>
-                                                        <li> Screen Refresh Rate: <a href="#"> 60Hz </a></li>
-                                                        <li> Hard Drive Capacity: <a href="#"> 128GB </a></li>
-                                                        <li> Hard Drive Type: <a href="#"> SSD </a></li>
-                                                        <li> Item Condition: <a href="#"> New </a></li>
-                                                        <li> Origin: <a href="#"> CN(Origin) </a></li>
-                                                        <li> Graphics Card Model: <a href="#"> Intel(R) UHD Graphics600 </a></li>
-                                                        <li> CPU Brand/Model: <a href="#"> Intel Celeron N3350 </a></li>
-                                                        <li> Optical Drive Type: <a href="#"> None </a></li>
-                                                        <li> RAM: <a href="#"> 8GB</a></li>
-                                                        <li> Package: <a href="#"> Yes </a></li>
-                                                        <li> Display resolution: <a href="#"> 1920x1080 </a></li>
-                                                        <li> Feature: <a href="#"> Bluetooth </a></li>
-                                                        <li> Front camera: <a href="#"> 2.0 MP </a></li>
-                                                        <li> GPU: <a href="#"> Intel HD Graphics 500</a></li>
-                                                        <li> Battery Capacity: <a href="#"> 45600mWh </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
-                    </div>
-
-
-                    <!-- ==================costomer_review_part==================-->
-
-                    <div class="costomer_review_part">
-                        <div class="row px-4">
-                            <!--<div class="costomer_review_barfiller_part">-->
-                            <div class="col-lg-6">
-                                <div class="costomer_review_barfiller_item">
-                                    <h5> Customer Reviews (139)</h5>
-                                    <div class="barChart">
-                                        <div class="barChart__row" data-value="70">
-                                            <span class="barChart__label">5 Stars</span>
-                                            <span class="barChart__bar"><span style="width: 80%" class="barChart__barFill"></span> </span>
-                                            <span class="barChart__value">84%</span>
-                                        </div>
-                                        <div class="barChart__row" data-value="90">
-                                            <span class="barChart__label">4 Stars</span>
-                                            <span class="barChart__bar"><span style="width: 10%" class="barChart__barFill"></span></span>
-                                            <span class="barChart__value">10%</span>
-                                        </div>
-                                        <div class="barChart__row" data-value="60">
-                                            <span class="barChart__label">3 Stars</span>
-                                            <span class="barChart__bar"><span style="width: 5%" class="barChart__barFill"></span></span>
-                                            <span class="barChart__value">4%</span>
-                                        </div>
-                                        <div class="barChart__row" data-value="50">
-                                            <span class="barChart__label">2 Stars</span>
-                                            <span class="barChart__bar"><span style="width: 4%" class="barChart__barFill"></span></span>
-                                            <span class="barChart__value">2%</span>
-                                        </div>
-                                        <div class="barChart__row" data-value="40">
-                                            <span class="barChart__label">1 Stars</span>
-                                            <span class="barChart__bar"><span style="width: 2%" class="barChart__barFill"></span></span>
-                                            <span class="barChart__value">2%</span>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="costomer_review_rating_item">
-                                    <div class="five_rating">
-                                        <span> <b>4.7</b>/5 <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
-                    <!--======================all_star_154======================-->
-
-                
+                    </div>            
 
                     <!-- ======================Seller Recommendations======================-->
 
                     <div class="seller_recommendations_part p-3">
                         <div class="row">
-                            <div class="move_to_love">
-                                <h6><b> More to love</b></h6>
-                            </div>
+                            
 
                         </div>
 
-
-                        <div class="row">
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-                            <div class="seller_recommendations_item">
-                                <img src="images/H56cc373f40bf457689f16784bcfef976Q.jpg_480x480q90.webp" width="100%">
-                                <a href="#">Teclast F5R Laptop...</a>
-                                <h6>US $304.82</h6>
-                                <span>214 sold</span>
-
-                            </div>
-
-
-
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="move_to_love">
+                            <div class="__mlh"></div>
+                            <div class="text-center __mlht">More to love</div>
+                            <div class="__mlh"></div>
+                        </div>
+                        <div class="row mt-3">
+                            @if (!empty($loveProducts))
+                                @foreach($loveProducts as $loveProduct)
+                                <div class="col-lg-2 pb-1">
+                                    <div class="mtl_product_item">
+                                        <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
+                                            <div class="mtl_product_item_img_wrap">
+                                                <img src="{{ my_asset($loveProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
+                                            </div>
+                                            <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
+                                            <h2 class="mtl_product_price">
+                                                {{ home_price($recommended_product->id)  }}
+                                            </h2>
+                                            @if ($loveProduct->num_of_sale > 0)
+                                            <div class="sale-info">
+                                                <span class="mtl_product_sale single_product_love d-block">{{ $loveProduct->num_of_sale }}&nbsp;Sold</span>
+                                            </div>
+                                                
+                                            @endif
+                                        </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
