@@ -1,4 +1,5 @@
 @extends('frontend.alibaba.layouts.app')
+@section('title',$detailedProduct->name)
 @section('custom_css')
 <meta itemprop="name" content="{{ $detailedProduct->meta_title ?? '' }}">
 
@@ -287,7 +288,7 @@
             <div class="row">
                 <div class="col-lg-12 p-0">
                     <div class="teclast_part_img pb-4">
-                        <img src="images/Hb6df7e3f1ef04405a963a47f0f8c6a9f2.jpeg" height="56" width="100%">
+                        <!-- <img src="images/Hb6df7e3f1ef04405a963a47f0f8c6a9f2.jpeg" height="56" width="100%"> -->
                     </div>
                 </div>
             </div>
@@ -296,81 +297,6 @@
 
             <div class="row">
                 <div class="col-lg-2 p-0">
-                    <div class="store_categories_part mb-3">
-                        <h6>Store Categories</h6>
-                        <div class="dropdown show">
-                            <a class="btn  dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                New Arrivals
-                            </a>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                TECLAST Laptops
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">14.1 inch F7S</a>
-                                <a class="dropdown-item" href="#">14.1 inch F7 Plus</a>
-                                <a class="dropdown-item" href="#">11.6 inch F5 F5R</a>
-                                <a class="dropdown-item" href="#">13.3 inch F6 Plus</a>
-                                <a class="dropdown-item" href="#">15.6 inch F15</a>
-                                <a class="dropdown-item" href="#">15.6 inch F15S</a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                TECLAST Tablets
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">10.1 inch P20HD P20</a>
-                                <a class="dropdown-item" href="#">10.1 inch M40</a>
-                                <a class="dropdown-item" href="#">10.1 inch M30 PRO</a>
-                                <a class="dropdown-item" href="#">10.1 inch T30</a>
-                                <a class="dropdown-item" href="#">10.1 inch P10HD</a>
-                                <a class="dropdown-item" href="#">10.1 inch M30</a>
-                                <a class="dropdown-item" href="#">11.6 inch M16 M18</a>
-                                <a class="dropdown-item" href="#">8 inch P80X</a>
-                                <a class="dropdown-item" href="#">8 inch P80H</a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                2 in 1 Tablet PC
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">11.6 inch X4</a>
-                                <a class="dropdown-item" href="#">12.6 inch X6 Pro</a>
-
-                            </div>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn  dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Teclast Accessories
-                            </a>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn  dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                FAQ
-                            </a>
-                        </div>
-
-                        <div class="dropdown show">
-                            <a class="btn  dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Others
-                            </a>
-                        </div>
-
-
-                    </div>
-
-                    <!--top_sel_part-->
 
                     <div class="top_sel_part">
                         <h6>Top Selling</h6>
@@ -591,60 +517,14 @@
 
                     <!--======================all_star_154======================-->
 
-                    <div class="all_star_154">
-                        <div class="row">
-
-
-                            <div class="dropdown show">
-                                <a class="btn dropdown-toggle link_color" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    All Stars (154)
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="#"> All Stars</a>
-                                    <a class="dropdown-item" href="#"> 5 Star</a>
-                                    <a class="dropdown-item" href="#"> 4 Star</a>
-                                    <a class="dropdown-item" href="#"> 3 Star</a>
-                                    <a class="dropdown-item" href="#"> 2 Star</a>
-                                    <a class="dropdown-item" href="#"> 1 Star</a>
-                                </div>
-                            </div>
-
-
-
-                            <div class="f-filter-list pt-2">
-                                <span class="photos_16">Photos (16)</span>
-                            </div>
-
-                            <div class="f-filter-list pt-2">
-                                <span class="photos_16"> With Personal Information(0) </span>
-                            </div>
-                            <div class="f-filter-list pt-2">
-                                <span class="photos_16">Additional Feedback (5) </span>
-                            </div>
-
-
-                        </div>
-
-                        <div class="row px-3 mt-4">
-                            <div class="country_checkbox pr-4">
-                                <span> <input type="checkbox"> Only from your country</span>
-                            </div>
-                            <div class="country_checkbox">
-                                <span> <input type="checkbox"> Translate to English </span>
-                            </div>
-                        </div>
-
-
-                    </div>
-
+                
 
                     <!-- ======================Seller Recommendations======================-->
 
                     <div class="seller_recommendations_part p-3">
                         <div class="row">
                             <div class="move_to_love">
-                                <h6><b> Move to love</b></h6>
+                                <h6><b> More to love</b></h6>
                             </div>
 
                         </div>
