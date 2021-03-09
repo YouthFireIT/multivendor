@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-right mt-3">
                                         <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{  translate('Add More') }}</button>
                                     </div>
                                     <div class="row">
@@ -521,7 +521,6 @@
 
 @endsection
 
-@section('script')
     <script type="text/javascript">
 
         var category_name = "";
@@ -681,7 +680,7 @@
 
         var photo_id = 2;
         function add_more_slider_image(){
-            var photoAdd =  '<div class="row">';
+            var photoAdd =  '<div class="row mt-3">';
             photoAdd +=  '<div class="col-2">';
             photoAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
             photoAdd +=  '</div>';
@@ -706,4 +705,3 @@
         }
 
     </script>
-@endsection

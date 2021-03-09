@@ -86,7 +86,7 @@
                                                 src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item20.webp" alt=""></a></li>
                                 </ul>
                             </div> --}}
- 
+
                         </div>
 
                     </div>
@@ -256,6 +256,7 @@
                         </div>
 
                         @php
+
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
                          @endphp
 
@@ -271,6 +272,8 @@
                                 $outputString = preg_replace('/[^0-9]/', '', $totalDuration);
                                 dd($outputString);
                         @endphp --}}
+
+
 
                         <div class="banner-slider-3">
 

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 
@@ -89,10 +89,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 mt-3">
                                             <label>{{ translate('Address')}} <span class="required-star">*</span></label>
                                         </div>
-                                        <div class="col-md-10">
+                                        <div class="col-md-10 mt-3">
                                             <input type="text" class="form-control mb-3" placeholder="{{ translate('Address')}}" name="address" value="{{ $shop->address }}" required>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-right mt-3">
                                         <button type="button" class="btn btn-info mb-3" onclick="add_more_slider_image()">{{  translate('Add More') }}</button>
                                     </div>
                                 </div>
@@ -221,11 +221,10 @@
 
 @endsection
 
-@section('script')
     <script>
         var slide_id = 1;
         function add_more_slider_image(){
-            var shopSliderAdd =  '<div class="row">';
+            var shopSliderAdd =  '<div class="row mt-3">';
             shopSliderAdd +=  '<div class="col-2">';
             shopSliderAdd +=  '<button type="button" onclick="delete_this_row(this)" class="btn btn-link btn-icon text-danger"><i class="fa fa-trash-o"></i></button>';
             shopSliderAdd +=  '</div>';
@@ -256,4 +255,3 @@
             });
         });
     </script>
-@endsection
