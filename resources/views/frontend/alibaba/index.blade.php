@@ -551,7 +551,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($topSelectionProduct->name,15) }}</span>
+                                                    <span class="product_price_ts mt-3">{{ single_price($topSelectionProduct->unit_price) }}</span><br>
                                                     {{-- <span class="product_seletion_number rounded-pill">
                                                         <i class="far fa-smile-beam"></i>
                                                         <span class="">7</span>
@@ -597,7 +598,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="pricing_wrap_ts">
-                                                    <span class="product_price_ts"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
+                                                    <span class="text-dark mt-n2">{{ Str::limit($newArrivalProduct->name,15) }}</span>
+                                                    <span class="product_price_ts  mt-3"> {{ single_price($newArrivalProduct->unit_price) }}</span><br>
                                                 </div>
                                             </div>
                                         </a>
@@ -646,7 +648,7 @@
                                             </div>
                                         </a>
                                         <div class="feature_brand_item_text_wrap">
-                                            <h2>{{ $featuredBrand->slug }}</h2>
+                                            <h2>{{ Str::limit($featuredBrand->name,15) }}</h2>
                                             <p class="feature_brand_item_btext">
                                                 <i class="far fa-clock"></i> &nbsp;
                                                 Sale ends in: 4 days
@@ -791,10 +793,11 @@
                                         @endphp
                                         @foreach($featureProducts as $featureProduct)
                                             <div class="cat_item_img">
-                                                <a href="{{ route('single.product', $featuredCategory->slug) }}">
+                                                <a href="{{ route('single.product', $featureProduct->slug) }}">
                                                   <img src="{{ my_asset($featureProduct->thumbnail_img) }}" alt="" class="img-fluid">
                                                 </a>
                                             </div>
+
                                         @endforeach
                                     </div>
                             </div>
@@ -831,14 +834,18 @@
                         <div class="mtl_product_item">
                             <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
                                 <div class="mtl_product_item_img_wrap">
-                                    <img src="{{ my_asset($loveProduct->featured_img) }}" alt="" class="img-fluid c_center">
+                                    <img src="{{ my_asset($loveProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                                 </div>
-                                @if($loveProduct->num_of_sale > 0)
-                                <span class="mtl_txt_sale">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
-                                @endif
+                                <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
                                 <h2 class="mtl_product_price">
                                     BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                 </h2>
+                                @if ($loveProduct->num_of_sale > 0)
+                                    <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                @endif
+                                @if ($loveProduct->shipping_type == 'free')
+                                <span class="mtl_product_shipping d-block">Free Shipping</span>
+                                @endif
                             </a>
                         </div>
                     </div>

@@ -5,6 +5,8 @@
 
 <meta itemprop="description" content="{{ $detailedProduct->meta_description ?? ''  }}">
 <meta itemprop="image" content="{{ my_asset($detailedProduct->meta_img ?? '' ) }}">
+@section('title',$detailedProduct->name ?? '' )
+
 
 <!-- Twitter Card data -->
 <meta name="twitter:card" content="product">
@@ -825,35 +827,7 @@
     });
     $("#minus").click(function(){
         alert('hello world');
-        var quantity =$("#quantity").val();
-        var unit_price = $("#unit_price").html();
-        var total_price = parseInt(unit_price * quantity);
-        document.getElementById('price').innerHTML = total_price;
-        var total_quantity = $("#total_quantity").val();
-        var stock_or_not = total_quantity - quantity;
-        if (stock_or_not < 0) {
-        document.getElementById('in_stock').innerHTML = 'Out of stock';
-        document.getElementById('in_stock').innerHTML = 'Out of stock';
-        $("#in_stock").addClass('bg-danger');
-        }else{
-        document.getElementById('in_stock').innerHTML = 'In stock';
-        $("#in_stock").addClass('bg-warning');
-        }
-    });
-    </script> --}}
-    <script type="text/javascript">
-        $(document).ready(function() {
-    		$('#share').jsSocials({
-    			showLabel: false,
-                showCount: false,
-                shares: ["email", "twitter", "facebook", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
-    		});
-            getVariantPrice();
-    	});
-
-        function CopyToClipboard(containerid) {
-            if (document.selection) {
-                var range = document.body.createTextRange();
+eTextRange();
                 range.moveToElementText(document.getElementById(containerid));
                 range.select().createTextRange();
                 document.execCommand("Copy");

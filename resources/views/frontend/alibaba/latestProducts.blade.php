@@ -20,19 +20,19 @@
     <div class="container p-0">
         <div class="row">
             @foreach($latestProducts as $latestProduct)
-            <div class="col-md-3 pb-1">
+            <div class="col-md-2 pb-1">
                 <div class="mtl_product_item">
                     <a href="#" class="">
                         <div class="mtl_product_item_img_wrap">
                             <img src="{{ my_asset($latestProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                         </div>
-                        <div class="mtl_product_item_detail">
-                            <h2 class="text-dark">{{ Str::limit($latestProduct->name,25) }}</h2>
+                        <div class="mtl_product_item_detail border-top">
+                            <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($latestProduct->name,18) }}</h2>
                             <h2 class="mtl_product_price">
                                  {{ single_price($latestProduct->unit_price) }}
                             </h2>
                             @if ($latestProduct->shipping_type == 'free')
-                            <span class="mtl_product_shipping">Free Shipping</span>
+                            <span class="mtl_product_shipping d-block">Free Shipping</span>
                             @endif
                         </div>
                     </a>

@@ -27,27 +27,27 @@
                             <img src="{{ my_asset($flashDealProduct->flash_deal_img) }}" alt="" class="img-fluid c_center">
                         </div>
                         <div class="mtl_product_item_detail">
-                            <h2 class="text-dark">{{ Str::limit($flashDealProduct->name,25) }}</h2>
+                            <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($flashDealProduct->name,18) }}</h2>
                             <h2 class="mtl_product_price">
                                 {{ single_price($flashDealProduct->unit_price) }}
-                            </h2> 
+                            </h2>
                             @if($flashDealProduct->discount_type == "percent")
                             <span class="product_offer"> {{ $flashDealProduct->discount }}% off</span>
                             @else
                             <span class="product_offer"> {{ single_price($flashDealProduct->discount) }}&nbsp; off</span>
-                            @endif 
+                            @endif
                         </div>
                     </a>
                 </div>
             </div>
             @endforeach
-            
+
         </div>
         <div class="d-flex justify-content-center">
-            {{ $flashDealProducts->links() }} 
-        </div> 
+            {{ $flashDealProducts->links() }}
+        </div>
     </div>
-      
+
 </section>
 
 
@@ -55,7 +55,7 @@
 
 
 <script>
- 
+
   function get_single_category(categoryId){
     $.ajax({
         type: "get",
@@ -67,7 +67,7 @@
         }
     });
   }
-  
+
 </script>
 @endsection
 
