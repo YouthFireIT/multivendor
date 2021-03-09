@@ -903,13 +903,12 @@ span.mtl_product_shipping {
     width: 90px;
     font-size: 14px;
     padding: 3px 2px;
-    margin: 3px 0px -3px -12px;
+    margin: 12px 0px -3px 0px;
     color: #8a8a8a;
 }
 span.mtl_product_sale {
     width: 50px;
     font-size: 14px;
-    padding: 2px 37xp;
     padding: 3px 2px;
     color: #8a8a8a;
 }
