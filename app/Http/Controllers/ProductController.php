@@ -81,6 +81,7 @@ class ProductController extends Controller
         }
 
         $products = $products->orderBy('created_at', 'desc')->paginate(15);
+        
         $type = 'Seller';
 
         return view('products.index', compact('products','type', 'col_name', 'query', 'seller_id', 'sort_search'));
@@ -701,7 +702,8 @@ class ProductController extends Controller
 
     public function singleProduct($slug){
         $detailedProduct  = Product::where('slug', $slug)->first();
-        return view('frontend.alibaba.product.single_product',compact('detailedProduct'));
+        $loveProducts = DB::table('products')->select('*')->where('featured', 1)->inRandomOrder()->limit(12)->get();
+        return view('frontend.alibaba.product.single_product',compact('detailedProduct','loveProducts'));
         // return view('frontend.product_details',compact('detailedProduct'));
     }
 

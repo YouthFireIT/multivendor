@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 
@@ -31,7 +31,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-4 offset-md-2">
                                 <div class="dashboard-widget text-center green-widget text-white mt-4 c-pointer">
@@ -160,7 +159,6 @@
     </div> --}}
 
 @endsection
-@section('script')
     <script type="text/javascript">
         function show_request_modal(){
             $('#request_modal').modal('show');
@@ -173,4 +171,3 @@
             });
         }
     </script>
-@endsection

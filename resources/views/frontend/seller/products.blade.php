@@ -1,5 +1,4 @@
-@extends('frontend.layouts.app')
-
+@extends('frontend.seller.layouts.app')
 @section('content')
 
     <section class="gry-bg py-4 profile">
@@ -160,7 +159,6 @@
     </section>
 
 @endsection
-
 @section('script')
     <script type="text/javascript">
         function update_featured(el){
