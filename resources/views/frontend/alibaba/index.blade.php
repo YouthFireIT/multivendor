@@ -360,6 +360,7 @@
                             </div>
                             <div class="row">
                                 <div class="pricing_wrap">
+                                    <span class="text-dark d-block mt-n2">{{ Str::limit($flashDealProduct->name,15) }}</span>
                                     <span class="product_price">{{ single_price($flashDealProduct->unit_price) }}</span>
                                     @if($flashDealProduct->discount_type == "percent")
                                     <span class="product_offer"> {{ $flashDealProduct->discount }}% off</span>
@@ -376,6 +377,10 @@
         </div>
         @endif
     </section>
+
+    <span class="d-none"></span>
+
+
 
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
