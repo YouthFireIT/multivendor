@@ -219,4 +219,8 @@ class ProductController extends Controller
     {
         return new ProductCollection(Product::inRandomOrder()->take(50)->get());
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
 }

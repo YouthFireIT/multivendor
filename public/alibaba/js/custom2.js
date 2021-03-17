@@ -32,14 +32,25 @@
 
     //plus button
     document.querySelector(".plus-btn").addEventListener("click", function() {
+<<<<<<< HEAD
         //getting value of input
         valueCount = document.getElementById("quantity").value;
 
+=======
+
+        //getting value of input
+        valueCount = $("#quantity").val();
+        alert(valueCount);
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
         //input value increment by 1
         valueCount++;
 
         //setting increment input value
+<<<<<<< HEAD
         document.getElementById("quantity").value = valueCount;
+=======
+        $("#quantity").val(valueCount)
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
 
         if (valueCount > 1) {
             document.querySelector(".minus-btn").removeAttribute("disabled");

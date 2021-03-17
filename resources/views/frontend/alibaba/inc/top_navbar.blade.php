@@ -2,15 +2,24 @@
     <div class="container">
         <div class="row">
             <ul class="top_nav_wrap">
+<<<<<<< HEAD
                 <li class="dropdown_menu_wrap"><a href="">Sell on AliExpress <i class="fas fa-sort-down"></i></a>
                     <ul class="dropdown_menu">
                         <li class=""><a href="{{ route('seller.login') }}" class="">Seller Login</a></li>
                         <li class=""><a href="{{ url('shops/create') }}" class="">Seller Registration</a></li>
                         <li class=""><a href="seller_portal.html" class="">Seller Portal</a></li>
+=======
+                <li class="dropdown_menu_wrap"><a href="">Sell on Dora <i class="fas fa-sort-down"></i></a>
+                    <ul class="dropdown_menu">
+                        <li class=""><a href="{{ route('seller.login') }}" class="">Seller Login</a></li>
+                        <li class=""><a href="{{ url('shops/create') }}" class="">Seller Registration</a></li>
+                        <li class=""><a href="#" class="">Seller Portal</a></li>
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                     </ul>
                 </li>
                 <li class=""><a href="" class="">Help <i class="fas fa-sort-down"></i></a>
                     <ul class="dropdown_menu">
+<<<<<<< HEAD
                         <li class=""><a href="helpcenter.html" class="">Customer Service</a></li>
                         <li class=""><a href="depute_and_report.html" class="">Disputes &amp; Reports</a></li>
                         <li class=""><a href="" class="">Report IPR infringement</a></li>
@@ -18,6 +27,15 @@
                 </li>
                 <li class=""><a href="buyer_protection.html" class="">Buyer Protection</a></li>
                 <li class=""><a href="app.html" class=""><i class="fas fa-mobile-alt mobile_icon"></i>&nbsp; App</a>
+=======
+                        <li class=""><a href="#" class="">Customer Service</a></li>
+                        <li class=""><a href="#" class="">Disputes &amp; Reports</a></li>
+                        <li class=""><a href="" class="">Report IPR infringement</a></li>
+                    </ul>
+                </li>
+                <li class=""><a href="#" class="">Buyer Protection</a></li>
+                <li class=""><a href="#" class=""><i class="fas fa-mobile-alt mobile_icon"></i>&nbsp; App</a>
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                 </li>
                 <li class=""><a href="#" class=""><img src="{{ asset('alibaba') }}/images/bd flag.webp" alt="Bangladesh National Flag"
                             class="img-fluid bd_flag_icon"> /English/USD <i class="fas fa-sort-down"></i></a>
@@ -50,7 +68,11 @@
                             </a></li>
                     </ul>
                 </li>
+<<<<<<< HEAD
                 <li class=""><a href="wishlist.html" class=""><i class="far fa-heart mobile_icon pr-1"></i> Wish
+=======
+                <li class=""><a href="#" class=""><i class="far fa-heart mobile_icon pr-1"></i> Wish
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                         List</a></li>
 
                 @auth
@@ -58,10 +80,17 @@
                                 class="fas fa-sort-down"></i></a>
                         <ul class="dropdown_menu">
                             <li class=""><a href="{{ route('logout') }}" class="">Logout</a></li>
+<<<<<<< HEAD
                             <li class=""><a href="my_order.html" class="">My Orders</a></li>
                             <li class=""><a href="Message center2/Massage-center2.html" class="">Message Center</a></li>
                             <li class=""><a href="wishlist.html" class="">Wish List</a></li>
                             <li class=""><a href="myfavstores.html" class="">My Favorite Stores</a></li>
+=======
+                            <li class=""><a href="#" class="">My Orders</a></li>
+                            <li class=""><a href="#" class="">Message Center</a></li>
+                            <li class=""><a href="#" class="">Wish List</a></li>
+                            <li class=""><a href="#" class="">My Favorite Stores</a></li>
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                             <li class=""><a href="" class="">My Coupons</a></li>
                             <li class=""><a href="" class="">Invite friends to give US $24</a></li>
                         </ul>
@@ -72,7 +101,11 @@
                         class="fas fa-sort-down"></i></a>
                         <ul class="dropdown_menu">
                             <li class="bg-white">
+<<<<<<< HEAD
                                 <p class="top_nav_acc_text">Welcome to AliExpress!</p>
+=======
+                                <p class="top_nav_acc_text">Welcome to Dora!</p>
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                                 <div class="row">
                                     <div class="col-6">
                                         <a href="{{ route('user.registration') }}" class="">

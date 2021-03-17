@@ -354,7 +354,11 @@
                                                 <i class="la la-minus"></i>
                                             </button>
                                         </span>
+<<<<<<< HEAD
                                         <input type="text" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
+=======
+                                        <input type="text" name="quantity" class="form-control input-number text-center" id="quantity" placeholder="1" value="1" min="1" max="10">
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                                         <span class="input-group-btn">
                                             <button class="btn btn-number" type="button" data-type="plus" data-field="quantity">
                                                 <i class="la la-plus"></i>

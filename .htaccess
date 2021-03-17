@@ -1,10 +1,15 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
+<<<<<<< HEAD
         Options -MultiViews -Indexes
+=======
+        Options -MultiViews
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
     </IfModule>
 
     RewriteEngine On
 
+<<<<<<< HEAD
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -28,3 +33,16 @@ Options -Indexes
     Order allow,deny
     Deny from all
 </Files>
+=======
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^$1 [N]
+
+    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    RewriteRule ^(.*)$ public/$1 
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ server.php
+</IfModule>
+>>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
