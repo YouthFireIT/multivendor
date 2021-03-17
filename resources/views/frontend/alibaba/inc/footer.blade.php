@@ -230,11 +230,7 @@
             <a href="" class="">Terms of Use</a>&nbsp;-
             <a href="" class="">User Information Legal Enquiry Guide</a>
             <span class="">
-<<<<<<< HEAD
-                ©️2010-2020 AliExpress.com. All rights reserved.
-=======
                 ©️{{date('Y')}} Copyrights. All rights reserved.
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
             </span>
         </p>
     </div>
