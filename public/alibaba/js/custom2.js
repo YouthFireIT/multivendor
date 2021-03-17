@@ -40,5 +40,9 @@
         valueCount++;
 
         //setting increment input value
-        document.getElementById("quantity").value = valueCount;
+        $("#quantity").val(valueCount)
 
+        //calling price function
+    });
+
+})(jQuery);
