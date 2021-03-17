@@ -1,22 +1,14 @@
 <section class="header-wrapper mb-5">
-<<<<<<< HEAD
-
-=======
 @php
     $generalsetting = \App\GeneralSetting::first();
 @endphp
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
     <nav class="navbar-wrap">
         <div class="container">
             <div class="row">
                 
                 <div class="col-lg-2">
                     <a class="navbar-brand p-0" href="{{ route('home') }}">
-<<<<<<< HEAD
-                        <img src="{{ asset('alibaba') }}/images/logo.png" alt="ali-express">
-=======
                         <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 80px;" >
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
                         <br>
                         <span>Smarter Shopping, Better Living!</span>
                     </a>

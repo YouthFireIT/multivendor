@@ -1,39 +1,10 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-<<<<<<< HEAD
-        Options -MultiViews -Indexes
-=======
         Options -MultiViews
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
     </IfModule>
 
     RewriteEngine On
 
-<<<<<<< HEAD
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
-</IfModule>
-
-# Disable index view
-Options -Indexes
-
-# Hide a specific file
-<Files .env>
-    Order allow,deny
-    Deny from all
-</Files>
-=======
     RewriteCond %{REQUEST_FILENAME} -d [OR]
     RewriteCond %{REQUEST_FILENAME} -f
     RewriteRule ^ ^$1 [N]
@@ -45,4 +16,3 @@ Options -Indexes
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ server.php
 </IfModule>
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
