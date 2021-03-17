@@ -1,9 +1,6 @@
 @extends('frontend.alibaba.layouts.app')
 
-<<<<<<< HEAD
-=======
 @section('title','Dora Official')
->>>>>>> fc68e9d891e47b4011d6a9eb8eec55e2b4679814
 @section('megamenu')
 <div class="container-bg">
     <div class="container">
