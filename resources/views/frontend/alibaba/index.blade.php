@@ -226,7 +226,7 @@
                         <div class="banner-slider-1">
                             <div class="banner-slider-login">
                                 <img class="login-img" src="{{ asset('alibaba') }}/images/login-img.webp" alt="">
-                                <span class="welcome-text">Welcome to AliExpress</span>
+                                <span class="welcome-text">Welcome to Dora</span>
                                 <div class="login-btn">
                                     <a href="{{ route('user.registration') }}" class="join-btn">Join</a>
                                     <a href="{{ route('user.login') }}" class="sign-btn">Sign in</a>
