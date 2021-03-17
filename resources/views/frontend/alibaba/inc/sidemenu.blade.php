@@ -1,4 +1,4 @@
-<section class="header-wrapper mb-5">
+<section class="header-wrapper mb-2">
 @php
     $generalsetting = \App\GeneralSetting::first();
 @endphp
@@ -8,7 +8,7 @@
                 
                 <div class="col-lg-2">
                     <a class="navbar-brand p-0" href="{{ route('home') }}">
-                        <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 80px;" >
+                        <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 55px;" >
                         <br>
                         <span>Smarter Shopping, Better Living!</span>
                     </a>
