@@ -204,6 +204,7 @@
                                         <p class="total-price" id="chosen_price_div">
                                             <span id="price"></span>
                                         </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -466,6 +467,7 @@
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
 <script>
+    
         $("#plus").click(function(){
             alert('dsafasf');
             var quantity =$("#quantity").val();
@@ -486,7 +488,7 @@
 
     });
     $("#minus").click(function(){
-        alert('hello world');
+        
 eTextRange();
                 range.moveToElementText(document.getElementById(containerid));
                 range.select().createTextRange();
@@ -516,7 +518,10 @@ eTextRange();
 
 
 <script>
-
+    $(document).ready(function() {
+        
+        getVariantPrice();
+    });
     $(document).ready(function() {
         $('.category-nav-element').each(function(i, el) {
             $(el).on('mouseover', function(){

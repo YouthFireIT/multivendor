@@ -29,13 +29,13 @@
                     </a>
                 </li>
 
-                @if (\App\Addon::where('unique_identifier', 'pos_system')->first() != null && \App\Addon::where('unique_identifier', 'pos_system')->first()->activated)
+                <!-- @if (\App\Addon::where('unique_identifier', 'pos_system')->first() != null && \App\Addon::where('unique_identifier', 'pos_system')->first()->activated)
                 <li class="" data-toggle="tooltip" data-placement="bottom" data-original-title="POS">
                     <a class="" href="{{ route('poin-of-sales.index') }}">
                         <i class="fa fa-print"></i>
                     </a>
                 </li>
-                @endif
+                @endif -->
                 <li class="" data-toggle="tooltip" data-placement="bottom" data-original-title="Browse Frontend">
                     <a target="_blank" href="{{ route('home') }}">
                         <i class="fa fa-globe"></i>
