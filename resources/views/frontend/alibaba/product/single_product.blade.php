@@ -234,6 +234,7 @@
                                         <p class="product-price" id="chosen_price_div">
                                             <span id="chosen_price"></span>
                                         </p>
+
                                     </div>
 
                                 </div>
@@ -521,11 +522,113 @@
     <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
+<<<<<<< HEAD
+<script>
+    
+        $("#plus").click(function(){
+            alert('dsafasf');
+            var quantity =$("#quantity").val();
+
+            var unit_price = $("#unit_price").html();
+            var total_price = parseInt(unit_price * quantity);
+            document.getElementById('price').innerHTML = total_price;
+            var total_quantity = $("#total_quantity").val();
+            var stock_or_not = total_quantity - quantity;
+            if (stock_or_not < 0) {
+            document.getElementById('in_stock').innerHTML = 'Out of stock';
+            document.getElementById('in_stock').innerHTML = 'Out of stock';
+            $("#in_stock").addClass('bg-danger');
+            }else{
+            document.getElementById('in_stock').innerHTML = 'In stock';
+            $("#in_stock").addClass('bg-warning');
+        }
+
+    });
+    $("#minus").click(function(){
+        
+eTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("Copy");
+
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                document.getElementById(containerid).style.display = "block";
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("Copy");
+                document.getElementById(containerid).style.display = "none";
+=======
+>>>>>>> 9176a3d3b34fc6c084f45775d0f6394242147335
 
 
+<<<<<<< HEAD
+        function show_chat_modal(){
+            @if (Auth::check())
+                $('#chat_modal').modal('show');
+            @else
+                $('#login_modal').modal('show');
+            @endif
+        }
+
+    </script>
+
+
+<script>
+    $(document).ready(function() {
+        
+        getVariantPrice();
+    });
+    $(document).ready(function() {
+        $('.category-nav-element').each(function(i, el) {
+            $(el).on('mouseover', function(){
+                if(!$(el).find('.sub-cat-menu').hasClass('loaded')){
+                    $.post('{{ route('category.elements') }}', {_token: '{{ csrf_token()}}', id:$(el).data('id')}, function(data){
+                        $(el).find('.sub-cat-menu').addClass('loaded').html(data);
+                    });
+                }
+            });
+        });
+        if ($('#lang-change').length > 0) {
+            $('#lang-change .dropdown-item a').each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    var locale = $this.data('flag');
+                    $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
+                        location.reload();
+                    });
+
+                });
+            });
+        }
+
+        if ($('#currency-change').length > 0) {
+            $('#currency-change .dropdown-item a').each(function() {
+                $(this).on('click', function(e){
+                    e.preventDefault();
+                    var $this = $(this);
+                    var currency_code = $this.data('currency');
+                    $.post('{{ route('currency.change') }}',{_token:'{{ csrf_token() }}', currency_code:currency_code}, function(data){
+                        location.reload();
+                    });
+
+                });
+            });
+        }
+    });
+
+    $('#search').on('keyup', function(){
+        search();
+    });
+
+    $('#search').on('focus', function(){
+        search();
+=======
     <script>
     $(document).ready(function(){
         getVariantPrice();
+>>>>>>> 9176a3d3b34fc6c084f45775d0f6394242147335
     });
     
     function search(){
