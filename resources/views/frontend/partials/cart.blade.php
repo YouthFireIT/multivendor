@@ -1,13 +1,13 @@
-<a href="" class="nav-box-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="la la-shopping-cart d-inline-block nav-box-icon"></i>
-    <span class="nav-box-text d-none d-xl-inline-block">{{ translate('Cart')}}</span>
+<a href="{{route('cart')}}" class="cart">
+    <!-- <i class="fas fa-shopping-cart"></i> -->
+    <img src="{{ asset('alibaba') }}/images/cart.png" alt="">
     @if(Session::has('cart'))
-        <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>
+    <span class="cart_items_sidenav cart-number">{{ count(Session::get('cart'))}}</span>
     @else
-        <span class="nav-box-number">0</span>
-    @endif
+    <span class="cart_items_sidenav cart-number">0</span>
+    @endif 
 </a>
-<ul class="dropdown-menu dropdown-menu-right px-0">
+{{-- <ul class="dropdown-menu dropdown-menu-right px-0">
     <li>
         <div class="dropdown-cart px-0">
             @if(Session::has('cart'))
@@ -80,4 +80,4 @@
             @endif
         </div>
     </li>
-</ul>
+</ul> --}}

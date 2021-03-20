@@ -20,29 +20,4 @@
     });
 
 
-    //setting default attribute to disabled of minus button
-    document.querySelector(".minus-btn").setAttribute("disabled", "disabled");
-
-    //taking value to increment decrement input value
-    var valueCount
-
-    //taking price value in variable
-    var price = document.getElementById("price").innerText;
-
-
-    //plus button
-    document.querySelector(".plus-btn").addEventListener("click", function() {
-
-        //getting value of input
-        valueCount = $("#quantity").val();
-        alert(valueCount);
-        //input value increment by 1
-        valueCount++;
-
-        //setting increment input value
-        $("#quantity").val(valueCount)
-
-        //calling price function
-    });
-
-})(jQuery);
+  

@@ -135,6 +135,7 @@
                     <form id="option-choice-form">
                         @csrf
                         <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
+ 
                         <div class="ali-content">
                             <p>{{  __($detailedProduct->name) }}</p>
                             <div class="ali-review">
@@ -153,8 +154,34 @@
 
                                 </ul>
                             </div>
-                            <!-- increament - decrement count button area -->
 
+
+                            
+                            {{--  Product Variation --}}
+                            
+                            @if ($detailedProduct->choice_options != null)
+                            @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+    
+                            <div class="row no-gutters">
+                                <div class="col-2">
+                                    <div class="product-description-label mt-2 ">{{ \App\Attribute::find($choice->attribute_id)->name }}:</div>
+                                </div>
+                                <div class="col-10">
+                                    <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
+                                        @foreach ($choice->values as $key => $value)
+                                            <li>
+                                                <input type="radio" id="{{ $choice->attribute_id }}-{{ $value }}" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key == 0) checked @endif>
+                                                <label for="{{ $choice->attribute_id }}-{{ $value }}">{{ $value }}</label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+    
+                            @endforeach
+                        @endif
+
+                            <!-- increament - decrement count button area -->
                             <div class="ali-award-increment">
                                 <div class="increment-value">
                                     <div id="left-value" class="mystyle">
@@ -173,6 +200,8 @@
                                     </div>
                                 </div>
 
+                                
+
                                 <div class="count-button nav justify-content-between">
                                     <div class="count-model">
                                         <h6>Brand</h6>
@@ -190,23 +219,28 @@
                                             <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
                                         @endif
                                     </div>
+
                                     <div class="count-qty">
                                         <h6>QTY</h6>
                                         <div class="quantity">
-                                            <button  class="btn minus-btn btn-number" type="button" data-type="minus" data-field="quantity" disabled="disabled">-</button>
+                                            <button  class="btn minus-btn btnnumber" type="button" data-type="minus" data-field="quantity" disabled="disabled">-</button>
 
                                             <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
 
-                                            <button id="plus" class="btn plus-btn btn-number" type="button" data-type="plus" data-field="quantity">+</button>
+                                            <button id="plus" class="btn plus-btn btnnumber" type="button" data-type="plus" data-field="quantity">+</button>
                                         </div>
 
                                         <!--will calculate price---->
-                                        <p class="total-price" id="chosen_price_div">
-                                            <span id="price"></span>
+                                        <p class="product-price" id="chosen_price_div">
+                                            <span id="chosen_price"></span>
                                         </p>
                                     </div>
+
                                 </div>
                             </div>
+
+                           
+
 
                             <div class="ali-award-color">
 
@@ -243,11 +277,33 @@
                                     </ul>
                                 </div> -->
 
+                                @php
+                                    $qty = 0;
+                                    if($detailedProduct->variant_product){
+                                        foreach ($detailedProduct->stocks as $key => $stock) {
+                                            $qty += $stock->qty;
+                                        }
+                                    }
+                                    else{
+                                        $qty = $detailedProduct->current_stock;
+                                    }
+                                @endphp
+                            
+
                                 <div class="ali-button">
-                                    <button class="btn btn-danger">Buy Now</button>
-                                    <button class="btn btn-warning">Add to Cart</button>
-                                    <button class="btn btn-light"><i class="far fa-heart"></i> 12.5K</button>
+                                    @if ($qty > 0)
+                                        <button class="btn btn-danger" onclick="buyNow(); return false;">Buy Now</button>
+                                        <button class="btn btn-warning" onclick="addToCart(); return false;">Add to Cart</button>
+                                    @else
+                                        <button type="button" class="btn btn-styled btn-base-3 btn-icon-left strong-700" disabled>
+                                            <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
+                                        </button>
+                                    @endif 
+                                    {{-- <button class="btn btn-light"><i class="far fa-heart"></i> 12.5K</button> --}}
                                 </div>
+
+
+
 
                                 <div class="buyer-protection nav">
                                     <div class="buyer-protection-icon">
@@ -465,105 +521,13 @@
     <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
-<script>
-        $("#plus").click(function(){
-            alert('dsafasf');
-            var quantity =$("#quantity").val();
 
-            var unit_price = $("#unit_price").html();
-            var total_price = parseInt(unit_price * quantity);
-            document.getElementById('price').innerHTML = total_price;
-            var total_quantity = $("#total_quantity").val();
-            var stock_or_not = total_quantity - quantity;
-            if (stock_or_not < 0) {
-            document.getElementById('in_stock').innerHTML = 'Out of stock';
-            document.getElementById('in_stock').innerHTML = 'Out of stock';
-            $("#in_stock").addClass('bg-danger');
-            }else{
-            document.getElementById('in_stock').innerHTML = 'In stock';
-            $("#in_stock").addClass('bg-warning');
-        }
 
+    <script>
+    $(document).ready(function(){
+        getVariantPrice();
     });
-    $("#minus").click(function(){
-        alert('hello world');
-eTextRange();
-                range.moveToElementText(document.getElementById(containerid));
-                range.select().createTextRange();
-                document.execCommand("Copy");
-
-            } else if (window.getSelection) {
-                var range = document.createRange();
-                document.getElementById(containerid).style.display = "block";
-                range.selectNode(document.getElementById(containerid));
-                window.getSelection().addRange(range);
-                document.execCommand("Copy");
-                document.getElementById(containerid).style.display = "none";
-
-            }
-            showFrontendAlert('success', 'Copied');
-        }
-
-        function show_chat_modal(){
-            @if (Auth::check())
-                $('#chat_modal').modal('show');
-            @else
-                $('#login_modal').modal('show');
-            @endif
-        }
-
-    </script>
-
-
-<script>
-
-    $(document).ready(function() {
-        $('.category-nav-element').each(function(i, el) {
-            $(el).on('mouseover', function(){
-                if(!$(el).find('.sub-cat-menu').hasClass('loaded')){
-                    $.post('{{ route('category.elements') }}', {_token: '{{ csrf_token()}}', id:$(el).data('id')}, function(data){
-                        $(el).find('.sub-cat-menu').addClass('loaded').html(data);
-                    });
-                }
-            });
-        });
-        if ($('#lang-change').length > 0) {
-            $('#lang-change .dropdown-item a').each(function() {
-                $(this).on('click', function(e){
-                    e.preventDefault();
-                    var $this = $(this);
-                    var locale = $this.data('flag');
-                    $.post('{{ route('language.change') }}',{_token:'{{ csrf_token() }}', locale:locale}, function(data){
-                        location.reload();
-                    });
-
-                });
-            });
-        }
-
-        if ($('#currency-change').length > 0) {
-            $('#currency-change .dropdown-item a').each(function() {
-                $(this).on('click', function(e){
-                    e.preventDefault();
-                    var $this = $(this);
-                    var currency_code = $this.data('currency');
-                    $.post('{{ route('currency.change') }}',{_token:'{{ csrf_token() }}', currency_code:currency_code}, function(data){
-                        location.reload();
-                    });
-
-                });
-            });
-        }
-    });
-
-    $('#search').on('keyup', function(){
-        search();
-    });
-
-    $('#search').on('focus', function(){
-        search();
-    });
-
+    
     function search(){
         var search = $('#search').val();
         if(search.length > 0){
@@ -594,7 +558,7 @@ eTextRange();
 
     function updateNavCart(){
         $.post('{{ route('cart.nav_cart') }}', {_token:'{{ csrf_token() }}'}, function(data){
-            $('#cart_items').html(data);
+            $('.cart-box').html(data);
         });
     }
 
@@ -663,7 +627,7 @@ eTextRange();
                data: $('#option-choice-form').serializeArray(),
                success: function(data){
                    $('#option-choice-form #chosen_price_div').removeClass('d-none');
-                   $('#option-choice-form #chosen_price_div #price').html(data.price);
+                   $('#option-choice-form #chosen_price_div #chosen_price').html(data.price);
                    $('#available-quantity').html(data.quantity);
                    $('.input-number').prop('max', data.quantity);
                    //console.log(data.quantity);
@@ -711,6 +675,7 @@ eTextRange();
                    $('#modal-size').removeClass('modal-lg');
                    $('#addToCart-modal-body').html(data);
                    updateNavCart();
+                  //showFrontendAlert('success', 'Item has been added to cart');
                    $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())+1);
                }
            });
@@ -773,11 +738,14 @@ eTextRange();
             $('.c-preloader').hide();
         });
     }
+    </script>
 
-    function cartQuantityInitialize(){
-        $('.btn-number').click(function(e) {
+{{-- Cart Increment ||  Decrement --}}
+<script>
+   
+        $('.btnnumber').click(function(e) {
             e.preventDefault();
-
+           
             fieldName = $(this).attr('data-field');
             type = $(this).attr('data-type');
             var input = $("input[name='" + fieldName + "']");
@@ -808,6 +776,8 @@ eTextRange();
             }
         });
 
+
+
         $('.input-number').focusin(function() {
             $(this).data('oldValue', $(this).val());
         });
@@ -820,20 +790,20 @@ eTextRange();
 
             name = $(this).attr('name');
             if (valueCurrent >= minValue) {
-                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+                $(".btnnumber[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
                 alert('Sorry, the minimum value was reached');
                 $(this).val($(this).data('oldValue'));
             }
             if (valueCurrent <= maxValue) {
-                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+                $(".btnnumber[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
                 alert('Sorry, the maximum value was reached');
                 $(this).val($(this).data('oldValue'));
             }
 
-
         });
+
         $(".input-number").keydown(function(e) {
             // Allow: backspace, delete, tab, escape, enter and .
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
@@ -847,42 +817,13 @@ eTextRange();
             // Ensure that it is a number and stop the keypress
             if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                 e.preventDefault();
-            }
+            }                                                                                                                                                                                                                                                                                                                                               
         });
-    }
-
-     function imageInputInitialize(){
-         $('.custom-input-file').each(function() {
-             var $input = $(this),
-                 $label = $input.next('label'),
-                 labelVal = $label.html();
-
-             $input.on('change', function(e) {
-                 var fileName = '';
-
-                 if (this.files && this.files.length > 1)
-                     fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-                 else if (e.target.value)
-                     fileName = e.target.value.split('\\').pop();
-
-                 if (fileName)
-                     $label.find('span').html(fileName);
-                 else
-                     $label.html(labelVal);
-             });
-
-             // Firefox bug fix
-             $input
-                 .on('focus', function() {
-                     $input.addClass('has-focus');
-                 })
-                 .on('blur', function() {
-                     $input.removeClass('has-focus');
-                 });
-         });
-     }
-
+   
 </script>
+
+
+
 @endsection
 
 

@@ -873,6 +873,12 @@
                                 <h2 class="mtl_product_price">
                                     BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                 </h2>
+                                @if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated)
+                                <div class="club-point mt-2 bg-soft-base-1 border-light-base-1 border">
+                                    {{ translate('Club Point') }}:
+                                        <span class="strong-700 float-right">{{ $product->earn_point }}</span>
+                                    </div>
+                                @endif
                                 @if ($loveProduct->num_of_sale > 0)
                                     <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
                                 @endif

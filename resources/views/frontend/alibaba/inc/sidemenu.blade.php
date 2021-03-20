@@ -67,10 +67,15 @@
 
                 <div class="col-lg-1">
                     <div class="cart-box">
-                        <a href="#" class="cart">
+                        <a href="{{ route('cart') }}" class="cart">
                             <!-- <i class="fas fa-shopping-cart"></i> -->
                             <img src="{{ asset('alibaba') }}/images/cart.png" alt="">
-                            <span class="cart-number">0</span>
+                            @if(Session::has('cart'))
+                            <span class="cart_items_sidenav cart-number">{{ count(Session::get('cart'))}}</span>
+                            @else
+                            <span class="cart_items_sidenav cart-number">0</span>
+                            @endif
+                         
                         </a>
                     </div>
                 </div>

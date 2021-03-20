@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/responsive.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/flags.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/flaticons/flaticon.css">
+    <link type="text/css" href="{{ my_asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
     <!-- mega menu and banner -->
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/nicemenu.css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/theme-001.css">
@@ -69,10 +70,32 @@
         <script src="{{ asset('alibaba') }}/js/owl.carousel.min.js"></script>
         <script src="{{ my_asset('frontend/js/jquery.countdown.min.js') }}"></script>
         <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
+        <script src="{{ my_asset('frontend/js/sweetalert2.min.js') }}"></script>
          
         <script src="{{ asset('alibaba') }}/js/jquery.simple.timer.js"></script>
         <script src="{{ asset('alibaba') }}/js/main.js"></script>
         
+
+        <script>
+            function showFrontendAlert(type, message){
+                if(type == 'danger'){
+                    type = 'error';
+                }
+                swal({
+                    position: 'top-end',
+                    type: type,
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            }
+        </script>
+        
+        @foreach (session('flash_notification', collect())->toArray() as $message)
+            <script>
+                showFrontendAlert('{{ $message['level'] }}', '{{ $message['message'] }}');
+            </script>
+        @endforeach
      
         <script>
             $('#search').on('keyup', function(){

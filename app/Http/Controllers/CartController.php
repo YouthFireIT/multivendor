@@ -16,7 +16,8 @@ class CartController extends Controller
     {
         //dd($cart->all());
         $categories = Category::all();
-        return view('frontend.view_cart', compact('categories'));
+        // return view('frontend.view_cart', compact('categories'));
+        return view('frontend.alibaba.cart_view', compact('categories'));
     }
 
     public function showCartModal(Request $request)
