@@ -189,11 +189,7 @@
                         <p>Get full refund if the item is not as described or if is not delivered.</p>
                     </div>
                 </div> --}}
-                @else
-                <div class="dc-header">
-                    <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
-                </div>
-                @endif
+                
 
                 {{-- <div class="recommend-container mt-3">
                     <div class="shoppingcard-product-recomment">
@@ -315,8 +311,11 @@
                 </div>  --}}
             </div>
             @include('frontend.alibaba.partials.cart_summery')
-
-            
+            @else
+            <div class="dc-header">
+                <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
+            </div>
+            @endif
 
 
         </div>
