@@ -14,6 +14,7 @@
     </div>
 
     <div class="card-body">
+        
         @if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated)
             @php
                 $total_point = 0;
@@ -29,6 +30,7 @@
                 <span class="strong-700 float-right">{{ $total_point }}</span>
             </div>
         @endif
+
         <table class="table-cart table-cart-review">
             <thead>
                 <tr>

@@ -260,6 +260,8 @@
         search();
     });
 
+    
+
     function search(){
         var search = $('#search').val();
         if(search.length > 0){
@@ -546,6 +548,8 @@
             }
         });
     }
+
+    
 
      function imageInputInitialize(){
          $('.custom-input-file').each(function() {

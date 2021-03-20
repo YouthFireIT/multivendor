@@ -136,9 +136,11 @@
                                                         </div>
                                                     @endif
                                                 </td>
+
                                                 <td class="product-total">
                                                     <span>{{ single_price(($cartItem['price']+$cartItem['tax'])*$cartItem['quantity']) }}</span>
                                                 </td>
+                                                
                                                 <td class="product-remove">
                                                     <a href="#" onclick="removeFromCartView(event, {{ $key }})" class="text-right pl-4">
                                                         <i class="la la-trash"></i>

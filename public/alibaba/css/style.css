@@ -8,6 +8,30 @@
 	src: url(fonts/Helvetica.ttf);
 }
 
+/* Sweet alert */
+.swal2-popup {
+    width: 350px;
+}
+
+.swal2-popup .swal2-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.swal2-icon {
+    transform: scale(0.6);
+    margin: 0;
+    margin-top: -10px;
+}
+.contact-widget li:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+
+
+
+
 * {
 	/* margin-bottom: 0 !important; */
 }
