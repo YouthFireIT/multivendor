@@ -30,7 +30,7 @@
                                             <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                         </div>
                                         <div class="form-group category-select d-none d-xl-block">
-                                            <select style="height: 40px;" class="form-control selectpicker" name="category">
+                                            <select style="height: 40px;" class="form-control selectpicker cat-select" name="category">
                                                 <option value="">{{translate('All Categories')}}</option>
                                                 @foreach (\App\Category::all() as $key => $category)
                                                 <option value="{{ $category->slug }}"

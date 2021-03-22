@@ -22,6 +22,7 @@
     <link type="text/css" href="{{ my_asset('frontend/css/sweetalert2.min.css') }}" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
     <!-- mega menu and banner -->
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/nicemenu.css">
+    <link rel="stylesheet" href="{{ asset('alibaba') }}/css/custom-style.css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/theme-001.css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
@@ -69,11 +70,11 @@
         <script src="{{ asset('alibaba') }}/js/jquery.nicemenu.js"></script>
         <script src="{{ asset('alibaba') }}/js/owl.carousel.min.js"></script>
         <script src="{{ my_asset('frontend/js/jquery.countdown.min.js') }}"></script>
-        <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
         <script src="{{ my_asset('frontend/js/sweetalert2.min.js') }}"></script>
          
         <script src="{{ asset('alibaba') }}/js/jquery.simple.timer.js"></script>
         <script src="{{ asset('alibaba') }}/js/main.js"></script>
+        <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
         
 
         <script>
@@ -136,17 +137,7 @@
         </script>
 
         <script>
-            $('.timer').startTimer({
-                loop: true,
-                loopInterval: 3,
-                classNames: {
-                    hours: 'myClass-hours',
-                    minutes: 'myClass-minutes',
-                    seconds: 'myClass-seconds',
-                    clearDiv: 'myClass-clearDiv',
-                    timeout: 'myClass-timeout'
-                }
-            });
+            
         </script>
 
     @yield('customjs')

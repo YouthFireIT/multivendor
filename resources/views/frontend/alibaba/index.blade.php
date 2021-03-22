@@ -9,7 +9,7 @@
                 <div class="nicemenu verticle" data-pos="list.right" data-classes="active">
                     <a class="bar-top-icon px-3" href="#">
                         <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
-                        <span class="ml-2">categories</span>
+                        <span class="ml-2">Categories</span>
                     </a>
                     @foreach (\App\Category::all()->take(11) as $key => $category)
                                 @php
@@ -43,69 +43,25 @@
                                 </div>
                             @endforeach
 
-                            {{-- <div class="w-3-1">
-                                <ul class="sub-brand-list m-0 p-0">
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item1.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item2.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item3.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item4.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item5.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item6.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item7.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item8.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item9.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item10.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item11.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item12.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item13.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item14.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item15.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item16.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item17.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item18.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item19.webp" alt=""></a></li>
-                                    <li class="sup-brand-item"><a href="#"><img class="img-fluid"
-                                                src="{{ asset('alibaba') }}/images/sub-item1/sup-img-item20.webp" alt=""></a></li>
-                                </ul>
-                            </div> --}}
 
                         </div>
 
                     </div>
                     @endforeach
 
-                                {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
-                                    <a href="{{ route('products.category', $category->slug) }}" target="_blank">
-                                        <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
-                                        <span class="cat-name">{{ __($category->name) }}</span>
-                                    </a>
-                                    @if(count($category->subcategories)>0)
-                                        <div class="sub-cat-menu c-scrollbar">
-                                            <div class="c-preloader">
-                                                <i class="fa fa-spin fa-spinner"></i>
-                                            </div>
-                                        </div>
-                                    @endif
-                                </li> --}}
+                    {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
+                        <a href="{{ route('products.category', $category->slug) }}" target="_blank">
+                            <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
+                            <span class="cat-name">{{ __($category->name) }}</span>
+                        </a>
+                        @if(count($category->subcategories)>0)
+                            <div class="sub-cat-menu c-scrollbar">
+                                <div class="c-preloader">
+                                    <i class="fa fa-spin fa-spinner"></i>
+                                </div>
+                            </div>
+                        @endif
+                    </li> --}}
 
                 </div>
             </div>
@@ -182,7 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="banner-bottom-slider">
+                    <!-- <div class="banner-bottom-slider">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="bottom-slider-left px-3">
@@ -218,7 +174,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-2 p-0">
                     <div class="banner-slider-right">
@@ -273,8 +229,7 @@
                                 $outputString = preg_replace('/[^0-9]/', '', $totalDuration);
                                 dd($outputString);
                         @endphp --}}
-
-
+<!-- 
 
                         <div class="banner-slider-3">
 
@@ -320,7 +275,7 @@
                                 </div>
                             </div>
                             @endif
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -366,7 +321,7 @@
                                     <i class="fas fa-bolt"></i>
                                 </div>
                                 <span class="">Flash Deals</span>
-                                <div class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show"></div>
+                                <div id="countdownTimer" class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}"></div>
 
                             </div>
                         </div>
@@ -386,7 +341,7 @@
                             </div>
                             <div class="row">
                                 <div class="pricing_wrap">
-                                    <span class="text-dark d-block mt-n2">{{ Str::limit($flashDealProduct->name,15) }}</span>
+                                    <span class="text-dark d-block">{{ Str::limit($flashDealProduct->name,15) }}</span>
                                     <span class="product_price">{{ single_price($flashDealProduct->unit_price) }}</span>
                                     @if($flashDealProduct->discount_type == "percent")
                                     <span class="product_offer"> {{ $flashDealProduct->discount }}% off</span>
@@ -403,11 +358,7 @@
         </div>
         @endif
     </section>
-
     <span class="d-none"></span>
-
-
-
     {{-- Flash deal end --}}
     <!-- free shipping to brazil -->
     {{-- <section id="free_ship_brazil">
@@ -548,7 +499,6 @@
             </div>
         </div>
     </section>
-
     <!-- top selection & new arrival -->
     <section id="top_selection_and_new_arrival">
         <div class="container p-0">
@@ -647,11 +597,11 @@
         </div>
     </section>
     <!-- Feature Brand & store you'll love in -->
-    <section id="feature_brand_and_store">
+    <!-- <section id="feature_brand_and_store">
         <div class="container p-0">
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- top selection -->
+                    
                     <section id="flash_deal">
                         <div class="container">
                             <div class="flash_deal_wrap">
@@ -668,7 +618,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="flash_deal_link">
-                                            <!-- <a href="#" class="">View More</a> -->
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -695,7 +645,6 @@
                     </section>
                 </div>
                 <div class="col-lg-6">
-                    <!-- new arrival -->
                     <section id="flash_deal">
                         <div class="container">
                             <div class="flash_deal_wrap">
@@ -774,7 +723,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Featured Categories -->
     <section id="featured_categories">
         <div class="container p-0">
@@ -882,9 +831,9 @@
                                 @if ($loveProduct->num_of_sale > 0)
                                     <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
                                 @endif
-                                @if ($loveProduct->shipping_type == 'free')
+                                <!-- @if ($loveProduct->shipping_type == 'free')
                                 <span class="mtl_product_shipping d-block">Free Shipping</span>
-                                @endif
+                                @endif -->
                             </a>
                         </div>
                     </div>
@@ -913,11 +862,15 @@
         </div>
     </section>
 
-
-
+@endsection
+@section('customjs')
 
     <!-- fotter widget one -->
     <script>
+        
+        $(document).ready(function(){
+            
+        });
         function fetch_random_product(){
 
             $.ajax({
