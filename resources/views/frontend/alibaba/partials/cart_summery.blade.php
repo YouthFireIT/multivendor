@@ -40,9 +40,16 @@ $shipping = 0;
                 <h4><span id="alltotal">{{ single_price($total) }}</span></h4>
             </li>
         </ul>
+       
 
+        @if(Auth::check())
         <div class="shopping-cart-right-button">
-            <button id="btn-text">Buy</button>
+            <a class="btn btn-lg btn-danger" href="{{ route('checkout.index') }}" class="">Buy</a>
         </div>
+        @else
+        <div class="shopping-cart-right-button">
+            <button id="btn-text" class="" onclick="showCheckoutModal()">Buy</button>
+        </div>
+        @endif
     </div>
 </div>

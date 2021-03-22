@@ -522,7 +522,6 @@
     <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
-<<<<<<< HEAD
 <script>
     
         $("#plus").click(function(){
@@ -558,11 +557,8 @@ eTextRange();
                 window.getSelection().addRange(range);
                 document.execCommand("Copy");
                 document.getElementById(containerid).style.display = "none";
-=======
->>>>>>> 9176a3d3b34fc6c084f45775d0f6394242147335
 
 
-<<<<<<< HEAD
         function show_chat_modal(){
             @if (Auth::check())
                 $('#chat_modal').modal('show');
@@ -576,9 +572,9 @@ eTextRange();
 
 <script>
     $(document).ready(function() {
-        
         getVariantPrice();
     });
+    
     $(document).ready(function() {
         $('.category-nav-element').each(function(i, el) {
             $(el).on('mouseover', function(){
@@ -624,11 +620,6 @@ eTextRange();
 
     $('#search').on('focus', function(){
         search();
-=======
-    <script>
-    $(document).ready(function(){
-        getVariantPrice();
->>>>>>> 9176a3d3b34fc6c084f45775d0f6394242147335
     });
     
     function search(){
