@@ -187,6 +187,6 @@ class CartController extends Controller
         });
         $request->session()->put('cart', $cart);
 
-        return view('frontend.partials.cart_details');
+        return view('frontend.alibaba.partials.cart_details');
     }
 }

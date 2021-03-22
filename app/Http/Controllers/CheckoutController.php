@@ -30,6 +30,11 @@ class CheckoutController extends Controller
         //
     }
 
+    //Checkout page
+    public function index(){
+        return view('frontend.alibaba.checkout');
+    }
+
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {

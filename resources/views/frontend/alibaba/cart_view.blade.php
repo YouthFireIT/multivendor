@@ -68,7 +68,7 @@
 </div>
 @endsection
 @section('content')
-<div class="shopping-cart pb-5 pt-3">
+<div id="cart-summery" class="shopping-cart pb-5 pt-3">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 pr-0">
@@ -157,12 +157,16 @@
                                 <li><a href="#" id="deleatsec" onclick="removeFromCartView(event, {{ $key }})"><i class="far fa-trash-alt"></i></a></li>
                             </ul>
                             <div class="quantity d-flex justify-content-center mt-4">
-                                <button class="btn minus-btn1 disabled" type="button">&minus;</button>
-                                <input type="text" id="quantity1" value="1" autocomplete="off">
-                                <button class="btn plus-btn1" type="button">&plus;</button>
+                                <button class="btn minus-btn1 btnnumber" data-type="minus" data-field="quantity[{{ $key }}]" type="button">&minus;</button>
+                                <input type="text" name="quantity[{{ $key }}]" class="input-number" placeholder="1" value="{{ $cartItem['quantity'] }}" min="1" max="10" onchange="updateQuantity({{ $key }}, this)">
+                                <button class="btn plus-btn1 btnnumber" data-type="plus" data-field="quantity[{{ $key }}]" type="button">&plus;</button>
                             </div>
                         </div>
                     </div>
+
+
+ 
+
                     @endforeach
 
                     {{-- <div class="shopping-cart-button">
@@ -189,11 +193,7 @@
                         <p>Get full refund if the item is not as described or if is not delivered.</p>
                     </div>
                 </div> --}}
-                @else
-                <div class="dc-header">
-                    <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
-                </div>
-                @endif
+                
 
                 {{-- <div class="recommend-container mt-3">
                     <div class="shoppingcard-product-recomment">
@@ -315,13 +315,95 @@
                 </div>  --}}
             </div>
             @include('frontend.alibaba.partials.cart_summery')
-
-            
+            @else
+            <div class="dc-header">
+                <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
+            </div>
+            @endif
 
 
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="GuestCheckout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-zoom" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="exampleModalLabel">{{ translate('Login')}}</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-3">
+                    <form class="form-default" role="form" action="{{ route('cart.login.submit') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <div class="input-group input-group--style-1">
+                                <input type="email" name="email" class="form-control" placeholder="{{ translate('Email or Phone')}}">
+                                <span class="input-group-addon">
+                                    <i class="text-md la la-user"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group input-group--style-1">
+                                <input type="password" name="password" class="form-control" placeholder="{{ translate('Password')}}">
+                                <span class="input-group-addon">
+                                    <i class="text-md la la-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{ translate('Forgot password?')}}</a>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ translate('Sign in')}}</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="text-center pt-3">
+                    <p class="text-md">
+                        {{ translate('Need an account?')}} <a href="{{ route('user.registration') }}" class="strong-600">{{ translate('Register Now')}}</a>
+                    </p>
+                </div>
+                @if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1 || \App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1 || \App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
+                    <div class="or or--1 my-3 text-center">
+                        <span>or</span>
+                    </div>
+                    <div class="p-3 pb-0">
+                        @if (\App\BusinessSetting::where('type', 'facebook_login')->first()->value == 1)
+                            <a href="{{ route('social.login', ['provider' => 'facebook']) }}" class="btn btn-styled btn-block btn-facebook btn-icon--2 btn-icon-left px-4 mb-3">
+                                <i class="icon fa fa-facebook"></i> {{ translate('Login with Facebook')}}
+                            </a>
+                        @endif
+                        @if(\App\BusinessSetting::where('type', 'google_login')->first()->value == 1)
+                            <a href="{{ route('social.login', ['provider' => 'google']) }}" class="btn btn-styled btn-block btn-google btn-icon--2 btn-icon-left px-4 mb-3">
+                                <i class="icon fa fa-google"></i> {{ translate('Login with Google')}}
+                            </a>
+                        @endif
+                        @if (\App\BusinessSetting::where('type', 'twitter_login')->first()->value == 1)
+                        <a href="{{ route('social.login', ['provider' => 'twitter']) }}" class="btn btn-styled btn-block btn-twitter btn-icon--2 btn-icon-left px-4 mb-3">
+                            <i class="icon fa fa-twitter"></i> {{ translate('Login with Twitter')}}
+                        </a>
+                        @endif
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 @endsection
 
@@ -363,12 +445,12 @@
         function updateQuantity(key, element){
             $.post('{{ route('cart.updateQuantity') }}', { _token:'{{ csrf_token() }}', key:key, quantity: element.value}, function(data){
                 updateNavCart();
-                $('#cart-summary').html(data);
+                $('#cart-summery').html(data);
             });
         }
     
         function showCheckoutModal(){
-            $('#GuestCheckout').modal();
+            $('#exampleModal').modal();
         }
         </script>
 
@@ -589,6 +671,92 @@
         });
     }
     </script>
+
+
+{{-- Cart Increment ||  Decrement --}}
+<script>
+   
+    $('.btnnumber').click(function(e) {
+        e.preventDefault();
+       
+        fieldName = $(this).attr('data-field');
+        type = $(this).attr('data-type');
+        var input = $("input[name='" + fieldName + "']");
+        var currentVal = parseInt(input.val());
+
+        if (!isNaN(currentVal)) {
+            if (type == 'minus') {
+
+                if (currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+
+            } else if (type == 'plus') {
+
+                if (currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if (parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+
+            }
+        } else {
+            input.val(0);
+        }
+    });
+
+
+
+    $('.input-number').focusin(function() {
+        $(this).data('oldValue', $(this).val());
+    });
+
+    $('.input-number').change(function() {
+
+        minValue = parseInt($(this).attr('min'));
+        maxValue = parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+
+        name = $(this).attr('name');
+        if (valueCurrent >= minValue) {
+            $(".btnnumber[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if (valueCurrent <= maxValue) {
+            $(".btnnumber[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+
+    });
+
+    $(".input-number").keydown(function(e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }                                                                                                                                                                                                                                                                                                                                               
+    });
+
+</script>
+
+
+
 
 
 
