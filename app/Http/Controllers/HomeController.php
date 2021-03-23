@@ -38,7 +38,7 @@ class HomeController extends Controller
         if(Auth::check()){
             return redirect()->route('home');
         }
-        return view('frontend.user_login');
+        return view('frontend.alibaba.auth.user_login');
     }
 
     // public function registration(Request $request)
@@ -802,7 +802,7 @@ class HomeController extends Controller
         if(Auth::check()){
             return redirect()->route('home');
         }
-        return view('frontend.alibaba.seller_login');
+        return view('frontend.alibaba.auth.seller_login');
     }
 
     public function registration(Request $request)
@@ -813,7 +813,7 @@ class HomeController extends Controller
         if($request->has('referral_code')){
             Cookie::queue('referral_code', $request->referral_code, 43200);
         }
-        return view('frontend.alibaba.user_registration');
+        return view('frontend.alibaba.auth.user_registration');
         // return view('frontend.user_registration');
     }
 

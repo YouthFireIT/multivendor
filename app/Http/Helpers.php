@@ -836,8 +836,8 @@ function getShippingCost($index){
 
     $cartItem = Session::get('cart')[$index];
 
-
-    if ($cartItem['shipping_type'] == 'home_delivery') {
+//Update later
+    if (true) {
         if (\App\BusinessSetting::where('type', 'shipping_type')->first()->value == 'flat_rate') {
             return $calculate_shipping/count(Session::get('cart'));
         }

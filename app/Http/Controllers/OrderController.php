@@ -246,7 +246,7 @@ class OrderController extends Controller
                     $product->current_stock -= $cartItem['quantity'];
                     $product->save();
                 }
-
+                $home_delivery = 'home_delivery';
                 $order_detail = new OrderDetail;
                 $order_detail->order_id  =$order->id;
                 $order_detail->seller_id = $product->user_id;
@@ -254,11 +254,11 @@ class OrderController extends Controller
                 $order_detail->variation = $product_variation;
                 $order_detail->price = $cartItem['price'] * $cartItem['quantity'];
                 $order_detail->tax = $cartItem['tax'] * $cartItem['quantity'];
-                $order_detail->shipping_type = $cartItem['shipping_type'];
+                $order_detail->shipping_type = $home_delivery;
                 $order_detail->product_referral_code = $cartItem['product_referral_code'];
 
                 //Dividing Shipping Costs
-                if ($cartItem['shipping_type'] == 'home_delivery') {
+                if ($home_delivery == 'home_delivery') {
                     $order_detail->shipping_cost = getShippingCost($key);
                     $shipping += $order_detail->shipping_cost;
                 }
