@@ -10,7 +10,7 @@
                     <a class="navbar-brand p-0" href="{{ route('home') }}">
                         <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 55px;" >
                         <br>
-                        <span>Smarter Shopping, Better Living!</span>
+                        <!-- <span>Smarter Shopping, Better Living!</span> -->
                     </a>
                 </div>
  
@@ -29,8 +29,8 @@
                                         <div class="w-100">
                                             <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                         </div>
-                                        <div class="form-group category-select d-none d-xl-block">
-                                            <select style="height: 40px;" class="form-control selectpicker" name="category">
+                                        <!-- <div class="form-group category-select d-none d-xl-block">
+                                            <select style="height: 40px;" class="form-control cat-select" name="category">
                                                 <option value="">{{translate('All Categories')}}</option>
                                                 @foreach (\App\Category::all() as $key => $category)
                                                 <option value="{{ $category->slug }}"
@@ -42,7 +42,7 @@
                                                     >{{ __($category->name) }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> -->
                                         
                                         <button style="background-color: #ff4747;" class="d-none d-lg-block" type="submit">
                                             <i class="fas fa-search"></i>

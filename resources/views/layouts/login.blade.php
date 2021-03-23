@@ -14,6 +14,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
 
     <!--Bootstrap Stylesheet [ REQUIRED ]-->
     <link href="{{ my_asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -49,7 +50,7 @@
         <div class="cls-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-md-8 col-md-offset-4">
                         <div class="panel">
                             <div class="panel-body pad-no">
                                 @yield('content')

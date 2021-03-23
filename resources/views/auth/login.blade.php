@@ -5,24 +5,36 @@
 @php
     $generalsetting = \App\GeneralSetting::first();
 @endphp
+<style type="text/css">
+    .panel{
+        background-color: #2f2f2f !important;
+        opacity: 0.9 !important;
+        border-radius: 15px;
+    }
+    .checkbox-form{
+        color: #fff !important;
 
+    }
+    .login-cap{
+        color: #fff;
+        font-weight: bold;
+        font-family: 'DM Sans', sans-serif;
+        
+    }
+</style>
 <div class="flex-row">
-    <div class="flex-col-xl-6 blank-index d-flex align-items-center justify-content-center"
-    @if ($generalsetting->admin_login_sidebar != null)
-        style="background-image:url('{{ my_asset($generalsetting->admin_login_sidebar) }}');"
-    @else
-        style="background-image:url('{{ my_asset('img/bg-img/login-box.jpg') }}');"
-    @endif>
-
+    <div class="flex-col-xl-6 blank-index d-flex align-items-center justify-content-center">
+        <h1 class="login-cap">DORA <br>Login</h1>
+        
     </div>
     <div class="flex-col-xl-6">
         <div class="pad-all">
         <div class="text-center">
             <br>
 			@if($generalsetting->logo != null)
-                <img loading="lazy"  src="{{ my_asset($generalsetting->logo) }}" class="" height="44">
+                <img loading="lazy"  src="{{ my_asset($generalsetting->logo) }}" class="" height="100" width="100">
             @else
-                <img loading="lazy"  src="{{ my_asset('frontend/images/logo/logo.png') }}" class="" height="44">
+                <img loading="lazy"  src="{{ my_asset('frontend/images/logo/logo.png') }}" class="" height="100" width="100">
             @endif
 
             <br>
@@ -52,7 +64,7 @@
                     <div class="col-sm-6">
                         <div class="checkbox pad-btm text-left">
                             <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label for="demo-form-checkbox">
+                            <label for="demo-form-checkbox" class="checkbox-form">
                                 {{ translate('Remember Me') }}
                             </label>
                         </div>

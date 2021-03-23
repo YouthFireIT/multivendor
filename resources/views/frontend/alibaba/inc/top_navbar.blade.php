@@ -6,7 +6,7 @@
                     <ul class="dropdown_menu">
                         <li class=""><a href="{{ route('seller.login') }}" class="">Seller Login</a></li>
                         <li class=""><a href="{{ url('shops/create') }}" class="">Seller Registration</a></li>
-                        <li class=""><a href="#" class="">Seller Portal</a></li>
+                       <!--  <li class=""><a href="#" class="">Seller Portal</a></li> -->
                     </ul>
                 </li>
                 <li class=""><a href="" class="">Help <i class="fas fa-sort-down"></i></a>
