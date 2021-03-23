@@ -431,6 +431,7 @@
                             @endif
                         </div>
                     </div>
+
                     <div class="col-lg-9 col-4 position-static">
                         <div class="d-flex w-100">
                             <div class="search-box flex-grow-1 px-4">
@@ -456,6 +457,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        
                                         <button class="d-none d-lg-block" type="submit">
                                             <i class="la la-search la-flip-horizontal"></i>
                                         </button>

@@ -56,20 +56,76 @@
 
 
 .top_sel_part h6 {
-    font-weight: 700;
+        /* font-weight: 700; */
     background: #fff;
-    /*    padding: 16px 12px;*/
-    padding: 16px 12px 0 12px;
+    /* padding: 16px 12px; */
+    padding: 2px 12px 0 10px;
     width: 100%;
+    font-size: 12px;
     max-width: 200px;
+    color: black;
     border-radius: 5px;
 }
-
+.top_sel_part h6.top-sell-price{
+    font-weight: 700;
+    font-size: 14px;
+}
+.sell-title h6{
+    font-weight: 700;
+    background: #fff;
+    padding: 8px 12px 4px 12px;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 0px;
+}
 .top_sel_part img {
     padding: 0 12px;
     box-sizing: border-box;
+    border: none !important;
 }
 
+.sale-info{
+    float: right;
+    position: absolute;
+    bottom: 0px;
+    text-align: right;
+    /* right: -10px; */
+    left: 1px;
+}
+span.single_product_love {
+    margin-right: 5px;
+    background: none;
+    /* width: 50px; */
+    font-size: 14px;
+    padding: 2px 37px;
+    padding: 3px 2px;
+    border-radius: 0px 0px 9px;
+    color: #7d7d7d;
+}
+.move_to_love{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 18px;
+}
+.move_to_love h4{
+    margin: 0 18px;
+    font-weight: 700;
+}
+.move_to_love .__mlht{
+    height: 32px;
+    line-height: 32px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+.move_to_love .__mlh{
+    height: 1px;
+    width: 123px;
+    border-top: 1px solid hsla(0,0%,59.2%,.3);
+    margin: 0 14px;
+}
 
 .item_rating {
     /*  padding-left: 15px;*/

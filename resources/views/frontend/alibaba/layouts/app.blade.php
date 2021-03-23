@@ -10,6 +10,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
+
+
+     
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.sproducts_page.css" type="text/css">
@@ -31,7 +34,7 @@
     <style>
 
     </style>
-
+<link type="text/css" href="{{ my_asset('frontend/css/main.css') }}" rel="stylesheet" media="all">
     @yield('custom_css')
 </head>
 
@@ -69,6 +72,46 @@
          
         <script src="{{ asset('alibaba') }}/js/jquery.simple.timer.js"></script>
         <script src="{{ asset('alibaba') }}/js/main.js"></script>
+        
+     
+        <script>
+            $('#search').on('keyup', function(){
+                search();
+            });
+
+            $('#search').on('focus', function(){
+                search();
+            });
+
+            function search(){
+                var search = $('#search').val();
+                if(search.length > 0){
+                    $('body').addClass("typed-search-box-shown");
+
+                    $('.typed-search-box').removeClass('d-none');
+                    $('.search-preloader').removeClass('d-none');
+                    $.post('{{ route('search.ajax') }}', { _token: '{{ @csrf_token() }}', search:search}, function(data){
+                        if(data == '0'){
+                            // $('.typed-search-box').addClass('d-none');
+                            $('#search-content').html(null);
+                            $('.typed-search-box .search-nothing').removeClass('d-none').html('Sorry, nothing found for <strong>"'+search+'"</strong>');
+                            $('.search-preloader').addClass('d-none');
+
+                        }
+                        else{
+                            $('.typed-search-box .search-nothing').addClass('d-none').html(null);
+                            $('#search-content').html(data);
+                            $('.search-preloader').addClass('d-none');
+                        }
+                    });
+                }
+                else {
+                    $('.typed-search-box').addClass('d-none');
+                    $('body').removeClass("typed-search-box-shown");
+                }
+            }
+        </script>
+
         <script>
             $('.timer').startTimer({
                 loop: true,
