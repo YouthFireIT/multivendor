@@ -78,12 +78,6 @@ class CheckoutController extends Controller
             $request->session()->put('payment_type', 'cart_payment');
             
            
-    
-            $data = $request->session()->get('order_id');
-            return  $data;
-
-
-
             if($request->session()->get('order_id') != null){
                 // dd("jfhk");
                 if($request->payment_option == 'paypal'){
