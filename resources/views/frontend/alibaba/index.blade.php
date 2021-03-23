@@ -329,7 +329,9 @@
                                     <i class="fas fa-bolt"></i>
                                 </div>
                                 <span class="">Flash Deals</span>
-                                <div id="countdownTimer" class="countdown timer ml-3 bg-info px-2 text-white rounded" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}"></div>
+                                <div id="countdownTimer" class="countdown countdown-sm countdown--style-1" data-countdown-date="{{ date('m/d/Y', $flash_deal->end_date) }}" data-countdown-label="show">
+                                    
+                                </div>
 
                             </div>
                         </div>
@@ -342,6 +344,7 @@
                 </div>
                 <div class="product_wrap">
                     @foreach($flashDealProducts as $flashDealProduct)
+
                     <div class="flash_product">
                         <a href="{{ route('single.product', $flashDealProduct->product_slug) }}" class="">
                             <div class="img_wrap">
@@ -349,11 +352,13 @@
                             </div>
                             <div class="row">
                                 <div class="pricing_wrap">
-                                    <span class="text-dark d-block">{{ Str::limit($flashDealProduct->name,15) }}</span>
+                                    <span class="text-dark d-block">{{ Str::limit($flashDealProduct->name,25) }}</span>
                                     <span class="product_price">{{ single_price($flashDealProduct->unit_price) }}</span>
-                                    @if($flashDealProduct->discount_type == "percent")
+                                    @if($flashDealProduct->discount_type_flash == "percent")
+                                    
                                     <span class="product_offer"> {{ $flashDealProduct->discount }}% off</span>
                                     @else
+                                    
                                     <span class="product_offer"> {{ single_price($flashDealProduct->discount) }}&nbsp; off</span>
                                     @endif
                                 </div>
@@ -737,28 +742,34 @@
         <div class="container p-0">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="featured_categories_title">
-                        Featured Categories
-                    </h2>
+                    <div class="move_to_love">
+                        <div class="__mlh"></div>
+                        <div class="text-center __mlht">Featured Categories</div>
+                        <div class="__mlh"></div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3">
                     <div class="cat_right_wrap">
                         <span class="cat_right_wrap_title">
-                            <a href="#" class="">
-                                <span class="">{{ $featuredCategories[0]->name }}</span>
+                            <a href='{{url("search?category=")}}{{$featuredCategories[0]->id}}' class="">
+                                <span class="item-black cat-feature-bg">{{ $featuredCategories[0]->name }}</span>
                             </a>
                         </span>
-                        <a href="#" class="">
+                        <a href='{{url("search?category=")}}{{$featuredCategories[0]->id}}' class="">
                             <div class="cat_right_img_wrap">
                                 <div class="row">
                                     <div class="col-8">
+                                        <a href='{{url("search?category=")}}{{$featuredCategories[0]->id}}'>
+                                            
                                         <img src="{{ asset('alibaba') }}/{{ $featuredCategories[0]->icon }}" alt="" class="img-fluid cat_right_img_first">
+                                        </a>
                                     </div>
                                     <div class="col-4">
                                         @if ($featuredCategories[1]->icon)
                                             <img src="{{ asset('alibaba') }}/{{ $featuredCategories[1]->icon }}" alt="" class=" cat_right_img_last mb-2">
+
                                             <img src="{{ asset('alibaba') }}/{{ $featuredCategories[2]->icon }}" alt="" class=" cat_right_img_last">
                                         @endif
                                     </div>
@@ -769,11 +780,12 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        @foreach($featuredCategories as $featuredCategory)
+                        @foreach($featuredCategories as $key=> $featuredCategory)
+                        @if($key !=0)
                         <div class="col-lg-4 mb-2">
                             <div class="cat_item">
                                 <a href="{{ route('featured.category.categoryId', $featuredCategory->id) }}" class="">
-                                    <p class="cat_item_title light_blue">
+                                    <p class="cat_item_title item-black">
                                         {{ $featuredCategory->name }}
                                     </p>
                                 </a>
@@ -792,6 +804,7 @@
                                     </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
@@ -811,53 +824,27 @@
         <div class="container p-0">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="more_to_love_title">
-                        More To Love
-                    </h1>
+                    <div class="move_to_love">
+                        <div class="__mlh"></div>
+                        <div class="text-center __mlht">More To Love</div>
+                        <div class="__mlh"></div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mt-3">
-                @if (!empty($loveProducts))
-                    @foreach($loveProducts as $loveProduct)
-                    <div class="col-lg-2 pb-1">
-                        <div class="mtl_product_item">
-                            <a href="{{ route('single.product', $loveProduct->slug) }}" class="">
-                                <div class="mtl_product_item_img_wrap">
-                                    <img src="{{ my_asset($loveProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
-                                </div>
-                                <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
-                                <h2 class="mtl_product_price">
-                                    BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
-                                </h2>
-                                @if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated)
-                                <div class="club-point mt-2 bg-soft-base-1 border-light-base-1 border">
-                                    {{ translate('Club Point') }}:
-                                        <span class="strong-700 float-right">{{ $product->earn_point }}</span>
-                                    </div>
-                                @endif
-                                @if ($loveProduct->num_of_sale > 0)
-                                    <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
-                                @endif
-                                <!-- @if ($loveProduct->shipping_type == 'free')
-                                <span class="mtl_product_shipping d-block">Free Shipping</span>
-                                @endif -->
-                            </a>
-                        </div>
-                    </div>
-                    @endforeach
-                @endif
-            </div>
+           
 
             <div id="loveProducts" class="row mt-3">
-
+                @include('frontend.alibaba.randomLoveProducts')
             </div>
-
+            <div class="ajax-load text-center" id="paginateLoadRequest" style="display:none">
+                <p><img src="{{asset('alibaba/img/Loader.gif')}}" height="200" width="200"></p>
+            </div>
 
 
         </div>
     </section>
-    <section class="container-fluid">
+   <!--  <section class="container-fluid">
         <div class="container">
             <div class="row" id="loveProducts"></div>
             <div class="row">
@@ -866,9 +853,12 @@
                         View More
                     </button>
                 </a>
+                <div class="ajax-load text-center" style="display:none">
+                    <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+                </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 @endsection
 @section('customjs')
@@ -879,16 +869,55 @@
         $(document).ready(function(){
             
         });
-        function fetch_random_product(){
 
-            $.ajax({
-                type: "get",
-                url : '{{url("random/products")}}',
-                success:function(data) {
-                    console.log(data);
-                    $('#loveProducts').html(data);
-                }
-            });
+        // function fetch_random_product(){
+
+        //     $.ajax({
+        //         type: "get",
+        //         url : '{{url("random/products")}}',
+        //         success:function(data) {
+                    
+        //             $('#loveProducts').html(data);
+        //         }
+        //     });
+        // }
+
+        var page = 1;
+        $(window).scroll(function() {
+            if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.7 && $(window).scrollTop() <= ($(document).height() + $(window).height())*0.7) {
+                page++;
+                loadMoreData(page);
+            }
+        });
+        function loadMoreData(page){
+            var paginateLoad = null; 
+         var paginateLoad =  $.ajax(
+                {
+                    url: '?page=' + page,
+                    type: "get",
+                    beforeSend: function()
+                    {
+                       if(paginateLoad != null) {
+                            alert(paginateLoad);
+                            paginateLoad.abort();
+                        }
+                        $('.ajax-load').show();
+                    }
+                })
+                .done(function(data)
+                {
+                    if(data.html == " "){
+                        $('.ajax-load').html("No more records found");
+                        return false;
+                    }
+                    $('.ajax-load').hide();
+                    $("#loveProducts").append(data.html);
+                })
+                .fail(function(jqXHR, ajaxOptions, thrownError)
+                {  
+
+                });
+            // paginateLoad.abort();
         }
     </script>
 @endsection

@@ -171,7 +171,7 @@
                                         @foreach ($choice->values as $key => $value)
                                             <li>
                                                 <input type="radio" id="{{ $choice->attribute_id }}-{{ $value }}" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key == 0) checked @endif>
-                                                <label for="{{ $choice->attribute_id }}-{{ $value }}">{{ $value }}</label>
+                                                <label for="{{ $choice->attribute_id }}-{{ $value }}" class="">{{ $value }}</label>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -183,7 +183,7 @@
 
                             <!-- increament - decrement count button area -->
                             <div class="ali-award-increment">
-                                <div class="increment-value">
+                               <!--  <div class="increment-value">
                                     <div id="left-value" class="mystyle">
                                         <div class="right-value-img">
                                             <img src="img/tk.png">
@@ -198,7 +198,7 @@
                                         <h4 id="hundredplus">1394</h4>
                                         <span>100 or more</span>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 
 
@@ -462,14 +462,20 @@
                                             </div>
                                             <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
                                             <h2 class="mtl_product_price">
-                                                {{ home_price($loveProduct->id)  }}
+                                                BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                             </h2>
-                                            @if ($loveProduct->num_of_sale > 0)
-                                            <div class="sale-info">
-                                                <span class="mtl_product_sale single_product_love d-block">{{ $loveProduct->num_of_sale }}&nbsp;Sold</span>
-                                            </div>
-                                                
+                                            @if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated)
+                                            <div class="club-point mt-2 bg-soft-base-1 border-light-base-1 border">
+                                                {{ translate('Club Point') }}:
+                                                    <span class="strong-700 float-right">{{ $loveProduct->earn_point }}</span>
+                                                </div>
                                             @endif
+                                            @if ($loveProduct->num_of_sale > 0)
+                                                <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                            @endif
+                                            <!-- @if ($loveProduct->shipping_type == 'free')
+                                            <span class="mtl_product_shipping d-block">Free Shipping</span>
+                                            @endif -->
                                         </a>
                                     </div>
                                 </div>
@@ -769,7 +775,8 @@ eTextRange();
                    $('#modal-size').removeClass('modal-lg');
                    $('#addToCart-modal-body').html(data);
                    updateNavCart();
-                  //showFrontendAlert('success', 'Item has been added to cart');
+                    // showFrontendAlert('success', 'Item has been added to cart');
+                    toastr.success('Item has been added to cart')
                    $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())+1);
                }
            });
