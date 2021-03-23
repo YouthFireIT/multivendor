@@ -3,9 +3,6 @@
 @section('custom_css')
 
 
-
-
-
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/nicemenu.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/theme-001.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/owl.carousel.min.css">
@@ -78,7 +75,7 @@
                 <button type="button" class="add-new-address" data-toggle="modal" data-target="#staticBackdrop">
                     &#43; Add new address
                 </button>
-
+                {{-- Shipping address store --}}
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
                     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -92,64 +89,55 @@
                             </div>
                             <div class="modal-body ps-modal-body">
                                 <form action="{{ route('addresses.store') }}" method="POST">
-                                    <label for="" class="modal-htext">{{ translate('Address')}}</label>
+                                    @csrf
                                     <div class="form-row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <label for="" class="modal-htext">{{ translate('Address')}}</label>
                                             <textarea class="form-control textarea-autogrow mb-3" placeholder="{{ translate('Your Address')}}" rows="1" name="address" required></textarea>
                                             <span id="name-text"></span>
                                         </div>
                                     </div>
 
-                                    <label for="" class="modal-htext">Address</label>
+                                    <label for="" class="modal-htext">{{ translate('City')}}</label>
                                     <div class="form-row mb-3">
                                         <div class="col">
                                             <input type="text" id="sp-address" class="form-control"
-                                                placeholder="Street, house/apartment/unit">
+                                            placeholder="{{ translate('Your City')}}" name="city">
                                             <span id="address-text"></span>
-                                        </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control"
-                                                placeholder="Apt, Suite, Unit, etc. (Optional)">
                                         </div>
                                     </div>
 
+                                    <label for="" class="modal-htext">{{ translate('Postal code')}}</label>
+                                    <div class="form-row mb-3">
+                                        <div class="col">
+                                            <input type="text" id="sp-address" class="form-control"
+                                            placeholder="{{ translate('Your Postal Code')}}" name="postal_code" value="">
+                                            <span id="address-text"></span>
+                                        </div>
+                                    </div>
+
+                                    <label for="" class="modal-htext">{{ translate('Phone')}}</label>
+                                    <div class="form-row mb-3">
+                                        <div class="col">
+                                            <input type="text" id="sp-address" class="form-control"
+                                            placeholder="{{ translate('+880')}}" name="phone" value="">
+                                            <span id="address-text"></span>
+                                        </div>
+                                    </div>
+
+                                    
+
                                     <div class="form-row">
-                                        <div class="form-group col-md-3">
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Bangladesh</option>
-                                                <option>United States</option>
-                                                <option>Afghanistan</option>
+                                        <div class="form-group col-md-6">
+                                            <select id="inputState" class="form-control" data-placeholder="{{ translate('Select your country')}}" name="country">
+                                                @foreach (\App\Country::where('status', 1)->get() as $key => $country)
+                                                    <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                                @endforeach
                                             </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <select id="inputState" class="form-control">
-                                                <option selected>Dhaka</option>
-                                                <option>Narayangonj</option>
-                                                <option>Munsigonj</option>
-                                                <option>Sylet</option>
-                                                <option>Borisal</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <select id="inputState" class="form-control">
-                                                <option selected>3 notch</option>
-                                                <option>5 points</option>
-                                                <option>8 mile</option>
-                                                <option>Abel</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <input type="text" class="form-control" id="inputZip"
-                                                placeholder="Zip Code">
-                                            <span id="zip-text"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" id="">
-                                        <label class="form-check-label ml-3" for="">Set as default</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Save and continue</button>
+                                   
+                                    <button type="submit" class="btn btn-primary">{{  translate('Save') }}</button>
                                 </form>
                             </div>
                         </div>
@@ -157,240 +145,324 @@
                 </div>
             </div>
 
-
-
-            <form class="form-default" role="form" action="{{ route('addresses.store') }}" method="POST">
-                @csrf
-                <div class="modal-body">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('Address')}}</label>
+                
+                {{-- Shipping Address  --}}
+                <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST" id="checkout-form">
+                    @csrf
+                @if(Auth::check())
+                    <div class="row gutters-5">
+                        @foreach (Auth::user()->addresses as $key => $address)
+                            <div class="col-md-6">
+                                <label class="aiz-megabox d-block bg-white">
+                                    <input type="radio" name="address_id" value="{{ $address->id }}" @if ($address->set_default)
+                                        checked
+                                    @endif required>
+                                    <span class="d-flex p-3 aiz-megabox-elem">
+                                        <span class="aiz-rounded-check flex-shrink-0 mt-1"></span>
+                                        <span class="flex-grow-1 pl-3">
+                                            <div>
+                                                <span class="alpha-6">{{ translate('Address') }}:</span>
+                                                <span class="strong-600 ml-2">{{ $address->address }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="alpha-6">{{ translate('Postal Code') }}:</span>
+                                                <span class="strong-600 ml-2">{{ $address->postal_code }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="alpha-6">{{ translate('City') }}:</span>
+                                                <span class="strong-600 ml-2">{{ $address->city }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="alpha-6">{{ translate('Country') }}:</span>
+                                                <span class="strong-600 ml-2">{{ $address->country }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="alpha-6">{{ translate('Phone') }}:</span>
+                                                <span class="strong-600 ml-2">{{ $address->phone }}</span>
+                                            </div>
+                                        </span>
+                                    </span>
+                                </label>
                             </div>
-                            <div class="col-md-10">
-                                <textarea class="form-control textarea-autogrow mb-3" placeholder="{{ translate('Your Address')}}" rows="1" name="address" required></textarea>
+                        @endforeach
+                        <input type="hidden" name="checkout_type" value="logged">
+                    </div>
+                    @else
+                    <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">{{ translate('Name')}}</label>
+                                    <input type="text" class="form-control" name="name" placeholder="{{ translate('Name')}}" required>
+                                </div>
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('Country')}}</label>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">{{ translate('Email')}}</label>
+                                    <input type="text" class="form-control" name="email" placeholder="{{ translate('Email')}}" required>
+                                </div>
                             </div>
-                            <div class="col-md-10">
-                                <div class="mb-3">
-                                    <select class="form-control mb-3 selectpicker" data-placeholder="{{ translate('Select your country')}}" name="country" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">{{ translate('Address')}}</label>
+                                    <input type="text" class="form-control" name="address" placeholder="{{ translate('Address')}}" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">{{ translate('Select your country')}}</label>
+                                    <select class="form-control custome-control" data-live-search="true" name="country">
                                         @foreach (\App\Country::where('status', 1)->get() as $key => $country)
                                             <option value="{{ $country->name }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('City')}}</label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" placeholder="{{ translate('Your City')}}" name="city" value="" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('Postal code')}}</label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" placeholder="{{ translate('Your Postal Code')}}" name="postal_code" value="" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>{{ translate('Phone')}}</label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control mb-3" placeholder="{{ translate('+880')}}" name="phone" value="" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-base-1">{{  translate('Save') }}</button>
-                </div>
-            </form>
-
-
-
-
-
-
-
-
-
-
-
-            <div class="payment-methods">
-                <p class="main-title">Payment Methods</p>
-                <!-- Button trigger modal -->
-                <button type="button" class="add-new-address" data-toggle="modal" data-target="#staticBackdrop1">
-                    &#43; Select payment method
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header ps1-modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Payment Methods</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body ps1-modal-body px-4">
-                                <div class="row">
-                                    <div class="col-3 p-2">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Card</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img1.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img2.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img3.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img4.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img5.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img6.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img7.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img8.png" alt="">
-                                                <img src="images/order-confirm-img/pay-img9.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">PayPal</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img10.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">iDeal</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img11.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="show">
-                                        <div class="modal-card-body modal-card-body-method">
-                                            <p class="pay-method">Show all payment methods</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="Przelewy24">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Przelewy24</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img12.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="WebMoney">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">WebMoney</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img13.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="Mobile-Payment">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Mobile Payment</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img14.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="QIWI-Account">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">QIWI Account</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img15.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="PayU">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">PayU</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img16.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="Sofort-Bank">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Sofort Bank</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img17.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="Bancontact">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Bancontact</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img18.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="Online-Banks">
-                                        <div class="modal-card-body">
-                                            <p class="pay-name">Online Banks</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img19.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 p-2" id="YooMoney">
-                                        <div class="modal-card-body modal-card-body-method1">
-                                            <p class="pay-name">YooMoney</p>
-                                            <div class="pay-icon-list">
-                                                <img src="images/order-confirm-img/pay-img20.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label">{{ translate('City')}}</label>
+                                    <input type="text" class="form-control" placeholder="{{ translate('City')}}" name="city" required>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label">{{ translate('Postal code')}}</label>
+                                    <input type="text" class="form-control" placeholder="{{ translate('Postal code')}}" name="postal_code" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group has-feedback">
+                                    <label class="control-label">{{ translate('Phone')}}</label>
+                                    <input type="number" min="0" class="form-control" placeholder="{{ translate('Phone')}}" name="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="checkout_type" value="guest">
                     </div>
+                    </div>
+                @endif
+
+                
+
+            
+            <div class="payment-methods">
+                <p class="main-title">Payment Methods</p>
+                <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                @if(\App\BusinessSetting::where('type', 'paypal_payment')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Paypal">
+                                            <input type="radio" id="" name="payment_option" value="paypal" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/paypal.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'stripe_payment')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Stripe">
+                                            <input type="radio" id="" name="payment_option" value="stripe" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/stripe.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'sslcommerz_payment')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="sslcommerz">
+                                            <input type="radio" id="" name="payment_option" value="sslcommerz" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/sslcommerz.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'instamojo_payment')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Instamojo">
+                                            <input type="radio" id="" name="payment_option" value="instamojo" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/instamojo.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'razorpay')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Razorpay">
+                                            <input type="radio" id="" name="payment_option" value="razorpay" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/rozarpay.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'paystack')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Paystack">
+                                            <input type="radio" id="" name="payment_option" value="paystack" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/paystack.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'voguepay')->first()->value == 1)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="VoguePay">
+                                            <input type="radio" id="" name="payment_option" value="voguepay" checked>
+                                            <span>
+                                                <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/vogue.png')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'payhere')->first()->value == 1)
+                                   <div class="col-6">
+                                       <label class="payment_option mb-4" data-toggle="tooltip" data-title="payhere">
+                                           <input type="radio" id="" name="payment_option" value="payhere" checked>
+                                           <span>
+                                               <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/payhere.png')}}" class="img-fluid">
+                                           </span>
+                                       </label>
+                                   </div>
+                               @endif
+                                @if(\App\Addon::where('unique_identifier', 'paytm')->first() != null && \App\Addon::where('unique_identifier', 'paytm')->first()->activated)
+                                    <div class="col-6">
+                                        <label class="payment_option mb-4" data-toggle="tooltip" data-title="Paytm">
+                                            <input type="radio" id="" name="payment_option" value="paytm" checked>
+                                            <span>
+                                                <img loading="lazy" src="{{ my_asset('frontend/images/icons/cards/paytm.jpg')}}" class="img-fluid">
+                                            </span>
+                                        </label>
+                                    </div>
+                                @endif
+                                @if(\App\BusinessSetting::where('type', 'cash_payment')->first()->value == 1)
+                                    @php
+                                        $digital = 0;
+                                        foreach(Session::get('cart') as $cartItem){
+                                            if($cartItem['digital'] == 1){
+                                                $digital = 1;
+                                            }
+                                        }
+                                    @endphp
+                                    @if($digital != 1)
+                                        <div class="col-6">
+                                            <label class="payment_option mb-4" data-toggle="tooltip" data-title="Cash on Delivery">
+                                                <input type="radio" id="" name="payment_option" value="cash_on_delivery" checked>
+                                                <span>
+                                                    <img loading="lazy"  src="{{ my_asset('frontend/images/icons/cards/cod.png')}}" class="img-fluid">
+                                                </span>
+                                            </label>
+                                        </div>
+                                    @endif
+                                @endif
+                                @if (Auth::check())
+                                    @if (\App\Addon::where('unique_identifier', 'offline_payment')->first() != null && \App\Addon::where('unique_identifier', 'offline_payment')->first()->activated)
+                                        @foreach(\App\ManualPaymentMethod::all() as $method)
+                                          <div class="col-6">
+                                              <label class="payment_option mb-4" data-toggle="tooltip" data-title="{{ $method->heading }}">
+                                                  <input type="radio" id="" name="payment_option" value="{{ $method->heading }}">
+                                                  <span>
+                                                      <img loading="lazy"  src="{{ my_asset($method->photo)}}" class="img-fluid">
+                                                  </span>
+                                              </label>
+                                          </div>
+                                        @endforeach
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    @if (Auth::check() && \App\BusinessSetting::where('type', 'wallet_system')->first()->value == 1)
+                        <div class="or or--1 mt-2">
+                            <span>or</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xxl-6 col-lg-8 col-md-10 mx-auto">
+                                <div class="text-center bg-gray py-4">
+                                    <i class="fa"></i>
+                                    <div class="h5 mb-4">{{ translate('Your wallet balance :')}} <strong>{{ single_price(Auth::user()->balance) }}</strong></div>
+                                    @if(Auth::user()->balance < $total)
+                                        <button type="button" class="btn btn-base-2" disabled>{{ translate('Insufficient balance')}}</button>
+                                    @else
+                                        <button  type="button" onclick="use_wallet()" class="btn btn-base-1">{{ translate('Pay with wallet')}}</button>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="order-review">
-                <p class="main-title">Order Review</p>
-                <p class="store-name">Seller: Angol Store</p>
+                {{-- <p class="main-title">Order Review</p>
+                <p class="store-name">Seller: Angol Store</p> --}}
                 <div class="shopping-cart-product py-2 border-bottom mb-3">
+
+                    @php
+                    $total = 0;
+                    @endphp
+                    @foreach (Session::get('cart') as $key => $cartItem)
+                    @php
+                    $product = \App\Product::find($cartItem['id']);
+                    $total = $total + $cartItem['price']*$cartItem['quantity'];
+                    $product_name_with_choice = $product->name;
+                    if ($cartItem['variant'] != null) {
+                        $product_name_with_choice = $product->name.' - '.$cartItem['variant'];
+                    }
+                    // if(isset($cartItem['color'])){
+                    //     $product_name_with_choice .= ' - '.\App\Color::where('code', $cartItem['color'])->first()->name;
+                    // }
+                    // foreach (json_decode($product->choice_options) as $choice){
+                    //     $str = $choice->name; // example $str =  choice_0
+                    //     $product_name_with_choice .= ' - '.$cartItem[$str];
+                    // }
+                    @endphp 
+
                     <div class="row">
                         <div class="col-2 product-image">
-                            <img class="rounded-3" src="images/order-confirm-img/order-confirm-product.webp" alt="">
+                            <img class="rounded-3" src="{{ my_asset($product->thumbnail_img) }}" alt="">
                         </div>
                         <div class="col-8 product-main">
-                            <a href="#" class="product-title">Luxury Female White Crystal Pendant Necklace Cute 925
-                                Sterling Silver Chain Necklaces For Women Charm Vintage Wedding Necklace</a>
-                            <span class="product-price">US $<span id="price">6.99</span></span>
-                            <div class="product-field">
+                            <a href="#" class="product-title">{{ $product_name_with_choice }} × {{ $cartItem['quantity'] }}</a>
+                            <span class="product-price">{{ single_price($cartItem['price']) }}</span></span>
+                            {{-- <div class="product-field">
                                 <a class="logistics-cost" href="#">Shipping: US $<span
                                         id="shipping">28.77</span></a>
                                 <span class="logistics-delivery">via Estimated Delivery Time:7-15 Days
                                     &#8250;</span>
                             </div>
-                            <a class="seller-message-title" href="#">+ Leave message</a>
+                            <a class="seller-message-title" href="#">+ Leave message</a> --}}
                         </div>
                         <div class="col-2 product-opt">
                             <div class="quantity d-flex justify-content-center">
-                                <button class="btn minus-btn disabled" type="button">&minus;</button>
-                                <input type="text" id="quantity" value="1" autocomplete="off">
-                                <button class="btn plus-btn" type="button">&plus;</button>
+                                <button class="btn minus-btn btnnumber" data-type="minus" data-field="quantity[{{ $key }}]" type="button">&minus;</button>
+                                <input type="text" name="quantity[{{ $key }}]" class="input-number" placeholder="1" value="{{ $cartItem['quantity'] }}" min="1" max="10" onchange="updateQuantity({{ $key }}, this)">
+                                <button class="btn plus-btn btnnumber" data-type="plus" data-field="quantity[{{ $key }}]" type="button">&plus;</button>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                <div class="col-5 offset-7">
+
+                {{-- <div class="col-5 offset-7">
                     <div class="seller-charges">
                         <div>
                             <div class="charge-item d-flex justify-content-between">
@@ -411,44 +483,20 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
             </div>
+
         </div>
-        <div class="col-lg-4" id="order-summary">
-            <div class="order-summary mb-3">
-                <p class="main-title">Order Summary</p>
-                <div class="charge-item d-flex justify-content-between">
-                    <p class="charge-title">Select Coupon</p>
-                    <p class="charge-cost"><i class="fas fa-angle-down"></i></p>
-                </div>
-                <div class="charge-item d-flex justify-content-between">
-                    <p class="charge-title">AliExpress Coupon</p>
-                    <p class="charge-cost"><i class="fas fa-angle-down"></i></p>
-                </div>
-                <p class="coupon-code-title">Promo Code</p>
-                <div class="charge-item d-flex justify-content-between border-bottom pb-3 mb-3">
-                    <input class="coupon-code-input" type="number" name="" id="" minlength="4" maxlength="6"
-                        min="1">
-                    <button class="coupon-code-button" type="button">Apply</button>
-                </div>
-                <div class="charge-item d-flex justify-content-between mb-3">
-                    <p class="charge-title text-dark">Total</p>
-                    <h3 class="charge-cost charge-cost1">US $<span id="total-price1">35.76</span></h3>
-                </div>
-                <button type="submit" class="place-order-btn">Place Order</button>
-            </div>
-            <p class="confirm-tips">Upon clicking "Place Order", I confirm I have read and acknowledge all <a
-                    href="#">terms and
-                    policies</a></p>
-            <div class="safe-info-hook">
-                <img class="o5bQ1" src="images/order-confirm-img/H8e0188e31d864f94ab796d13535dd096g.webp">
-                <span class="o28lVk">AliExpress keeps your information and payment safe</span>
-                <img class="o5bQ1" src="images/order-confirm-img/H5ebd67335c2c4725b0f7e7d501482657Q.png">
-            </div>
-        </div>
+
+        @include('frontend.alibaba.partials.checkout_summary')
+    </form>
+
     </div>
 </div>
 @endsection
+
+
 
 @section('customjs')
 
@@ -473,7 +521,7 @@
     <script src="{{ my_asset('frontend/js/fb-script.js') }}"></script>
     <script src="{{ my_asset('frontend/js/lazysizes.min.js') }}"></script>
     <script src="{{ my_asset('frontend/js/intlTelInput.min.js') }}"></script>
-    <script src="{{ asset('alibaba') }}/js/order-confirm.js"></script>
+
     <!-- App JS -->
     <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
@@ -718,7 +766,6 @@
 
 {{-- Cart Increment ||  Decrement --}}
 <script>
-   
     $('.btnnumber').click(function(e) {
         e.preventDefault();
        
@@ -797,12 +844,6 @@
     });
 
 </script>
-
-
-
-
-
-
 @endsection
 
 

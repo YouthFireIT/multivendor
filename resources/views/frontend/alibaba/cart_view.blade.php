@@ -163,10 +163,7 @@
                             </div>
                         </div>
                     </div>
-
-
- 
-
+                    
                     @endforeach
 
                     {{-- <div class="shopping-cart-button">
