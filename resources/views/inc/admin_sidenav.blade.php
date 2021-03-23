@@ -59,7 +59,7 @@
                             </a>
                         </li>
 
-                        @if (\App\Addon::where('unique_identifier', 'pos_system')->first() != null && \App\Addon::where('unique_identifier', 'pos_system')->first()->activated)
+                        <!-- @if (\App\Addon::where('unique_identifier', 'pos_system')->first() != null && \App\Addon::where('unique_identifier', 'pos_system')->first()->activated)
 
                             <li>
                                 <a href="#">
@@ -68,7 +68,6 @@
                                     <i class="arrow"></i>
                                 </a>
 
-                                <!--Submenu-->
                                 <ul class="collapse">
                                     <li class="{{ areActiveRoutes(['poin-of-sales.index', 'poin-of-sales.create'])}}">
                                         <a class="nav-link" href="{{route('poin-of-sales.index')}}">{{translate('POS Manager')}}</a>
@@ -78,7 +77,7 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endif
+                        @endif -->
 
                         <!-- Product Menu -->
                         @if(Auth::user()->user_type == 'admin' || in_array('1', json_decode(Auth::user()->staff->role->permissions)))

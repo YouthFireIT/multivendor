@@ -16,7 +16,8 @@ class CartController extends Controller
     {
         //dd($cart->all());
         $categories = Category::all();
-        return view('frontend.view_cart', compact('categories'));
+        // return view('frontend.view_cart', compact('categories'));
+        return view('frontend.alibaba.cart_view', compact('categories'));
     }
 
     public function showCartModal(Request $request)
@@ -186,6 +187,6 @@ class CartController extends Controller
         });
         $request->session()->put('cart', $cart);
 
-        return view('frontend.partials.cart_details');
+        return view('frontend.alibaba.partials.cart_details');
     }
 }

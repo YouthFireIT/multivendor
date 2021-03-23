@@ -51,6 +51,24 @@ $(window).on("load resize", function () {
 
 // On document ready functions
 $(document).ready(function () {
+    if ($(".countdown").length > 0) {
+        $(".countdown").each(function () {
+            var $this = $(this);
+            var date = $this.data("countdown-date");
+
+            $this.countdown(date).on("update.countdown", function (event) {
+                var $this = $(this).html(
+                    event.strftime(
+                        "" +
+                            '<div class="countdown-item"><span class="countdown-digit">%-D</span><span class="countdown-label countdown-days">day%!d</span></div>' +
+                            '<div class="countdown-item"><span class="countdown-digit">%H</span><span class="countdown-separator">:</span><span class="countdown-label">hr</span></div>' +
+                            '<div class="countdown-item"><span class="countdown-digit">%M</span><span class="countdown-separator">:</span><span class="countdown-label">min</span></div>' +
+                            '<div class="countdown-item"><span class="countdown-digit">%S</span><span class="countdown-label">sec</span></div>'
+                    )
+                );
+            });
+        });
+    }
     // Bootstrap - Submenu event for small resolutions
     $('.dropdown-menu .dropdown-submenu [data-toggle="dropdown"]').on(
         "click",
@@ -568,24 +586,7 @@ $(document).ready(function () {
         });
     }
 
-    if ($(".countdown").length > 0) {
-        $(".countdown").each(function () {
-            var $this = $(this);
-            var date = $this.data("countdown-date");
-
-            $this.countdown(date).on("update.countdown", function (event) {
-                var $this = $(this).html(
-                    event.strftime(
-                        "" +
-                            '<div class="countdown-item"><span class="countdown-digit">%-D</span><span class="countdown-label countdown-days">day%!d</span></div>' +
-                            '<div class="countdown-item"><span class="countdown-digit">%H</span><span class="countdown-separator">:</span><span class="countdown-label">hr</span></div>' +
-                            '<div class="countdown-item"><span class="countdown-digit">%M</span><span class="countdown-separator">:</span><span class="countdown-label">min</span></div>' +
-                            '<div class="countdown-item"><span class="countdown-digit">%S</span><span class="countdown-label">sec</span></div>'
-                    )
-                );
-            });
-        });
-    }
+    
 
     // Optional filters
     $("#btnToggleOptionalFilters").click(function () {

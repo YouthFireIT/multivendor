@@ -1,14 +1,16 @@
-<section class="header-wrapper mb-5">
-
+<section class="header-wrapper mb-2">
+@php
+    $generalsetting = \App\GeneralSetting::first();
+@endphp
     <nav class="navbar-wrap">
         <div class="container">
             <div class="row">
                 
                 <div class="col-lg-2">
                     <a class="navbar-brand p-0" href="{{ route('home') }}">
-                        <img src="{{ asset('alibaba') }}/images/logo.png" alt="ali-express">
+                        <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 55px;" >
                         <br>
-                        <span>Smarter Shopping, Better Living!</span>
+                        <!-- <span>Smarter Shopping, Better Living!</span> -->
                     </a>
                 </div>
  
@@ -27,8 +29,8 @@
                                         <div class="w-100">
                                             <input type="text" aria-label="Search" id="search" name="q" class="w-100" placeholder="{{translate('I am shopping for...')}}" autocomplete="off">
                                         </div>
-                                        <div class="form-group category-select d-none d-xl-block">
-                                            <select style="height: 40px;" class="form-control selectpicker" name="category">
+                                        <!-- <div class="form-group category-select d-none d-xl-block">
+                                            <select style="height: 40px;" class="form-control cat-select" name="category">
                                                 <option value="">{{translate('All Categories')}}</option>
                                                 @foreach (\App\Category::all() as $key => $category)
                                                 <option value="{{ $category->slug }}"
@@ -40,7 +42,7 @@
                                                     >{{ __($category->name) }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> -->
                                         
                                         <button style="background-color: #ff4747;" class="d-none d-lg-block" type="submit">
                                             <i class="fas fa-search"></i>
@@ -65,10 +67,15 @@
 
                 <div class="col-lg-1">
                     <div class="cart-box">
-                        <a href="#" class="cart">
+                        <a href="{{ route('cart') }}" class="cart">
                             <!-- <i class="fas fa-shopping-cart"></i> -->
                             <img src="{{ asset('alibaba') }}/images/cart.png" alt="">
-                            <span class="cart-number">0</span>
+                            @if(Session::has('cart'))
+                            <span class="cart_items_sidenav cart-number">{{ count(Session::get('cart'))}}</span>
+                            @else
+                            <span class="cart_items_sidenav cart-number">0</span>
+                            @endif
+                         
                         </a>
                     </div>
                 </div>

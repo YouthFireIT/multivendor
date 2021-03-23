@@ -151,7 +151,8 @@
   Timer.prototype.fetchSecondsLeft = function(element){
     var secondsLeft = element.data('seconds-left');
     var minutesLeft = element.data('minutes-left');
-
+    alert(secondsLeft);
+    console.log(minutesLeft);
     if(Number.isFinite(secondsLeft)){
       return parseInt(secondsLeft, 10);
     } else if(Number.isFinite(minutesLeft)) {

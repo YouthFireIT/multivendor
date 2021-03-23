@@ -50,7 +50,7 @@
 
                     <a class="bar-top-icon px-3" href="#">
                         <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
-                        <span class="ml-2">Categories</span>
+                        <span class="ml-2">Categories categories</span>
                     </a>
 
                     @foreach (\App\Category::all()->take(11) as $key => $category)
@@ -130,135 +130,197 @@
                         </div>
                     @endif
                 </div>
+
                 <div class="col-lg-6 col-md-8">
-                    <div class="ali-content">
-                        <p>{{  __($detailedProduct->name) }}</p>
-                        <div class="ali-review">
-                            @php
-                                $total = 0;
-                                $total += $detailedProduct->reviews->count();
-                            @endphp
-                            <ul class="nav">
-
-                                <li><a href="#"><i class="fas fa-star">{{renderStarRating($detailedProduct->rating)}}</i></a></li>
-
-                                <li><a href="#">({{ $total }} {{ translate('reviews')}})</a></li>
-                                <!-- <li><a href="#"><i class="fas fa-angle-down"></i></a></li> -->
-                                <!-- <li><span><a href="#">229 Reviews</a></span></li>
-                                <li><span>516 orders</span></li> -->
-
-                            </ul>
-                        </div>
-                        <!-- increament - decrement count button area -->
-
-                        <div class="ali-award-increment">
-                            <div class="increment-value">
-                                <div id="left-value" class="mystyle">
-                                    <div class="right-value-img">
-                                        <img src="img/tk.png">
-                                    </div>
-                                    <h4>1445</h4>
-                                    <span id="oneplus">1 or more</span>
-                                </div>
-                                <div id="right-value">
-                                    <div class="right-value-img">
-                                        <img src="img/tk.png">
-                                    </div>
-                                    <h4 id="hundredplus">1394</h4>
-                                    <span>100 or more</span>
-                                </div>
-                            </div>
-
-                            <div class="count-button nav justify-content-between">
-                                <div class="count-model">
-                                    <h6>Brand</h6>
-                                    <span>{{__($detailedProduct->brand->name)}}</span>
-                                </div>
-                                <div class="count-price">
-                                    <h6>Price</h6>
-                                    @if(home_price($detailedProduct->id) != home_discounted_price($detailedProduct->id))
-                                        <span id="pricetoggle">
-                                            <del>{{ home_price($detailedProduct->id) }}</del>
-
-                                        </span><br>
-                                        <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
-                                    @else
-                                        <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
-                                    @endif
-                                </div>
-                                <div class="count-qty">
-                                    <h6>QTY</h6>
-                                    <div class="quantity">
-                                        <button  class="btn minus-btn btn-number" type="button" data-type="minus" data-field="quantity" disabled="disabled">-</button>
-
-                                        <input type="text" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
-
-                                        <button id="plus" class="btn plus-btn btn-number" type="button" data-type="plus" data-field="quantity">+</button>
-                                    </div>
-
-                                    <!--will calculate price---->
-                                    <p class="total-price">
-                                        <span id="price"></span>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ali-award-color">
-
-                            @if (count(json_decode($detailedProduct->colors)) > 0)
-                            <div class="ali-award-color-text nav">
-                                <span>Color:</span>
-                            </div>
-
-                            <div class="ali-award-color-item">
-                                <ul>
-                                    @foreach (json_decode($detailedProduct->colors) as $key => $color)
-                                        <li>
-                                            <input type="radio" id="{{ $detailedProduct->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key == 0) checked @endif>
-                                            <label style="background: {{ $color }};" for="{{ $detailedProduct->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
-                            <!-- <div class="ali-award-shiping">
-                                <h6>Shipping: US $76.59</h6>
+                    <form id="option-choice-form">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $detailedProduct->id }}">
+ 
+                        <div class="ali-content">
+                            <p>{{  __($detailedProduct->name) }}</p>
+                            <div class="ali-review">
+                                @php
+                                    $total = 0;
+                                    $total += $detailedProduct->reviews->count();
+                                @endphp
                                 <ul class="nav">
-                                    <li><a href="#">to Bangladesh via AliExpress Premium Shipping</a></li>
-                                    <li><a href="#"><i class="fas fa-angle-down"></i></a></li>
+
+                                    <li><a href="#"><i class="fas fa-star">{{renderStarRating($detailedProduct->rating)}}</i></a></li>
+
+                                    <li><a href="#">({{ $total }} {{ translate('reviews')}})</a></li>
+                                    <!-- <li><a href="#"><i class="fas fa-angle-down"></i></a></li> -->
+                                    <!-- <li><span><a href="#">229 Reviews</a></span></li>
+                                    <li><span>516 orders</span></li> -->
+
                                 </ul>
                             </div>
 
-                            <div class="ali-award-delivery">
-                                <ul class="nav">
-                                    <li><span>Estimated Delivery: </span></li>
-                                    <li>7-15</li>
-                                    <li><span>days</span></li>
-                                    <li><a href="#">?</a></li>
-                                </ul>
-                            </div> -->
 
-                            <div class="ali-button">
-                                <button class="btn btn-danger">Buy Now</button>
-                                <button class="btn btn-warning">Add to Cart</button>
-                                <button class="btn btn-light"><i class="far fa-heart"></i> 12.5K</button>
-                            </div>
-
-                            <div class="buyer-protection nav">
-                                <div class="buyer-protection-icon">
-                                    <ul>
-                                        <li><a href="#"><i class="fas fa-user-check"></i></a></li>
+                            
+                            {{--  Product Variation --}}
+                            
+                            @if ($detailedProduct->choice_options != null)
+                            @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
+    
+                            <div class="row no-gutters">
+                                <div class="col-2">
+                                    <div class="product-description-label mt-2 ">{{ \App\Attribute::find($choice->attribute_id)->name }}:</div>
+                                </div>
+                                <div class="col-10">
+                                    <ul class="list-inline checkbox-alphanumeric checkbox-alphanumeric--style-1 mb-2">
+                                        @foreach ($choice->values as $key => $value)
+                                            <li>
+                                                <input type="radio" id="{{ $choice->attribute_id }}-{{ $value }}" name="attribute_id_{{ $choice->attribute_id }}" value="{{ $value }}" @if($key == 0) checked @endif>
+                                                <label for="{{ $choice->attribute_id }}-{{ $value }}" class="">{{ $value }}</label>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
-                                <div class="buyer-protection-content">
-                                    <p>90-Day Buyer Protection</p>
-                                    <span>Money back guarantee</span>
+                            </div>
+    
+                            @endforeach
+                        @endif
+
+                            <!-- increament - decrement count button area -->
+                            <div class="ali-award-increment">
+                               <!--  <div class="increment-value">
+                                    <div id="left-value" class="mystyle">
+                                        <div class="right-value-img">
+                                            <img src="img/tk.png">
+                                        </div>
+                                        <h4>1445</h4>
+                                        <span id="oneplus">1 or more</span>
+                                    </div>
+                                    <div id="right-value">
+                                        <div class="right-value-img">
+                                            <img src="img/tk.png">
+                                        </div>
+                                        <h4 id="hundredplus">1394</h4>
+                                        <span>100 or more</span>
+                                    </div>
+                                </div> -->
+
+                                
+
+                                <div class="count-button nav justify-content-between">
+                                    <div class="count-model">
+                                        <h6>Brand</h6>
+                                        <span>{{__($detailedProduct->brand->name)}}</span>
+                                    </div>
+                                    <div class="count-price">
+                                        <h6>Price</h6>
+                                        @if(home_price($detailedProduct->id) != home_discounted_price($detailedProduct->id))
+                                            <span id="pricetoggle">
+                                                <del>{{ home_price($detailedProduct->id) }}</del>
+
+                                            </span><br>
+                                            <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
+                                        @else
+                                            <span id="dis_price">{{ home_discounted_price($detailedProduct->id) }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="count-qty">
+                                        <h6>QTY</h6>
+                                        <div class="quantity">
+                                            <button  class="btn minus-btn btnnumber" type="button" data-type="minus" data-field="quantity" disabled="disabled">-</button>
+
+                                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" placeholder="1" value="1" min="1" max="10">
+
+                                            <button id="plus" class="btn plus-btn btnnumber" type="button" data-type="plus" data-field="quantity">+</button>
+                                        </div>
+
+                                        <!--will calculate price---->
+                                        <p class="product-price" id="chosen_price_div">
+                                            <span id="chosen_price"></span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                           
+
+
+                            <div class="ali-award-color">
+
+                                @if (count(json_decode($detailedProduct->colors)) > 0)
+                                <div class="ali-award-color-text nav">
+                                    <span>Color:</span>
+                                </div>
+
+                                <div class="ali-award-color-item">
+                                    <ul>
+                                        @foreach (json_decode($detailedProduct->colors) as $key => $color)
+                                            <li>
+                                                <input type="radio" id="{{ $detailedProduct->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key == 0) checked @endif>
+                                                <label style="background: {{ $color }};" for="{{ $detailedProduct->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <!-- <div class="ali-award-shiping">
+                                    <h6>Shipping: US $76.59</h6>
+                                    <ul class="nav">
+                                        <li><a href="#">to Bangladesh via AliExpress Premium Shipping</a></li>
+                                        <li><a href="#"><i class="fas fa-angle-down"></i></a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="ali-award-delivery">
+                                    <ul class="nav">
+                                        <li><span>Estimated Delivery: </span></li>
+                                        <li>7-15</li>
+                                        <li><span>days</span></li>
+                                        <li><a href="#">?</a></li>
+                                    </ul>
+                                </div> -->
+
+                                @php
+                                    $qty = 0;
+                                    if($detailedProduct->variant_product){
+                                        foreach ($detailedProduct->stocks as $key => $stock) {
+                                            $qty += $stock->qty;
+                                        }
+                                    }
+                                    else{
+                                        $qty = $detailedProduct->current_stock;
+                                    }
+                                @endphp
+                            
+
+                                <div class="ali-button">
+                                    @if ($qty > 0)
+                                        <button class="btn btn-danger" onclick="buyNow(); return false;">Buy Now</button>
+                                        <button class="btn btn-warning" onclick="addToCart(); return false;">Add to Cart</button>
+                                    @else
+                                        <button type="button" class="btn btn-styled btn-base-3 btn-icon-left strong-700" disabled>
+                                            <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock')}}
+                                        </button>
+                                    @endif 
+                                    {{-- <button class="btn btn-light"><i class="far fa-heart"></i> 12.5K</button> --}}
+                                </div>
+
+
+
+
+                                <div class="buyer-protection nav">
+                                    <div class="buyer-protection-icon">
+                                        <ul>
+                                            <li><a href="#"><i class="fas fa-user-check"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="buyer-protection-content">
+                                        <p>90-Day Buyer Protection</p>
+                                        <span>Money back guarantee</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                    
                 </div>
                 <div class="col-lg-2 col-12">
                     <div class="right-side-content">
@@ -400,14 +462,20 @@
                                             </div>
                                             <h2 class="text-dark">{{ Str::limit($loveProduct->name,20) }}</h2>
                                             <h2 class="mtl_product_price">
-                                                {{ home_price($recommended_product->id)  }}
+                                                BDT {{ sprintf("%.2f",$loveProduct->unit_price) }}
                                             </h2>
-                                            @if ($loveProduct->num_of_sale > 0)
-                                            <div class="sale-info">
-                                                <span class="mtl_product_sale single_product_love d-block">{{ $loveProduct->num_of_sale }}&nbsp;Sold</span>
-                                            </div>
-                                                
+                                            @if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated)
+                                            <div class="club-point mt-2 bg-soft-base-1 border-light-base-1 border">
+                                                {{ translate('Club Point') }}:
+                                                    <span class="strong-700 float-right">{{ $loveProduct->earn_point }}</span>
+                                                </div>
                                             @endif
+                                            @if ($loveProduct->num_of_sale > 0)
+                                                <span class="mtl_product_sale d-block">{{ $loveProduct->num_of_sale }}&nbsp;sale</span>
+                                            @endif
+                                            <!-- @if ($loveProduct->shipping_type == 'free')
+                                            <span class="mtl_product_shipping d-block">Free Shipping</span>
+                                            @endif -->
                                         </a>
                                     </div>
                                 </div>
@@ -461,6 +529,7 @@
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
 <script>
+    
         $("#plus").click(function(){
             alert('dsafasf');
             var quantity =$("#quantity").val();
@@ -481,7 +550,7 @@
 
     });
     $("#minus").click(function(){
-        alert('hello world');
+        
 eTextRange();
                 range.moveToElementText(document.getElementById(containerid));
                 range.select().createTextRange();
@@ -495,9 +564,6 @@ eTextRange();
                 document.execCommand("Copy");
                 document.getElementById(containerid).style.display = "none";
 
-            }
-            showFrontendAlert('success', 'Copied');
-        }
 
         function show_chat_modal(){
             @if (Auth::check())
@@ -511,7 +577,10 @@ eTextRange();
 
 
 <script>
-
+    $(document).ready(function() {
+        getVariantPrice();
+    });
+    
     $(document).ready(function() {
         $('.category-nav-element').each(function(i, el) {
             $(el).on('mouseover', function(){
@@ -558,7 +627,7 @@ eTextRange();
     $('#search').on('focus', function(){
         search();
     });
-
+    
     function search(){
         var search = $('#search').val();
         if(search.length > 0){
@@ -589,7 +658,7 @@ eTextRange();
 
     function updateNavCart(){
         $.post('{{ route('cart.nav_cart') }}', {_token:'{{ csrf_token() }}'}, function(data){
-            $('#cart_items').html(data);
+            $('.cart-box').html(data);
         });
     }
 
@@ -706,6 +775,8 @@ eTextRange();
                    $('#modal-size').removeClass('modal-lg');
                    $('#addToCart-modal-body').html(data);
                    updateNavCart();
+                    // showFrontendAlert('success', 'Item has been added to cart');
+                    toastr.success('Item has been added to cart')
                    $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())+1);
                }
            });
@@ -768,11 +839,14 @@ eTextRange();
             $('.c-preloader').hide();
         });
     }
+    </script>
 
-    function cartQuantityInitialize(){
-        $('.btn-number').click(function(e) {
+{{-- Cart Increment ||  Decrement --}}
+<script>
+   
+        $('.btnnumber').click(function(e) {
             e.preventDefault();
-
+           
             fieldName = $(this).attr('data-field');
             type = $(this).attr('data-type');
             var input = $("input[name='" + fieldName + "']");
@@ -803,6 +877,8 @@ eTextRange();
             }
         });
 
+
+
         $('.input-number').focusin(function() {
             $(this).data('oldValue', $(this).val());
         });
@@ -815,20 +891,20 @@ eTextRange();
 
             name = $(this).attr('name');
             if (valueCurrent >= minValue) {
-                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+                $(".btnnumber[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
                 alert('Sorry, the minimum value was reached');
                 $(this).val($(this).data('oldValue'));
             }
             if (valueCurrent <= maxValue) {
-                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+                $(".btnnumber[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
                 alert('Sorry, the maximum value was reached');
                 $(this).val($(this).data('oldValue'));
             }
 
-
         });
+
         $(".input-number").keydown(function(e) {
             // Allow: backspace, delete, tab, escape, enter and .
             if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
@@ -842,42 +918,13 @@ eTextRange();
             // Ensure that it is a number and stop the keypress
             if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
                 e.preventDefault();
-            }
+            }                                                                                                                                                                                                                                                                                                                                               
         });
-    }
-
-     function imageInputInitialize(){
-         $('.custom-input-file').each(function() {
-             var $input = $(this),
-                 $label = $input.next('label'),
-                 labelVal = $label.html();
-
-             $input.on('change', function(e) {
-                 var fileName = '';
-
-                 if (this.files && this.files.length > 1)
-                     fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-                 else if (e.target.value)
-                     fileName = e.target.value.split('\\').pop();
-
-                 if (fileName)
-                     $label.find('span').html(fileName);
-                 else
-                     $label.html(labelVal);
-             });
-
-             // Firefox bug fix
-             $input
-                 .on('focus', function() {
-                     $input.addClass('has-focus');
-                 })
-                 .on('blur', function() {
-                     $input.removeClass('has-focus');
-                 });
-         });
-     }
-
+   
 </script>
+
+
+
 @endsection
 
 

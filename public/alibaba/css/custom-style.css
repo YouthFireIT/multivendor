@@ -1,0 +1,110 @@
+.cat-select{
+	border-radius: 0 !important;
+}
+.mtl_product_item{
+	height: 340px !important;
+}
+h2.mtl_product_price{
+	font-size: 14px !important;
+}
+.select2-container--default .select2-selection--single{
+	height: 40px !important;
+}
+.countdown .countdown-item {
+  display: inline-block;
+}
+
+.countdown .countdown-digit,
+.countdown .countdown-label {
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+}
+
+.countdown .countdown-label {
+  font-size: 1.2rem;
+  padding: 0 10px;
+}
+
+.countdown-sm .countdown-digit,
+.countdown-sm .countdown-label {
+  font-size: 1.4rem;
+}
+
+.countdown-sm .countdown-label {
+  font-size: 0.875rem;
+  padding: 0 10px;
+}
+
+[data-countdown-label="hide"] .countdown-label:not(.countdown-days) {
+  display: none;
+}
+
+[data-countdown-label="show"] .countdown-separator {
+  display: none;
+}
+
+.countdown--style-1 .countdown-item {
+  margin-right: 5px;
+}
+
+.countdown--style-1 .countdown-item:last-child {
+  margin-right: 0;
+}
+
+.countdown--style-1 .countdown-digit {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #af0b0b;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 40px;
+  font-family: "Open Sans", sans-serif;
+
+}
+
+.countdown--style-1 .countdown-label {
+  display: block;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.countdown--style-1-v1 .countdown-digit {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+.item-black{
+	color: #000;
+	font-size: 17px !important;
+	font-weight: 600;
+  	font-family: "Open Sans", sans-serif;
+}
+.cat-feature-bg{
+	padding: 24px 20px 0 !important;
+    font-size: 19px !important;
+    color: #fff !important;
+    width: 210px !important;
+    font-weight: 900 !important;
+    font-family: "Open Sans", sans-serif !important;
+    overflow: hidden !important;
+    
+    background: #000;
+    opacity: 0.9;
+    border-radius: 0px 5px 5px 0px !important;
+
+}
+.empty-record{
+	color: #000;
+	font-weight: 800;
+	font-family: "Open Sans", sans-serif;
+}
+.checkbox-alphanumeric input:checked ~ label{
+  border: 1px solid #ff0000;
+}

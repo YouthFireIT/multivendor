@@ -38,7 +38,7 @@ class HomeController extends Controller
         if(Auth::check()){
             return redirect()->route('home');
         }
-        return view('frontend.user_login');
+        return view('frontend.alibaba.auth.user_login');
     }
 
     // public function registration(Request $request)
@@ -802,7 +802,7 @@ class HomeController extends Controller
         if(Auth::check()){
             return redirect()->route('home');
         }
-        return view('frontend.alibaba.seller_login');
+        return view('frontend.alibaba.auth.seller_login');
     }
 
     public function registration(Request $request)
@@ -813,34 +813,48 @@ class HomeController extends Controller
         if($request->has('referral_code')){
             Cookie::queue('referral_code', $request->referral_code, 43200);
         }
-        return view('frontend.alibaba.user_registration');
+        return view('frontend.alibaba.auth.user_registration');
         // return view('frontend.user_registration');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        
         $flashDealProducts = DB::table('flash_deal_products')
             ->join('products', 'flash_deal_products.product_id', '=', 'products.id')
             ->join('flash_deals', 'flash_deal_products.flash_deal_id', '=', 'flash_deals.id')
-            ->select('flash_deal_products.*', 'products.*','products.slug as product_slug', 'flash_deals.*')
+            ->select('flash_deal_products.*', 'flash_deal_products.discount_type as discount_type_flash' ,'products.slug as product_slug', 'products.id', 'products.discount_type as pro_discount_type', 'products.thumbnail_img as flash_deal_img', 'products.name', 'products.unit_price', 'flash_deals.*')
             ->where('products.featured', 1)
             ->limit(5)
             ->get();
+        
         $allCategory = Category::get();
 
         $topRankingProducts = DB::table('products')->select('*')->where('featured', 1)->orderBy('num_of_sale', 'desc')->get();
         $newArrivalProducts = DB::table('products')->select('*')->where('featured', 1)->orderBy('id', 'desc')->get()->take(4);
         $featuredBrands = DB::table('brands')->select('*')->where('is_featured', 1)->orderBy('id', 'desc')->get()->take(2);
         $featuredCategories = DB::table('categories')->select('*')->where('featured', 1)->orderBy('id', 'desc')->get();
-        $loveProducts = DB::table('products')->select('*')->where('featured', 1)->inRandomOrder()->limit(12)->get();
+        $loveProducts = DB::table('products')->select('*')->where('featured', 1)->
+        orderBy('id','desc')->paginate(12);
         $topSelectionProducts = DB::table('products')->select('*')->where('featured', 1)->inRandomOrder()->take(4)->get();
+
+        // ----------------Ajax Pagination start here for loveproducts-----------
+        if ($request->ajax()) {
+            $view = view('frontend.alibaba.randomLoveProducts',compact('loveProducts'))->render();
+            return response()->json(['html'=>$view]);
+        }
+        // -------------------End of ajax pagination for loveproducts-------------
         return view('frontend.alibaba.index', compact('flashDealProducts', 'topRankingProducts', 'newArrivalProducts', 'featuredBrands', 'featuredCategories','allCategory', 'loveProducts', 'topSelectionProducts'));
     }
 
     public function fetch_random_products()
-    {
-        $loveProducts = DB::table('products')->select('*')->where('featured', 1)->inRandomOrder()->limit(12)->get();
-        return view('frontend.alibaba.randomLoveProducts', compact('loveProducts'));
+    {   
+        
+       
+         $loveProducts = DB::table('products')->select('*')->where('featured', 1)->inRandomOrder()->limit(12)->get();
+
+        // return view('my-post',compact('posts'));
+       return view('frontend.alibaba.randomLoveProducts', compact('loveProducts'));
     }
 
 

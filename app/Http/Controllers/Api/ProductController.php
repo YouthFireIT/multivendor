@@ -19,16 +19,17 @@ class ProductController extends Controller
 {
     public function index()
     {
+        
         return new ProductCollection(Product::latest()->paginate(10));
     }
 
     public function show($id)
-    {
+    {   
         return new ProductDetailCollection(Product::where('id', $id)->get());
     }
 
     public function admin()
-    {
+    {   
         return new ProductCollection(Product::where('added_by', 'admin')->latest()->paginate(10));
     }
 
@@ -219,4 +220,5 @@ class ProductController extends Controller
     {
         return new ProductCollection(Product::inRandomOrder()->take(50)->get());
     }
+
 }

@@ -87,6 +87,7 @@ Route::post('/cart/updateQuantity', 'CartController@updateQuantity')->name('cart
 
 //Checkout Routes
 Route::group(['middleware' => ['checkout']], function(){
+	Route::get('/checkout/index', 'CheckoutController@index')->name('checkout.index');
 	Route::get('/checkout', 'CheckoutController@get_shipping_info')->name('checkout.shipping_info');
 	Route::any('/checkout/delivery_info', 'CheckoutController@store_shipping_info')->name('checkout.store_shipping_infostore');
 	Route::post('/checkout/payment_select', 'CheckoutController@store_delivery_info')->name('checkout.store_delivery_info');

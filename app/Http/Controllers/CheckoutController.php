@@ -30,17 +30,59 @@ class CheckoutController extends Controller
         //
     }
 
+    //Checkout page
+    public function index(){
+        return view('frontend.alibaba.checkout');
+    }
+
     //check the selected payment gateway and redirect to that controller accordingly
     public function checkout(Request $request)
     {
+       
+        
         
         if ($request->payment_option != null) {
+
+            if (Auth::check()) {
+                if($request->address_id == null){
+                    flash("Please add shipping address")->warning();
+                    return back();
+                }
+                $address = Address::findOrFail($request->address_id);
+                $data['name'] = Auth::user()->name;
+                $data['email'] = Auth::user()->email;
+                $data['address'] = $address->address;
+                $data['country'] = $address->country;
+                $data['city'] = $address->city;
+                $data['postal_code'] = $address->postal_code;
+                $data['phone'] = $address->phone;
+                $data['checkout_type'] = $request->checkout_type;
+            }
+            else {
+                $data['name'] = $request->name;
+                $data['email'] = $request->email;
+                $data['address'] = $request->address;
+                $data['country'] = $request->country;
+                $data['city'] = $request->city;
+                $data['postal_code'] = $request->postal_code;
+                $data['phone'] = $request->phone;
+                $data['checkout_type'] = $request->checkout_type;
+            }
+    
+            $shipping_info = $data;
+            $request->session()->put('shipping_info', $shipping_info);
 
             $orderController = new OrderController;
             $orderController->store($request);
             // dd($orderController);
             $request->session()->put('payment_type', 'cart_payment');
             
+           
+    
+            $data = $request->session()->get('order_id');
+            return  $data;
+
+
 
             if($request->session()->get('order_id') != null){
                 // dd("jfhk");
@@ -320,6 +362,7 @@ class CheckoutController extends Controller
             return redirect()->route('home');
         }
     }
+
 
     public function get_payment_info(Request $request)
     {

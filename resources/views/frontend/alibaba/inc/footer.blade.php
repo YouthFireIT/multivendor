@@ -163,7 +163,6 @@
 </section>
 
 <!-- fotter widget thress -->
-<div class="fw2_bottom_space"></div>
 <section id="fotter_widget_three" style="background: #E8E8E8 !important;">
     <div class="container p-0">
         <div class="row">
@@ -227,7 +226,7 @@
             <a href="" class="">Terms of Use</a>&nbsp;-
             <a href="" class="">User Information Legal Enquiry Guide</a>
             <span class="">
-                ©️2010-2020 AliExpress.com. All rights reserved.
+                ©️{{date('Y')}} Copyrights. All rights reserved.
             </span>
         </p>
     </div>

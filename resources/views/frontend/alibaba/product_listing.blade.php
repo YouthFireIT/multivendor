@@ -311,7 +311,7 @@
                                 <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-4 col-6">
                                     <div class="product-box-2 bg-white alt-box my-md-2">
                                         <div class="position-relative overflow-hidden">
-                                            <a href="{{ route('product', $product->slug) }}" class="d-block product-image h-100 text-center" tabindex="0">
+                                            <a href="{{ route('single.product', $product->slug) }}" class="d-block product-image h-100 text-center" tabindex="0">
                                                 <img class="img-fit lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($product->thumbnail_img) }}" alt="{{  __($product->name) }}">
                                             </a>
                                             <div class="product-btns clearfix">

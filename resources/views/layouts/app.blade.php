@@ -57,12 +57,14 @@
 
     <!--Custom Stylesheet [ REQUIRED ]-->
     <link href="{{ my_asset('css/custom.css')}}" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CQuicksand:300,400,500,700" rel="stylesheet">
+    @yield('custom_css')
 
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
     <!--jQuery [ REQUIRED ]-->
+    
     <script src=" {{my_asset('js/jquery.min.js') }}"></script>
 
 
@@ -117,7 +119,7 @@
 
     <!--Custom JavaScript [ REQUIRED ]-->
     <script src="{{ my_asset('js/custom.js')}}"></script>
-
+    @yield('custom_js')
     <script type="text/javascript">
 
         $( document ).ready(function() {
