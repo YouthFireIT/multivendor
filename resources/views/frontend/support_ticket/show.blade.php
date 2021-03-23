@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+@extends('frontend.seller.layouts.app')
 
 @section('content')
 <section class="gry-bg py-4 profile">
@@ -29,7 +29,11 @@
                                         <input type="hidden" name="ticket_id" value="{{$ticket->id}}">
                                         <input type="hidden" name="user_id" value="{{$ticket->user_id}}">
                                         <div class="form-group">
-                                            <textarea class="form-control editor" name="reply" placeholder="{{ translate('Type your reply') }}" data-buttons="bold,underline,italic,|,ul,ol,|,paragraph,|,undo,redo"></textarea>
+                                            @error('reply')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                            <textarea class="form-control editor @error('reply') is-invalid @enderror" name="reply" placeholder="{{ translate('Type your reply') }}" data-buttons="bold,underline,italic,|,ul,ol,|,paragraph,|,undo,redo"></textarea>
+
                                         </div>
                                         <div class="form-group">
                                             <input type="file" name="attachments[]" id="file-2" class="custom-input-file custom-input-file--2" data-multiple-caption="{count} files selected" multiple />
