@@ -317,8 +317,6 @@
                 <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
             </div>
             @endif
-
-
         </div>
     </div>
 </div>
@@ -361,7 +359,7 @@
                                 <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{ translate('Forgot password?')}}</a>
                             </div>
                             <div class="col-md-6 text-right">
-                                <button type="submit" class="btn btn-styled btn-base-1 px-4">{{ translate('Sign in')}}</button>
+                                <button type="submit" class="btn btn-danger">{{ translate('Sign in')}}</button>
                             </div>
                         </div>
                     </form>
@@ -447,7 +445,7 @@
         }
     
         function showCheckoutModal(){
-            $('#exampleModal').modal();
+            $('#GuestCheckout').modal();
         }
         </script>
 
@@ -495,8 +493,10 @@
         $.post('{{ route('cart.removeFromCart') }}', {_token:'{{ csrf_token() }}', key:key}, function(data){
             updateNavCart();
             $('#cart-summary').html(data);
-            showFrontendAlert('success', 'Item has been removed from cart');
+            //showFrontendAlert('success', 'Item has been removed from cart');
+            //toastr.success('Item has been removed from cart')
             $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
+            location.reload();
         });
     }
 
