@@ -1,11 +1,6 @@
 @extends('frontend.alibaba.layouts.app')
 @section('title','Cart ')
 @section('custom_css')
-
-
-
-
-
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/nicemenu.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/theme-001.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/owl.carousel.min.css">
@@ -93,7 +88,7 @@
                 </div> --}}
 
                 @if (Session::has('cart'))
-                <div class="shopping-cart-content mt-3" id="removesec">
+                <div class="shopping-cart-content" id="removesec">
                     
                     <div class="susan-fashion nav">
                         <div class="store">
@@ -137,7 +132,10 @@
                         </div>
 
                         <div class="shopping-cart-para">
-                            <p>{{ $product_name_with_choice }}</p>
+                            <p>{{ $product->name }}</p>
+                            @if($cartItem['variant'] !=null)
+                            <p>Color: <span>{{$cartItem['variant']}}</span></p>
+                            @endif
                             {{-- <ul class="nav">
                                 <li><p>Color:</p></li>
                                 <li>G4000 Blue</li>
@@ -314,7 +312,7 @@
             @include('frontend.alibaba.partials.cart_summery')
             @else
             <div class="dc-header">
-                <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
+                <h3 class="heading heading-6 strong-700 text-center" >{{ translate('Your Cart is empty')}}</h3>
             </div>
             @endif
         </div>

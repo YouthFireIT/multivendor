@@ -58,12 +58,13 @@
                                 class="fas fa-sort-down"></i></a>
                         <ul class="dropdown_menu">
                             <li class=""><a href="{{ route('logout') }}" class="">Logout</a></li>
-                            <li class=""><a href="#" class="">My Orders</a></li>
-                            <li class=""><a href="#" class="">Message Center</a></li>
-                            <li class=""><a href="#" class="">Wish List</a></li>
-                            <li class=""><a href="#" class="">My Favorite Stores</a></li>
+                            <li class=""><a href="{{ route('dashboard') }}" class="">Go to dashboard</a></li>
+                            <li class=""><a href="{{url('purchase_history')}}" class="">My Orders</a></li>
+                            <li class=""><a href="{{url('conversations')}}" class="">Message Center</a></li>
+                            <li class=""><a href="{{url('wishlists')}}" class="">Wish List</a></li>
+                            <!-- <li class=""><a href="#" class="">My Favorite Stores</a></li>
                             <li class=""><a href="" class="">My Coupons</a></li>
-                            <li class=""><a href="" class="">Invite friends to give US $24</a></li>
+                            <li class=""><a href="" class="">Invite friends to give US $24</a></li> -->
                         </ul>
                     </li>
                 @endauth

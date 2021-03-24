@@ -108,3 +108,39 @@ h2.mtl_product_price{
 .checkbox-alphanumeric input:checked ~ label{
   border: 1px solid #ff0000;
 }
+.fw1_text_wrap{
+  line-height: 1 !important;
+}
+.ali-award-color .ali-award-color-item ul li{
+  margin-right: 0px !important;
+}
+.checkbox-color input:checked ~ label:after {
+    content: "\f17b" !important;
+    font-family: "LineAwesome" !important;
+}
+.quantity .minus-btn1, .quantity .plus-btn1{
+  background: #c5c5c5 !important; 
+}
+.quantity button{
+  height: 30px !important;
+  width: 30px !important;
+}
+.quantity input{
+  border: none !important;
+  width: 50px !important ;
+  height: 30px !important;
+  color: #2e9cc3 !important;
+  font-size: 14px !important;
+}
+.shopping-cart-img{
+  height: 100px !important;
+  width: 100px !important;
+  margin-right: 10px !important;
+}
+.shopping-cart-para{
+  width: 500px !important;
+}
+.shopping-cart-para p{
+  width: 495px !important;
+  overflow: hidden !important;
+}

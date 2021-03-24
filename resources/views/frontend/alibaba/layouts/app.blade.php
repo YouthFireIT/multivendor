@@ -14,6 +14,8 @@
 
      
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/line-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.sproducts_page.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
@@ -33,6 +35,7 @@
     <!-- mega menu and banner end -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" href="{{ asset('alibaba') }}/images/icon.png" sizes="16x16">
+    
     <!-- ======font awesome kit====== -->
     <!-- <link rel="stylesheet" href="css/fontawesome-free/css/all.css" /> -->
     <script src="https://kit.fontawesome.com/aca266facc.js" crossorigin="anonymous"></script>
