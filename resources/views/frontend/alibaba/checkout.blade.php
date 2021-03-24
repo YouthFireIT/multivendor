@@ -125,7 +125,7 @@
                                         </div>
                                     </div>
 
-                                    
+
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -136,7 +136,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                   
+
                                     <button type="submit" class="btn btn-primary">{{  translate('Save') }}</button>
                                 </form>
                             </div>
@@ -145,7 +145,7 @@
                 </div>
             </div>
 
-                
+
                 {{-- Shipping Address  --}}
                 <form action="{{ route('payment.checkout') }}" class="form-default" data-toggle="validator" role="form" method="POST" id="checkout-form">
                     @csrf
@@ -255,9 +255,9 @@
                     </div>
                 @endif
 
-                
 
-            
+
+
             <div class="payment-methods">
                 <p class="main-title">Payment Methods</p>
                 <div class="card-body text-center">
@@ -434,7 +434,7 @@
                     //     $str = $choice->name; // example $str =  choice_0
                     //     $product_name_with_choice .= ' - '.$cartItem[$str];
                     // }
-                    @endphp 
+                    @endphp
 
                     <div class="row">
                         <div class="col-2 product-image">
@@ -526,20 +526,19 @@
     <script src="{{ my_asset('frontend/js/active-shop.js') }}"></script>
     <script src="{{ my_asset('frontend/js/main.js') }}"></script>
 
-
     <script type="text/javascript">
         function removeFromCartView(e, key){
             e.preventDefault();
             removeFromCart(key);
         }
-    
+
         function updateQuantity(key, element){
             $.post('{{ route('cart.updateQuantity') }}', { _token:'{{ csrf_token() }}', key:key, quantity: element.value}, function(data){
                 updateNavCart();
                 $('#cart-summery').html(data);
             });
         }
-    
+
         function showCheckoutModal(){
             $('#exampleModal').modal();
         }
@@ -550,7 +549,7 @@
     $(document).ready(function(){
         getVariantPrice();
     });
-    
+
     function search(){
         var search = $('#search').val();
         if(search.length > 0){
@@ -768,7 +767,7 @@
 <script>
     $('.btnnumber').click(function(e) {
         e.preventDefault();
-       
+
         fieldName = $(this).attr('data-field');
         type = $(this).attr('data-type');
         var input = $("input[name='" + fieldName + "']");
@@ -840,7 +839,7 @@
         // Ensure that it is a number and stop the keypress
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
-        }                                                                                                                                                                                                                                                                                                                                               
+        }
     });
 
 </script>
