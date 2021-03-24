@@ -11,6 +11,7 @@ class ProductCollection extends ResourceCollection
         return [
             'data' => $this->collection->map(function($data) {
                 return [
+                    'id' => $data->id,
                     'name' => $data->name,
                     'photos' => json_decode($data->photos),
                     'thumbnail_image' => $data->thumbnail_img,

@@ -211,7 +211,6 @@
                                 </div>
                             </div>
                         </div>
-
                         @php
 
                         $flash_deal = \App\FlashDeal::where('status', 1)->where('featured', 1)->first();
@@ -230,7 +229,6 @@
                                 dd($outputString);
                         @endphp --}}
 <!-- 
-
                         <div class="banner-slider-3">
 
                             @if($flash_deal != null && strtotime(date('d-m-Y')) >= $flash_deal->start_date && strtotime(date('d-m-Y')) <= $flash_deal->end_date)
@@ -281,7 +279,6 @@
             </div>
         </div>
     </section>
-
     <section class="mt-5 mb-5">
         <div class="container">
             <div class="row">
@@ -813,12 +810,6 @@
         </div>
     </section>
 
-
-
-
-
-
-
 <!-- More To Love -->
     <section id="more_to_love">
         <div class="container p-0">
@@ -830,9 +821,7 @@
                         <div class="__mlh"></div>
                     </div>
                 </div>
-            </div>
-
-           
+            </div>      
 
             <div id="loveProducts" class="row mt-3">
                 @include('frontend.alibaba.randomLoveProducts')
