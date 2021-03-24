@@ -92,7 +92,7 @@
                     </div>
                 </div> --}}
 
-                @if (Session::has('cart'))
+                @if (count(Session::get('cart')) > 0)
                 <div class="shopping-cart-content mt-3" id="removesec">
                     
                     <div class="susan-fashion nav">
@@ -311,6 +311,7 @@
                     </div>
                 </div>  --}}
             </div>
+        
             @include('frontend.alibaba.partials.cart_summery')
             @else
             <div class="dc-header">
@@ -493,8 +494,8 @@
         $.post('{{ route('cart.removeFromCart') }}', {_token:'{{ csrf_token() }}', key:key}, function(data){
             updateNavCart();
             $('#cart-summary').html(data);
-            //showFrontendAlert('success', 'Item has been removed from cart');
-            toastr.success('Item has been removed from cart')
+            showFrontendAlert('success', 'Item has been removed from cart');
+            //toastr.success('Item has been removed from cart')
             $('#cart_items_sidenav').html(parseInt($('#cart_items_sidenav').html())-1);
             location.reload();
         });
