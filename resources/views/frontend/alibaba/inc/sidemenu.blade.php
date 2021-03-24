@@ -5,7 +5,7 @@
     <nav class="navbar-wrap">
         <div class="container">
             <div class="row">
-                
+
                 <div class="col-lg-2">
                     <a class="navbar-brand p-0" href="{{ route('home') }}">
                         <img src="{{ my_asset($generalsetting->logo) }}" alt="dora" style="width: 150px;height: 55px;" >
@@ -13,10 +13,10 @@
                         <!-- <span>Smarter Shopping, Better Living!</span> -->
                     </a>
                 </div>
- 
+
                 <div class="col-lg-1">
                    @yield('scroll_menu')
-                </div> 
+                </div>
 
                 <div class="col-lg-7 col-4 position-static pl-0">
                         <div class="d-flex w-100">
@@ -43,7 +43,7 @@
                                                 @endforeach
                                             </select>
                                         </div> -->
-                                        
+
                                         <button style="background-color: #ff4747;" class="d-none d-lg-block" type="submit">
                                             <i class="fas fa-search"></i>
                                         </button>
@@ -59,9 +59,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form> 
+                                </form>
                             </div>
- 
+
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                             @else
                             <span class="cart_items_sidenav cart-number">0</span>
                             @endif
-                         
+
                         </a>
                     </div>
                 </div>

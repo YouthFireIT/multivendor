@@ -1,6 +1,6 @@
 <div class="header bg-white">
     <!-- Top Bar -->
-    <div class="top-navbar">
+    <div class="top-navbar" id="topNavbar">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col">
@@ -457,7 +457,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        
+
                                         <button class="d-none d-lg-block" type="submit">
                                             <i class="la la-search la-flip-horizontal"></i>
                                         </button>

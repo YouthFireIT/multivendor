@@ -226,17 +226,17 @@
                             </span>
                         </a>
                     </li>
-                @endif
+                @endif --}}
                 @if ($club_point_addon != null && $club_point_addon->activated == 1)
                     <li>
                         <a href="{{ route('earnng_point_for_user') }}" class="{{ areActiveRoutesHome(['earnng_point_for_user'])}}">
                             <i class="la la-dollar"></i>
                             <span class="category-name">
-                                {{ translate('Earning Points')}}
+                                Club Points
                             </span>
                         </a>
                     </li>
-                @endif --}}
+                @endif
                 @php
                     $support_ticket = DB::table('tickets')
                                 ->where('client_viewed', 0)

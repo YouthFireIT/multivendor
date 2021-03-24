@@ -22,7 +22,7 @@
                     </a>
                 </li>
 
-                @if(\App\BusinessSetting::where('type', 'classified_product')->first()->value == 1)
+                {{-- @if(\App\BusinessSetting::where('type', 'classified_product')->first()->value == 1)
                 <li>
                     <a href="{{ route('customer_products.index') }}" class="{{ areActiveRoutesHome(['customer_products.index', 'customer_products.create', 'customer_products.edit'])}}">
                         <i class="la la-diamond"></i>
@@ -31,7 +31,7 @@
                         </span>
                     </a>
                 </li>
-                @endif
+                @endif --}}
                 @php
                     $delivery_viewed = App\Order::where('user_id', Auth::user()->id)->where('delivery_viewed', 0)->get()->count();
                     $payment_status_viewed = App\Order::where('user_id', Auth::user()->id)->where('payment_status_viewed', 0)->get()->count();
@@ -114,7 +114,7 @@
                         <a href="{{ route('earnng_point_for_user') }}" class="{{ areActiveRoutesHome(['earnng_point_for_user'])}}">
                             <i class="la la-dollar"></i>
                             <span class="category-name">
-                                {{translate('Earning Points')}}
+                                Club Points
                             </span>
                         </a>
                     </li>

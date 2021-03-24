@@ -153,7 +153,14 @@ class SupportTicketController extends Controller
     }
 
     public function seller_store(Request $request)
-    {
+    {   
+        $validated = $request->validate([
+        'reply' => 'required|min:10|max:1000',
+        ],[
+            'reply.required' => 'Message Requried',
+            'reply.min' => 'Message Length At least 10 Characters',
+            'reply.max' => 'Maximum Message length is 1000 characters',
+        ]);
         $ticket_reply = new TicketReply;
         $ticket_reply->ticket_id = $request->ticket_id;
         $ticket_reply->user_id = $request->user_id;

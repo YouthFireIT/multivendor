@@ -298,11 +298,11 @@ input:checked + .toggle-switch-slider:before,
 
 
 .bg-soft-base-1{
-    background-color: rgba(230, 46, 4, .1) !important; 
+    background-color: rgba(230, 46, 4, .1) !important;
 }
 
 .bg-light-base-1{
-    background-color: rgba(230, 46, 4, .2) !important; 
+    background-color: rgba(230, 46, 4, .2) !important;
 }
 
 
@@ -423,7 +423,7 @@ a > .feature--boxed-border:hover,
 
     .tabs .nav-pills.nav-pills--rounded .active .nav-pill .nav-pill-circle,
     .tabs .nav-pills.nav-pills--rounded a.active:hover .nav-pill .nav-pill-circle
-    
+
     {
         background: #e62e04;
     }
@@ -459,7 +459,7 @@ a > .feature--boxed-border:hover,
     .navbar-aside .navbar-expand-lg .navbar-nav .nav-link:focus,
     .navbar-aside .navbar-expand-lg .navbar-nav .show .nav-link,
     .navbar-aside .navbar-expand-lg .navbar-nav .show .nav-link:hover
-    
+
     {
         color: #e62e04;
     }
