@@ -32,12 +32,14 @@
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/style.sproducts_page.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('alibaba') }}/css/s_products_responsive.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/jquery.barCharts.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/style.s_product_last_part.css">
 <link rel="stylesheet" href="{{ asset('frontend') }}/css/active-shop.css">
+
 @endsection
 
 @section('scroll_menu')
@@ -251,11 +253,11 @@
                                 </div>
 
                                 <div class="ali-award-color-item">
-                                    <ul>
+                                    <ul class="list-inline checkbox-color mb-1">
                                         @foreach (json_decode($detailedProduct->colors) as $key => $color)
                                             <li>
                                                 <input type="radio" id="{{ $detailedProduct->id }}-color-{{ $key }}" name="color" value="{{ $color }}" @if($key == 0) checked @endif>
-                                                <label style="background: {{ $color }};" for="{{ $detailedProduct->id }}-color-{{ $key }}" data-toggle="tooltip"></label>
+                                                <label style="background: {{ $color }};" for="{{ $detailedProduct->id }}-color-{{ $key }}" data-toggle="tooltip"> </label>
                                             </li>
                                         @endforeach
                                     </ul>

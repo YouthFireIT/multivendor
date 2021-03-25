@@ -1,11 +1,6 @@
 @extends('frontend.alibaba.layouts.app')
 @section('title','Cart ')
 @section('custom_css')
-
-
-
-
-
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/nicemenu.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/theme-001.css">
 <link rel="stylesheet" href="{{ asset('alibaba') }}/css/owl.carousel.min.css">
@@ -137,7 +132,10 @@
                         </div>
 
                         <div class="shopping-cart-para">
-                            <p>{{ $product_name_with_choice }}</p>
+                            <p>{{ $product->name }}</p>
+                            @if($cartItem['variant'] !=null)
+                            <p>Color: <span>{{$cartItem['variant']}}</span></p>
+                            @endif
                             {{-- <ul class="nav">
                                 <li><p>Color:</p></li>
                                 <li>G4000 Blue</li>

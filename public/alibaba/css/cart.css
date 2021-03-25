@@ -414,7 +414,6 @@ ul {
 .bars {
     width: 40px;
     height: 40px;
-    background-color: #efefef;
     border-radius: 5px;
     display: block;
     cursor: pointer;
@@ -1331,7 +1330,6 @@ h6 {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
-    margin-top: 10px;
 
 }
 

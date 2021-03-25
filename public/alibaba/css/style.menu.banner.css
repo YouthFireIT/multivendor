@@ -2,7 +2,6 @@
     height: 1000px;
 }
 
-
 a:hover {
     text-decoration: none;
 }
@@ -14,7 +13,6 @@ ul {
 .header-wrapper {
     position: relative;
     /* padding-top: 23px; */
-
     width: 100%;
     background-color: #fff;
     /* z-index: 99999; */
@@ -276,7 +274,9 @@ ul {
     text-decoration: none;
 }
 
+
 /******************** nice menu css ********************/
+
 .nicemenu {
     position: relative;
     display: block;
@@ -431,49 +431,62 @@ ul {
 .margin-3 {
     margin-top: 8px;
 }
+
 .margin-9 {
     margin-top: 4px;
 }
+
 .margin-10,
 .margin-11 {
     margin-top: 26px;
 }
+
 .margin-15 {
     margin-top: 26px;
 }
+
 .margin-17 {
     margin-top: 26px;
 }
+
 .margin-19 {
     margin-top: 47px;
 }
+
 .margin-21 {
     margin-top: 23px;
 }
+
 .margin-23 {
     margin-top: 27px;
 }
+
 .margin-25 {
     margin-top: 78px;
 }
+
 .margin-26 {
     margin-top: 57px;
 }
+
 .margin-31,
 .margin-32 {
     margin-top: 22px;
 }
+
 .margin-34,
 .margin-35 {
     margin-top: 16px;
 }
+
 .margin-38 {
     margin-top: 26px;
 }
 
-.owl-carousel1 img{
+.owl-carousel1 img {
     border-radius: 10px;
 }
+
 .owl-carousel1 .owl-nav button.owl-next,
 .owl-carousel1 .owl-nav button.owl-prev {
     font-size: 40px;
@@ -489,37 +502,40 @@ ul {
     padding: 0;
     border: none;
 }
-.owl-carousel1 .owl-nav button.owl-prev{
+
+.owl-carousel1 .owl-nav button.owl-prev {
     left: 0px;
 }
-.owl-carousel1 .owl-nav button.owl-next{
+
+.owl-carousel1 .owl-nav button.owl-next {
     right: 0px;
 }
-.owl-carousel1 button.owl-dot{
-    background-color: rgba(0,0,0,.32);
+
+.owl-carousel1 button.owl-dot {
+    background-color: rgba(0, 0, 0, .32);
     width: 8px;
     height: 8px;
     border-radius: 50%;
     margin-right: 5px;
 }
 
-.owl-carousel1 button.owl-dot:focus{
+.owl-carousel1 button.owl-dot:focus {
     outline: none;
 }
-.owl-carousel1 button.owl-dot.active{
+
+.owl-carousel1 button.owl-dot.active {
     background: #ff4747;
     border-color: #fff;
-    animation: zoom .3s cubic-bezier(.86,0,.07,1);
+    animation: zoom .3s cubic-bezier(.86, 0, .07, 1);
 }
-.owl-carousel1 .owl-dots{
+
+.owl-carousel1 .owl-dots {
     position: absolute;
     bottom: 12px;
     left: 275px;
 }
 
-
-
-.banner-bottom-slider{
+.banner-bottom-slider {
     background: url(images/slider-img/banner-bottom-slider-bg.webp) 0px 0px / cover no-repeat rgb(255, 245, 245);
     width: 100%;
     height: 180px;
@@ -530,52 +546,62 @@ ul {
     /* align-items: center; */
     margin-top: 20px;
 }
-.bottom-slider-left{
+
+.bottom-slider-left {
     position: relative;
 }
-.bottom-slider-left h3{
+
+.bottom-slider-left h3 {
     font-size: 14px;
     line-height: 22px;
     font-weight: 900;
     margin: 4px 0;
     color: #FFF;
 }
-.bottom-slider-left p{
+
+.bottom-slider-left p {
     font-size: 13px;
     color: #FFF;
 }
-.bottom-slider-left img{
+
+.bottom-slider-left img {
     margin-top: 25px;
 }
-.bottom-slider-left .bottom-over-content{
+
+.bottom-slider-left .bottom-over-content {
     position: absolute;
     bottom: -11px;
     left: 26px;
 }
-.bottom-slider-left .bottom-over-content h3{
+
+.bottom-slider-left .bottom-over-content h3 {
     font-size: 20px;
     line-height: 17px;
     margin: 11px 0 4px;
     color: #fff;
     width: 100%;
 }
-.bottom-slider-left .bottom-over-content p{
+
+.bottom-slider-left .bottom-over-content p {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
     font-size: 12px;
     white-space: nowrap;
 }
-.owl-moritemes{
+
+.owl-moritemes {
     width: 100%;
     height: 140px!important;
     position: relative;
 }
-.owl-moritemes img{
+
+.owl-moritemes img {
     width: 100%;
     height: 140px!important;
 }
-.owl-moritemes .moritemes-span{
+
+.owl-moritemes .moritemes-span {
     position: absolute;
     bottom: 5px;
     left: 12px;
@@ -588,6 +614,7 @@ ul {
     padding: 2px 8px;
     display: inline-block;
 }
+
 .owl-carousel2 .owl-nav button.owl-next,
 .owl-carousel2 .owl-nav button.owl-prev {
     font-size: 40px;
@@ -603,23 +630,27 @@ ul {
     padding: 0;
     border: none;
 }
-.owl-carousel2 .owl-nav button.owl-prev{
+
+.owl-carousel2 .owl-nav button.owl-prev {
     left: 0px;
 }
-.owl-carousel2 .owl-nav button.owl-next{
+
+.owl-carousel2 .owl-nav button.owl-next {
     right: 0px;
 }
 
-.banner-slider-login{
+.banner-slider-login {
     height: 192px;
     background: #fff;
     padding: 16px;
     border-radius: 8px;
 }
-.banner-slider-2{
+
+.banner-slider-2 {
     display: none!important;
 }
-.banner-slider-login .login-img{
+
+.banner-slider-login .login-img {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -628,7 +659,8 @@ ul {
     cursor: pointer;
     margin-bottom: 10px;
 }
-.banner-slider-login .welcome-text{
+
+.banner-slider-login .welcome-text {
     font-size: 13px;
     color: #000;
     height: 18px;
@@ -639,14 +671,16 @@ ul {
     display: block;
     text-align: center;
 }
-.banner-slider-login .login-btn{
+
+.banner-slider-login .login-btn {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .banner-slider-login .join-btn,
-.banner-slider-login .sign-btn{
+.banner-slider-login .sign-btn {
     display: block;
     float: left;
     width: 75px;
@@ -658,12 +692,14 @@ ul {
     text-align: center;
     cursor: pointer;
 }
+
 .banner-slider-login .login-btn .img-text .img-fluid {
     width: 48px;
     height: 48px;
     display: inline-block;
 }
-.banner-slider-login .login-btn .img-text p{
+
+.banner-slider-login .login-btn .img-text p {
     height: 34px;
     position: relative;
     width: auto;
@@ -673,20 +709,24 @@ ul {
     width: 100%;
     text-align: center;
 }
-.banner-slider-login .sign-btn{
+
+.banner-slider-login .sign-btn {
     color: #666;
     background-color: #f9f9f9;
     text-align: center;
 }
-.slider-text1{
+
+.slider-text1 {
     display: flex;
 }
-.slider-text1 img{
+
+.slider-text1 img {
     display: inline-block;
     width: 15px;
     height: 15px;
 }
-.slider-text1 p{
+
+.slider-text1 p {
     font-size: 11px;
     margin-left: 5px;
     color: #000;
@@ -695,44 +735,51 @@ ul {
     margin-bottom: 0;
 }
 
-.timer{
+.timer {
     display: flex;
 }
-.myClass-hours{
+
+.myClass-hours {
     color: #ff4747;
     font-size: 14px;
     border-radius: 4px;
     background-color: #ffecec;
     margin-right: 5px;
 }
-.myClass-minutes{
+
+.myClass-minutes {
     color: #ff4747;
     font-size: 14px;
     border-radius: 4px;
     background-color: #ffecec;
     margin-right: 5px;
 }
-.myClass-seconds{
+
+.myClass-seconds {
     color: #ff4747;
     font-size: 14px;
     border-radius: 4px;
     background-color: #ffecec;
 }
-.countdown-slider{
-        margin-top: 16px;
-        height: 246px;
-        background: #fff;
-        padding: 12px;
-        border-radius: 8px;
+
+.countdown-slider {
+    margin-top: 16px;
+    height: 246px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 8px;
 }
+
 .counter-content {
     position: relative;
 }
-.counter-content .counter-img img{
+
+.counter-content .counter-img img {
     height: 85px;
     width: 100%;
 }
-.counter-content .counter-img p{
+
+.counter-content .counter-img p {
     position: absolute;
     background: #f90;
     border-radius: 6px 0 6px 0;
@@ -743,13 +790,15 @@ ul {
     font-weight: 700;
     padding: 0 4px;
 }
+
 .counter-content .counter-bottom-content p,
 .counter-content .counter-bottom-content span {
-        font-size: 13px;
-        font-weight: 700;
-        margin-top: 2px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 2px;
 }
-.counter-content .counter-bottom-content .progress{
+
+.counter-content .counter-bottom-content .progress {
     width: 100%;
     height: 8px;
     position: relative;
@@ -757,9 +806,9 @@ ul {
     background-color: #fafafa;
     border-radius: 6px;
 }
-.counter-content .counter-bottom-content .progress .progress-bar{
-    background-co
-}
+
+.counter-content .counter-bottom-content .progress .progress-bar {}
+
 .owl-carousel3 .owl-nav button.owl-next,
 .owl-carousel3 .owl-nav button.owl-prev {
     font-size: 40px;
@@ -783,6 +832,7 @@ ul {
 .owl-carousel3 .owl-nav button.owl-next {
     right: -12px;
 }
+
 .owl-carousel3 button.owl-dot {
     background-color: rgba(0, 0, 0, .32);
     width: 8px;
