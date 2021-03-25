@@ -92,7 +92,7 @@
                     </div>
                 </div> --}}
 
-                @if (count(Session::get('cart')) > 0)
+                @if (Session::has('cart'))
                 <div class="shopping-cart-content mt-3" id="removesec">
                     
                     <div class="susan-fashion nav">
@@ -314,8 +314,8 @@
         
             @include('frontend.alibaba.partials.cart_summery')
             @else
-            <div class="dc-header">
-                <h3 class="heading heading-6 strong-700">{{ translate('Your Cart is empty')}}</h3>
+            <div class="text-center py-5">
+                <h2 class="text-warning">{{ translate('Your Cart is empty')}}</h2>
             </div>
             @endif
         </div>

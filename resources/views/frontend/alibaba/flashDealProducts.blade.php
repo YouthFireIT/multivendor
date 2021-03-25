@@ -2,13 +2,14 @@
 
 @section('content')
 
-  <nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #38A4F8;">
+  <nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #ff6505;">
     <div class="container">
       <div class="collapse navbar-collapse" style="" id="navbarNav">
         <ul class="navbar-nav">
           @foreach(App\Category::where('featured', 1)->get() as $category)
           <li class="nav-item">
-            <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)">{{ $category->name }}</a>
+            <img style="width: 40px; height: 40px; margin-left: 40px;" src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt=""> 
+            <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)"> {{ $category->name }}</a>
           </li>
           @endforeach
         </ul>
@@ -16,7 +17,7 @@
     </div>
   </nav>
 
-  <section id="more_to_love">
+  <section style="margin-top: 87px;" id="more_to_love">
     <div class="container p-0">
         <div class="row">
             @foreach($flashDealProducts as $flashDealProduct)
