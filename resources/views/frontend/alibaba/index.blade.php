@@ -760,14 +760,14 @@
                                     <div class="col-8">
                                         <a href='{{url("search?category=")}}{{$featuredCategories[0]->id}}'>
                                             
-                                        <img src="{{ asset('alibaba') }}/{{ $featuredCategories[0]->icon }}" alt="" class="img-fluid cat_right_img_first">
+                                        <img src="{{ $featuredCategories[0]->icon }}" alt="" class="img-fluid cat_right_img_first">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         @if ($featuredCategories[1]->icon)
-                                            <img src="{{ asset('alibaba') }}/{{ $featuredCategories[1]->icon }}" alt="" class=" cat_right_img_last mb-2">
+                                            <img src="{{ $featuredCategories[1]->icon }}" alt="" class=" cat_right_img_last mb-2">
 
-                                            <img src="{{ asset('alibaba') }}/{{ $featuredCategories[2]->icon }}" alt="" class=" cat_right_img_last">
+                                            <img src="{{ $featuredCategories[2]->icon }}" alt="" class=" cat_right_img_last">
                                         @endif
                                     </div>
                                 </div>
