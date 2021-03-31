@@ -4,75 +4,7 @@
 @section('megamenu')
 <div class="container-bg">
     <div class="container">
-        <div class="mega-menu-part">
-            <div class="wrapper col-lg-3">
-                <div class="nicemenu verticle" data-pos="list.right" data-classes="active">
-                    <a class="bar-top-icon px-3" href="#">
-                        <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
-                        <span class="ml-2">Categories</span>
-                    </a>
-                    @foreach (\App\Category::all()->take(11) as $key => $category)
-                                @php
-                                    $brands = array();
-                                @endphp
-                    <div class="nicemenu-item">
-                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
-                        <div class="nicemenu-sub">
-
-                         {{--
-                        <div class="card">
-                            <ul class="sub-cat-items">
-                                <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->slug) }}">{{ __($subcategory->name) }}</a></li>
-                                @foreach ($subcategory->subsubcategories as $subsubcategory)
-                                    <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        --}}
-
-                            @foreach ($category->subcategories as $subcategory)
-                                <div class="w-3-1">
-                                    <a href="{{ route('products.subcategory', $subcategory->slug) }}"><h6>{{ __($subcategory->name) }}</h6></a>
-                                    @foreach ($subcategory->subsubcategories as $subsubcategory)
-                                    <a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a>
-                                    @endforeach
-                                    {{-- <a href="#" class="mega-footer-content margin-1">
-                                        <span>Summer Sale</span>
-                                        <img src="{{ asset('alibaba') }}/images/mega-menu-footer1.webp" alt="">
-                                    </a> --}}
-                                </div>
-                            @endforeach
-
-
-                        </div>
-
-                    </div>
-                    @endforeach
-
-                    {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
-                        <a href="{{ route('products.category', $category->slug) }}" target="_blank">
-                            <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
-                            <span class="cat-name">{{ __($category->name) }}</span>
-                        </a>
-                        @if(count($category->subcategories)>0)
-                            <div class="sub-cat-menu c-scrollbar">
-                                <div class="c-preloader">
-                                    <i class="fa fa-spin fa-spinner"></i>
-                                </div>
-                            </div>
-                        @endif
-                    </li> --}}
-
-                </div>
-            </div>
-            <div class="wrapper1">
-                <ul class="nav">
-                    <li><a href="#">Super value deals </a></li>
-                    <li><a href="#">Top rankings </a></li>
-                    <li><a href="#">Flash Deals </a></li>
-                </ul>
-            </div>
-        </div>
+        
     </div>
 </div>
 @endsection
@@ -125,6 +57,75 @@
 @section('content')
     <section class="banner-wrapper">
         <div class="container">
+            <div class="mega-menu-part">
+                <div class="wrapper col-lg-3">
+                    <div class="nicemenu verticle" data-pos="list.right" data-classes="active">
+                        <a class="bar-top-icon px-3" href="#">
+                            <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
+                            <span class="ml-2">Categories</span>
+                        </a>
+                        @foreach (\App\Category::all()->take(11) as $key => $category)
+                                    @php
+                                        $brands = array();
+                                    @endphp
+                        <div class="nicemenu-item">
+                            <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
+                            <div class="nicemenu-sub">
+    
+                             {{--
+                            <div class="card">
+                                <ul class="sub-cat-items">
+                                    <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->slug) }}">{{ __($subcategory->name) }}</a></li>
+                                    @foreach ($subcategory->subsubcategories as $subsubcategory)
+                                        <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            --}}
+    
+                                @foreach ($category->subcategories as $subcategory)
+                                    <div class="w-3-1">
+                                        <a href="{{ route('products.subcategory', $subcategory->slug) }}"><h6>{{ __($subcategory->name) }}</h6></a>
+                                        @foreach ($subcategory->subsubcategories as $subsubcategory)
+                                        <a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a>
+                                        @endforeach
+                                        {{-- <a href="#" class="mega-footer-content margin-1">
+                                            <span>Summer Sale</span>
+                                            <img src="{{ asset('alibaba') }}/images/mega-menu-footer1.webp" alt="">
+                                        </a> --}}
+                                    </div>
+                                @endforeach
+    
+    
+                            </div>
+    
+                        </div>
+                        @endforeach
+    
+                        {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
+                            <a href="{{ route('products.category', $category->slug) }}" target="_blank">
+                                <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
+                                <span class="cat-name">{{ __($category->name) }}</span>
+                            </a>
+                            @if(count($category->subcategories)>0)
+                                <div class="sub-cat-menu c-scrollbar">
+                                    <div class="c-preloader">
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                    </div>
+                                </div>
+                            @endif
+                        </li> --}}
+    
+                    </div>
+                </div>
+                <div class="wrapper1">
+                    <ul class="nav">
+                        <li><a href="#">Super value deals </a></li>
+                        <li><a href="{{url('top-rankging/products')}}">Top rankings </a></li>
+                        <li><a href="{{url('allFlash/products')}}">Flash Deals </a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-7 offset-lg-3">
                     <div class="banner-slider">
@@ -158,14 +159,14 @@
                             @php
                             $todays_deal = App\Product::where('published', 1)->where('todays_deal', 1 )->get();
                             @endphp
-                            <div class="col-lg-8">
-                                <div class="bottom-slider-right py-4">
+                            <div class="col-lg-9 rank-right">
+                                <div class="bottom-slider-right">
                                     <div class="owl-carousel owl-carousel2">
                                         @forelse ($topRankingProducts as $product)
                                             <div class="owl-moritemes">
                                                 <a href="{{ route('single.product', $product->slug) }}">
-                                                <img src="{{ my_asset($product->thumbnail_img) }}" alt="">
-                                                
+                                                    <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="top-rank-img">
+                                                    <p>{{substr($product->name,0,15)}}</p>
                                                 </a>
                                             </div>
                                             @empty
@@ -282,33 +283,27 @@
     </section>
 
 
+<<<<<<< HEAD
     <section class="mt-5 mb-5">
+=======
+    <section class="link-section">
+>>>>>>> 80b50bd8e39837127dd7ba2927d36f7cad6efa71
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid img-edit" style="width: 30px;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
         vertical-align: middle;
         position: relative;
         /* top: -1%; */
         /* bottom: -29%; */
-        right: 6%; 
+         
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (1).png" alt=""> Free Shipping</a>
                 </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width:30px; position: relative;right: 6%; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
     
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; 
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (3).png"" alt=""> Grocery</a> </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;top: -4%;" src="{{ asset('alibaba') }}/images/shipping (2).png" alt=""> Dora Mall</a> </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping (2).png" alt=""> Dora Mall</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
     
     
             </div>
@@ -473,80 +468,6 @@
     </section> --}}
 
 
-    <!-- Top Ranking -->
-    <section id="flash_deal">
-        <div class="container" style="max-height: 290px">
-            <div class="flash_deal_wrap">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="flash_deal_title">
-                            <div class="row">
-                                <div class="flash_deal_title_icon_wrap bg-warning">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="">Top Ranking</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="flash_deal_link">
-                            <a href="{{ route('topRankingProducts') }}" class="">View More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_wrap">
-                    <div class="owl-carousel owl-carousel-topranking">
-                        @foreach($allCategory as $category)
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                @php
-                                    $cSubcategory = App\SubCategory::where('category_id',$category->id)->get();
-                                @endphp
-                                @foreach($cSubcategory as $subcategory)
-                                    <div class="col-lg-4 bg-light pij-padd">
-                                        <div class="top-ranking-toppart">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="col-lg-8 p-0">
-                                                    <p class="pij-text1">{{ $subcategory->name }}</p>
-                                                    {{-- <span class="pij-text2">{{ $subcategory->meta_title }}</span> --}}
-                                                </div>
-                                                <div class="col-lg-4 p-0">
-                                                    <span class="pij-text3">top sale 2021</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @php
-                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('published', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
-                                        @endphp
-                                        <div class="top-ranking-bottompart">
-                                            <div class="d-flex justify-content-between">
-                                                @foreach( $sProduct as $key => $product)
-                                                <a href="{{ route('topRankingProducts') }}">
-                                                    <div class="col-lg-4 p-0 top-ranking-bottompart-img">
-                                                        <img src="{{ $product->thumbnail_img }}"
-                                                            alt="">
-                                                        <span>{{ single_price($product->unit_price) }}</span>
-                                                        <p class="{{ $key == 2 ?'pp-pij' : '' }}">&nbsp;</p>
-                                                        @if ($key == 0)
-                                                            <i>&nbsp;</i>
-                                                        @endif
-                                                    </div>
-                                                </a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- top selection & new arrival -->
     <section id="top_selection_and_new_arrival">
         <div class="container p-0">
             <div class="row">
@@ -797,14 +718,14 @@
                                     <div class="col-8">
                                         <a href='{{url("search?category=")}}{{$featuredCategories[0]->id}}'>
                                             
-                                        <img src="{{ asset('alibaba') }}/{{ $featuredCategories[0]->icon }}" alt="" class="img-fluid cat_right_img_first">
+                                        <img src="{{ $featuredCategories[0]->icon }}" alt="" class="img-fluid cat_right_img_first">
                                         </a>
                                     </div>
                                     <div class="col-4">
                                         @if ($featuredCategories[1]->icon)
-                                            <img src="{{ asset('alibaba') }}/{{ $featuredCategories[1]->icon }}" alt="" class=" cat_right_img_last mb-2">
+                                            <img src="{{ $featuredCategories[1]->icon }}" alt="" class=" cat_right_img_last mb-2">
 
-                                            <img src="{{ asset('alibaba') }}/{{ $featuredCategories[2]->icon }}" alt="" class=" cat_right_img_last">
+                                            <img src="{{ $featuredCategories[2]->icon }}" alt="" class=" cat_right_img_last">
                                         @endif
                                     </div>
                                 </div>

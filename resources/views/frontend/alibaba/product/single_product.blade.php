@@ -185,7 +185,7 @@
 
                             <!-- increament - decrement count button area -->
                             <div class="ali-award-increment">
-                               <!--  <div class="increment-value">
+                                <div class="increment-value">
                                     <div id="left-value" class="mystyle">
                                         <div class="right-value-img">
                                             <img src="img/tk.png">
@@ -200,7 +200,7 @@
                                         <h4 id="hundredplus">1394</h4>
                                         <span>100 or more</span>
                                     </div>
-                                </div> -->
+                                </div>
 
                                 
 

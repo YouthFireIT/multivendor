@@ -1,6 +1,6 @@
 <a href="{{route('cart')}}" class="cart">
-    <!-- <i class="fas fa-shopping-cart"></i> -->
-    <img src="{{ asset('alibaba') }}/images/cart.png" alt="">
+    <i class="fa fa-shopping-cart"></i>
+    <!-- <img src="{{ asset('alibaba') }}/images/cart.png" alt=""> -->
     @if(Session::has('cart'))
     <span class="cart_items_sidenav cart-number">{{ count(Session::get('cart'))}}</span>
     @else

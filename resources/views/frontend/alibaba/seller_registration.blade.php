@@ -1,4 +1,5 @@
 @extends('frontend.alibaba.layouts.app')
+@section('title','Become a Seller at DORA')
 @section('custom_css')
  <!-- fontawesome CSS -->
  <link rel="stylesheet" href="{{ asset('alibaba') }}/css/fontawesome-free/css/all.css" />
