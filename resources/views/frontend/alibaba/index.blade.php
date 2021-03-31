@@ -121,6 +121,7 @@
     </div>
 </div>
 @endsection
+
 @section('content')
     <section class="banner-wrapper">
         <div class="container">
@@ -138,34 +139,34 @@
                         </div>
                     </div>
 
-                    <!-- <div class="banner-bottom-slider">
+                    <div class="banner-bottom-slider">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="bottom-slider-left px-3">
-                                    <h3>Welcome newcomers! Todays Deal </h3>
-                                    {{-- <p>US $0.01 hot picks &amp; coupons</p>
-                                    <img class="img-fluid" src="{{ asset('alibaba') }}/images/slider-img/bottom-slider-bg.webp" alt="">
-                                    <div class="bottom-over-content">
-                                        <h3> US $3.00</h3>
-                                        <p>Get your coupon</p>
-                                    </div> --}}
+                                    <h3>Top Rankings</h3>
+                                    <p>Dora Official Ranking</p>
                                 </div>
+
+                                <a href="{{ route('topRankingProducts') }}">
+                                    <div style="margin-left: 20px;
+                                    margin-top: 62px;
+                                    color: #e2b306;">View more</div>
+                                </a>
+
                             </div>
+
                             @php
                             $todays_deal = App\Product::where('published', 1)->where('todays_deal', 1 )->get();
-
-
                             @endphp
                             <div class="col-lg-8">
                                 <div class="bottom-slider-right py-4">
                                     <div class="owl-carousel owl-carousel2">
-                                        @forelse ($todays_deal as $product)
+                                        @forelse ($topRankingProducts as $product)
                                             <div class="owl-moritemes">
                                                 <a href="{{ route('single.product', $product->slug) }}">
                                                 <img src="{{ my_asset($product->thumbnail_img) }}" alt="">
-                                                <span class="moritemes-span">{{ single_price($product->unit_price) }}</span>
+                                                
                                                 </a>
-
                                             </div>
                                             @empty
                                         @endforelse
@@ -174,7 +175,7 @@
                             </div>
 
                         </div>
-                    </div> -->
+                    </div> 
                 </div>
                 <div class="col-lg-2 p-0">
                     <div class="banner-slider-right">
@@ -279,6 +280,8 @@
             </div>
         </div>
     </section>
+
+
     <section class="mt-5 mb-5">
         <div class="container">
             <div class="row">
@@ -311,6 +314,40 @@
             </div>
         </div>
          </section>
+
+
+
+
+         <section id="more_to_loves">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="move_to_love">
+                            <div class="__mlh"></div>
+                            <div class="text-center __mlht">Deals By Category</div>
+                            <div class="__mlh"></div>
+                        </div>
+                    </div>
+                </div>      
+    
+                <div id="loveProductss" class="row mt-3">
+                    @foreach (\App\Category::all()->take(11) as $key => $category)
+                    <div class="col-lg-2 pb-1"> 
+                        <div class="mtl_product_item">
+                            <a href="" class="">
+                                <div class="mtl_product_item_img_wrap">
+                                    <img src="@if(!empty($category->banner)) {{ my_asset($category->banner) }} @endif" alt="" class="img-fluid c_center">
+                                </div>
+                                <h2 class="text-dark">{{$category->name}}</h2>
+                                {{-- <h2 class="mtl_product_price">
+                                   
+                                </h2> --}}
+                            </a>
+                        </div> 
+                     </div>
+                    @endforeach
+                </div>
+            </section>
 
 
     <!-- Flash Deal -->
@@ -829,8 +866,6 @@
             <div class="ajax-load text-center" id="paginateLoadRequest" style="display:none">
                 <p><img src="{{asset('alibaba/img/Loader.gif')}}" height="200" width="200"></p>
             </div>
-
-
         </div>
     </section>
    <!--  <section class="container-fluid">
@@ -849,6 +884,39 @@
         </div>
     </section> -->
 
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img style="width: 444px;" src="{{asset('alibaba/images/modal_header.webp')}}" alt="">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <a style="min-width: 200px;
+          padding: 7px 20px;
+          font-size: 16px;
+          border-radius: 48px;
+          text-align: center;
+          box-sizing: border-box;
+          cursor: pointer;
+          overflow: hidden;
+          background-image: linear-gradient(
+      94deg
+      , rgb(255, 10, 10) 0%, rgb(255, 117, 57) 100%);
+          color: rgb(255, 255, 255);">GET & USE NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
 @section('customjs')
 
@@ -856,7 +924,7 @@
     <script>
         
         $(document).ready(function(){
-            
+            $('#exampleModalCenter').modal('show')
         });
 
         // function fetch_random_product(){

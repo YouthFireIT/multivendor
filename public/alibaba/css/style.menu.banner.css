@@ -549,6 +549,7 @@ ul {
 
 .bottom-slider-left {
     position: relative;
+    top: 40px;
 }
 
 .bottom-slider-left h3 {

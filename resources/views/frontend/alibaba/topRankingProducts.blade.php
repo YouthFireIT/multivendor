@@ -2,19 +2,20 @@
 
 @section('content')
 
-  <nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #FF6505;">
-    <div class="container">
-      <div class="collapse navbar-collapse" style="" id="navbarNav">
-        <ul class="navbar-nav">
-          @foreach($allCategory as $category)
-          <li class="nav-item">
-            <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)">{{ $category->name }}</a>
-          </li>
-          @endforeach
-        </ul>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #ff6505;">
+  <div class="container">
+    <div class="collapse navbar-collapse" style="" id="navbarNav">
+      <ul class="navbar-nav">
+        @foreach(App\Category::where('featured', 1)->get() as $category)
+        <li class="nav-item">
+          <img style="width: 40px; height: 40px; margin-left: 40px;" src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt=""> 
+          <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)"> {{ $category->name }}</a>
+        </li>
+        @endforeach
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <section id="top_selection_and_new_arrival">
     <div class="container p-0">
