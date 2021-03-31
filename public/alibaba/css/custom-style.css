@@ -236,3 +236,10 @@ h2.mtl_product_price{
 .feature-category,.link-section{
     background: #f5b575 !important;
 }
+.shadow-sm{
+  height: 50px;
+  padding: 11px;
+  border-radius: 82px;
+  background-color: #f2f2f2;
+
+}

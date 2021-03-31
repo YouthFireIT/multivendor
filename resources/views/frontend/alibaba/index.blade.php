@@ -286,30 +286,20 @@
     <section class="link-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid img-edit" style="width: 30px;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
         vertical-align: middle;
         position: relative;
         /* top: -1%; */
         /* bottom: -29%; */
-        right: 6%; 
+         
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (1).png" alt=""> Free Shipping</a>
                 </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width:30px; position: relative;right: 6%; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
     
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; 
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (3).png"" alt=""> Grocery</a> </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;top: -4%;" src="{{ asset('alibaba') }}/images/shipping (2).png" alt=""> Dora Mall</a> </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
-                border-radius: 82px;
-                background-color: #f2f2f2;"> <a href="" style="color: black;font-size: 13px;font-weight: 500;"> <img class="img-fluid" style="width: 30px; position: relative; right: 6%;top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping (2).png" alt=""> Dora Mall</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
     
     
             </div>
