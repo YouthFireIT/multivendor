@@ -66,6 +66,9 @@
 <div id="cart-summery" class="shopping-cart pb-5 pt-3">
     <div class="container">
         <div class="row">
+            @if (Session::has('cart'))
+            @if(!(Session::get('cart')))
+            
             <div class="col-lg-8 pr-0">
 
                 {{-- <div class="shopping-cart-head">
@@ -87,7 +90,7 @@
                     </div>
                 </div> --}}
 
-                @if (Session::has('cart'))
+                
                 <div class="shopping-cart-content mt-3" id="removesec">
                     
                     <div class="susan-fashion nav">
@@ -309,12 +312,29 @@
                     </div>
                 </div>  --}}
             </div>
-        
-            @include('frontend.alibaba.partials.cart_summery')
             @else
-            <div class="text-center py-5">
-                <h2 class="text-warning">{{ translate('Your Cart is empty')}}</h2>
+                <div class="col-lg-12">
+                   <div class="text-center py-5 shopping-empty">
+                        <h2 class="empty-cart">{{ translate('Your Cart is empty')}}</h2>
+                        <p>
+                            <a href="{{url('/')}}">Don't miss out on great deals! Start shopping</a> or <a href="{{url('users/login')}}">log in</a> to view products added;
+                        </p>
+                    </div> 
+                </div>
+                
+            @endif
+            
+
+            @else
+            <div class="col-lg-12">
+               <div class="text-center py-5 shopping-empty">
+                    <h2 class="empty-cart">{{ translate('Your Cart is empty')}}</h2>
+                    <p>
+                        <a href="{{url('/')}}">Don't miss out on great deals! Start shopping</a> or <a href="{{url('users/login')}}">log in</a> to view products added;
+                    </p>
+                </div> 
             </div>
+            
             @endif
         </div>
     </div>

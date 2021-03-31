@@ -1,5 +1,5 @@
 @extends('frontend.alibaba.layouts.app')
-
+@section('title','Flashdeal Products')
 @section('content')
 
   <nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #ff6505;">
@@ -21,22 +21,22 @@
     <div class="container p-0">
         <div class="row">
             @foreach($flashDealProducts as $flashDealProduct)
-            <div class="col-md-3 pb-1">
+            <div class="col-md-2 pb-1">
                 <div class="mtl_product_item">
                     <a href="{{ route('single.product', $flashDealProduct->product_slug) }}" class="">
                         <div class="mtl_product_item_img_wrap">
-                            <img src="{{ my_asset($flashDealProduct->flash_deal_img) }}" alt="" class="img-fluid c_center">
+                            <img src="{{ my_asset($flashDealProduct->thumbnail_img) }}" alt="" class="img-fluid c_center">
                         </div>
                         <div class="mtl_product_item_detail">
                             <h2 style="font-size: 12px; color: #99A6C4;">{{ Str::limit($flashDealProduct->name,18) }}</h2>
                             <h2 class="mtl_product_price">
                                 {{ single_price($flashDealProduct->unit_price) }}
                             </h2>
-                            @if($flashDealProduct->discount_type == "percent")
+                           <!--  @if($flashDealProduct->discount_type == "percent")
                             <span class="product_offer"> {{ $flashDealProduct->discount }}% off</span>
                             @else
                             <span class="product_offer"> {{ single_price($flashDealProduct->discount) }}&nbsp; off</span>
-                            @endif
+                            @endif -->
                         </div>
                     </a>
                 </div>

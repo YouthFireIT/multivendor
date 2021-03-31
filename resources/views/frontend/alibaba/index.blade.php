@@ -4,75 +4,7 @@
 @section('megamenu')
 <div class="container-bg">
     <div class="container">
-        <div class="mega-menu-part">
-            <div class="wrapper col-lg-3">
-                <div class="nicemenu verticle" data-pos="list.right" data-classes="active">
-                    <a class="bar-top-icon px-3" href="#">
-                        <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
-                        <span class="ml-2">Categories</span>
-                    </a>
-                    @foreach (\App\Category::all()->take(11) as $key => $category)
-                                @php
-                                    $brands = array();
-                                @endphp
-                    <div class="nicemenu-item">
-                        <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
-                        <div class="nicemenu-sub">
-
-                         {{--
-                        <div class="card">
-                            <ul class="sub-cat-items">
-                                <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->slug) }}">{{ __($subcategory->name) }}</a></li>
-                                @foreach ($subcategory->subsubcategories as $subsubcategory)
-                                    <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        --}}
-
-                            @foreach ($category->subcategories as $subcategory)
-                                <div class="w-3-1">
-                                    <a href="{{ route('products.subcategory', $subcategory->slug) }}"><h6>{{ __($subcategory->name) }}</h6></a>
-                                    @foreach ($subcategory->subsubcategories as $subsubcategory)
-                                    <a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a>
-                                    @endforeach
-                                    {{-- <a href="#" class="mega-footer-content margin-1">
-                                        <span>Summer Sale</span>
-                                        <img src="{{ asset('alibaba') }}/images/mega-menu-footer1.webp" alt="">
-                                    </a> --}}
-                                </div>
-                            @endforeach
-
-
-                        </div>
-
-                    </div>
-                    @endforeach
-
-                    {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
-                        <a href="{{ route('products.category', $category->slug) }}" target="_blank">
-                            <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
-                            <span class="cat-name">{{ __($category->name) }}</span>
-                        </a>
-                        @if(count($category->subcategories)>0)
-                            <div class="sub-cat-menu c-scrollbar">
-                                <div class="c-preloader">
-                                    <i class="fa fa-spin fa-spinner"></i>
-                                </div>
-                            </div>
-                        @endif
-                    </li> --}}
-
-                </div>
-            </div>
-            <div class="wrapper1">
-                <ul class="nav">
-                    <li><a href="#">Super value deals </a></li>
-                    <li><a href="#">Top rankings </a></li>
-                    <li><a href="#">Flash Deals </a></li>
-                </ul>
-            </div>
-        </div>
+        
     </div>
 </div>
 @endsection
@@ -121,9 +53,79 @@
     </div>
 </div>
 @endsection
+
 @section('content')
     <section class="banner-wrapper">
         <div class="container">
+            <div class="mega-menu-part">
+                <div class="wrapper col-lg-3">
+                    <div class="nicemenu verticle" data-pos="list.right" data-classes="active">
+                        <a class="bar-top-icon px-3" href="#">
+                            <img class="" src="{{ asset('alibaba') }}/images/bar icon.png" alt="">
+                            <span class="ml-2">Categories</span>
+                        </a>
+                        @foreach (\App\Category::all()->take(11) as $key => $category)
+                                    @php
+                                        $brands = array();
+                                    @endphp
+                        <div class="nicemenu-item">
+                            <h6><a href="{{ route('products.category', $category->slug) }}"><img src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt="">{{ __($category->name) }}</a></h6>
+                            <div class="nicemenu-sub">
+    
+                             {{--
+                            <div class="card">
+                                <ul class="sub-cat-items">
+                                    <li class="sub-cat-name"><a href="{{ route('products.subcategory', $subcategory->slug) }}">{{ __($subcategory->name) }}</a></li>
+                                    @foreach ($subcategory->subsubcategories as $subsubcategory)
+                                        <li><a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            --}}
+    
+                                @foreach ($category->subcategories as $subcategory)
+                                    <div class="w-3-1">
+                                        <a href="{{ route('products.subcategory', $subcategory->slug) }}"><h6>{{ __($subcategory->name) }}</h6></a>
+                                        @foreach ($subcategory->subsubcategories as $subsubcategory)
+                                        <a href="{{ route('products.subsubcategory', $subsubcategory->slug) }}">{{ __($subsubcategory->name) }}</a>
+                                        @endforeach
+                                        {{-- <a href="#" class="mega-footer-content margin-1">
+                                            <span>Summer Sale</span>
+                                            <img src="{{ asset('alibaba') }}/images/mega-menu-footer1.webp" alt="">
+                                        </a> --}}
+                                    </div>
+                                @endforeach
+    
+    
+                            </div>
+    
+                        </div>
+                        @endforeach
+    
+                        {{-- <li class="category-nav-element" data-id="{{ $category->id }}">
+                            <a href="{{ route('products.category', $category->slug) }}" target="_blank">
+                                <img class="cat-image lazyload" src="{{ my_asset('frontend/images/placeholder.jpg') }}" data-src="{{ my_asset($category->icon) }}" width="30" alt="{{ __($category->name) }}">
+                                <span class="cat-name">{{ __($category->name) }}</span>
+                            </a>
+                            @if(count($category->subcategories)>0)
+                                <div class="sub-cat-menu c-scrollbar">
+                                    <div class="c-preloader">
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                    </div>
+                                </div>
+                            @endif
+                        </li> --}}
+    
+                    </div>
+                </div>
+                <div class="wrapper1">
+                    <ul class="nav">
+                        <li><a href="#">Super value deals </a></li>
+                        <li><a href="{{url('top-rankging/products')}}">Top rankings </a></li>
+                        <li><a href="{{url('allFlash/products')}}">Flash Deals </a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-7 offset-lg-3">
                     <div class="banner-slider">
@@ -138,34 +140,34 @@
                         </div>
                     </div>
 
-                    <!-- <div class="banner-bottom-slider">
+                    <div class="banner-bottom-slider">
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="bottom-slider-left px-3">
-                                    <h3>Welcome newcomers! Todays Deal </h3>
-                                    {{-- <p>US $0.01 hot picks &amp; coupons</p>
-                                    <img class="img-fluid" src="{{ asset('alibaba') }}/images/slider-img/bottom-slider-bg.webp" alt="">
-                                    <div class="bottom-over-content">
-                                        <h3> US $3.00</h3>
-                                        <p>Get your coupon</p>
-                                    </div> --}}
+                            <div class="col-lg-3 rank-left">
+                                <div class="top-rank-section">
+                                    <div class="bottom-slider-left px-3">
+                                        <h3>Top Rankings</h3>
+                                        <p>Dora Official Ranking</p>
+                                    </div>
+    
+                                    <a href="{{ route('topRankingProducts') }}">
+                                        View more
+                                    </a>
                                 </div>
+
                             </div>
+
                             @php
                             $todays_deal = App\Product::where('published', 1)->where('todays_deal', 1 )->get();
-
-
                             @endphp
-                            <div class="col-lg-8">
-                                <div class="bottom-slider-right py-4">
+                            <div class="col-lg-9 rank-right">
+                                <div class="bottom-slider-right">
                                     <div class="owl-carousel owl-carousel2">
-                                        @forelse ($todays_deal as $product)
+                                        @forelse ($topRankingProducts as $product)
                                             <div class="owl-moritemes">
                                                 <a href="{{ route('single.product', $product->slug) }}">
-                                                <img src="{{ my_asset($product->thumbnail_img) }}" alt="">
-                                                <span class="moritemes-span">{{ single_price($product->unit_price) }}</span>
+                                                    <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="top-rank-img">
+                                                    <p>{{substr($product->name,0,15)}}</p>
                                                 </a>
-
                                             </div>
                                             @empty
                                         @endforelse
@@ -174,7 +176,7 @@
                             </div>
 
                         </div>
-                    </div> -->
+                    </div> 
                 </div>
                 <div class="col-lg-2 p-0">
                     <div class="banner-slider-right">
@@ -279,7 +281,9 @@
             </div>
         </div>
     </section>
-    <section class="mt-5 mb-5">
+
+
+    <section class="link-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 mr-4 shadow-sm" style="padding: 18px 27px;
@@ -311,6 +315,40 @@
             </div>
         </div>
          </section>
+
+
+
+
+         <section id="more_to_loves" class="feature-category">
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="move_to_love">
+                            <div class="__mlh"></div>
+                            <div class="text-center __mlht">Deals By Category</div>
+                            <div class="__mlh"></div>
+                        </div>
+                    </div>
+                </div>      
+    
+                <div id="loveProductss" class="row mt-3">
+                    @foreach (\App\Category::all()->take(11) as $key => $category)
+                    <div class="col-lg-2 pb-1"> 
+                        <div class="mtl_product_item">
+                            <a href="" class="">
+                                <div class="mtl_product_item_img_wrap">
+                                    <img src="@if(!empty($category->banner)) {{ my_asset($category->banner) }} @endif" alt="" class="img-fluid c_center">
+                                </div>
+                                <h2 class="text-dark">{{$category->name}}</h2>
+                                {{-- <h2 class="mtl_product_price">
+                                   
+                                </h2> --}}
+                            </a>
+                        </div> 
+                     </div>
+                    @endforeach
+                </div>
+            </section>
 
 
     <!-- Flash Deal -->
@@ -436,80 +474,6 @@
     </section> --}}
 
 
-    <!-- Top Ranking -->
-    <section id="flash_deal">
-        <div class="container" style="max-height: 290px">
-            <div class="flash_deal_wrap">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="flash_deal_title">
-                            <div class="row">
-                                <div class="flash_deal_title_icon_wrap bg-warning">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="">Top Ranking</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="flash_deal_link">
-                            <a href="{{ route('topRankingProducts') }}" class="">View More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product_wrap">
-                    <div class="owl-carousel owl-carousel-topranking">
-                        @foreach($allCategory as $category)
-                        <div>
-                            <div class="d-flex justify-content-between">
-                                @php
-                                    $cSubcategory = App\SubCategory::where('category_id',$category->id)->get();
-                                @endphp
-                                @foreach($cSubcategory as $subcategory)
-                                    <div class="col-lg-4 bg-light pij-padd">
-                                        <div class="top-ranking-toppart">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="col-lg-8 p-0">
-                                                    <p class="pij-text1">{{ $subcategory->name }}</p>
-                                                    {{-- <span class="pij-text2">{{ $subcategory->meta_title }}</span> --}}
-                                                </div>
-                                                <div class="col-lg-4 p-0">
-                                                    <span class="pij-text3">top sale 2021</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @php
-                                            $sProduct = App\Product::where('subcategory_id',$subcategory->id)->where('published', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
-                                        @endphp
-                                        <div class="top-ranking-bottompart">
-                                            <div class="d-flex justify-content-between">
-                                                @foreach( $sProduct as $key => $product)
-                                                <a href="{{ route('topRankingProducts') }}">
-                                                    <div class="col-lg-4 p-0 top-ranking-bottompart-img">
-                                                        <img src="{{ $product->thumbnail_img }}"
-                                                            alt="">
-                                                        <span>{{ single_price($product->unit_price) }}</span>
-                                                        <p class="{{ $key == 2 ?'pp-pij' : '' }}">&nbsp;</p>
-                                                        @if ($key == 0)
-                                                            <i>&nbsp;</i>
-                                                        @endif
-                                                    </div>
-                                                </a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- top selection & new arrival -->
     <section id="top_selection_and_new_arrival">
         <div class="container p-0">
             <div class="row">
@@ -829,8 +793,6 @@
             <div class="ajax-load text-center" id="paginateLoadRequest" style="display:none">
                 <p><img src="{{asset('alibaba/img/Loader.gif')}}" height="200" width="200"></p>
             </div>
-
-
         </div>
     </section>
    <!--  <section class="container-fluid">
@@ -849,6 +811,39 @@
         </div>
     </section> -->
 
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img style="width: 444px;" src="{{asset('alibaba/images/modal_header.webp')}}" alt="">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <a style="min-width: 200px;
+          padding: 7px 20px;
+          font-size: 16px;
+          border-radius: 48px;
+          text-align: center;
+          box-sizing: border-box;
+          cursor: pointer;
+          overflow: hidden;
+          background-image: linear-gradient(
+      94deg
+      , rgb(255, 10, 10) 0%, rgb(255, 117, 57) 100%);
+          color: rgb(255, 255, 255);">GET & USE NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 @endsection
 @section('customjs')
 
@@ -856,7 +851,7 @@
     <script>
         
         $(document).ready(function(){
-            
+            $('#exampleModalCenter').modal('show')
         });
 
         // function fetch_random_product(){

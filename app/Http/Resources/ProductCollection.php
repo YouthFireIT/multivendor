@@ -13,6 +13,7 @@ class ProductCollection extends ResourceCollection
                 return [
                     'id' => $data->id,
                     'name' => $data->name,
+                    'category_id' => $data->category_id,
                     'photos' => json_decode($data->photos),
                     'thumbnail_image' => $data->thumbnail_img,
                     'base_price' => (double) homeBasePrice($data->id),
