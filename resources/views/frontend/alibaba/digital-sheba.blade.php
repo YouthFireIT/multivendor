@@ -6,7 +6,7 @@
   <div class="container">
     <div class="collapse navbar-collapse" style="" id="navbarNav">
       <ul class="navbar-nav">
-        @foreach(App\Category::where('featured', 1)->get() as $category)
+        @foreach(App\Category::where('digital', 1)->get() as $category)
         <li class="nav-item">
           <img style="width: 40px; height: 40px; margin-left: 40px;" src="@if(!empty($category->icon)) {{ my_asset($category->icon) }} @endif" alt=""> 
           <a class="nav-link active" id="{{ $category->id }}" style="color: RGBA(255,255,255,1)" aria-current="page" href="javascript:void(0)"  onclick="get_single_category(`{{ $category->id }}`)"> {{ $category->name }}</a>
@@ -46,7 +46,7 @@
 
                             <div class="product_wrap d-flex justify-content-between">
                               @php
-                                $products = App\Product::where('subcategory_id',$subcategory->id)->where('featured', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
+                                $products = App\Product::where('subcategory_id',$subcategory->id)->where('digital',1)->orderBy('num_of_sale', 'desc')->get()->take(3);
                               @endphp
                                 @foreach($products as $product)
                                 <div class="t_selection_product">
@@ -80,7 +80,7 @@
   function get_single_category(categoryId){
     $.ajax({
         type: "get",
-        url : '{{url("single-category")}}/'+categoryId,
+        url : '{{url("single-category/digital-sheba")}}/'+categoryId,
         success:function(data) {
             console.log(data);
             $('#top_selection_and_new_arrival').html(data);

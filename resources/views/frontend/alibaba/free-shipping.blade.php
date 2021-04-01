@@ -46,7 +46,7 @@
 
                             <div class="product_wrap d-flex justify-content-between">
                               @php
-                                $products = App\Product::where('subcategory_id',$subcategory->id)->where('featured', 1)->orderBy('num_of_sale', 'desc')->get()->take(3);
+                                $products = App\Product::where('subcategory_id',$subcategory->id)->where('shipping_type','free')->orderBy('num_of_sale', 'desc')->get()->take(3);
                               @endphp
                                 @foreach($products as $product)
                                 <div class="t_selection_product">
@@ -80,7 +80,7 @@
   function get_single_category(categoryId){
     $.ajax({
         type: "get",
-        url : '{{url("single-category")}}/'+categoryId,
+        url : '{{url("single-category/freeshipping")}}/'+categoryId,
         success:function(data) {
             console.log(data);
             $('#top_selection_and_new_arrival').html(data);

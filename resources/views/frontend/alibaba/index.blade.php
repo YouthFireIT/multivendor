@@ -142,17 +142,17 @@
 
                     <div class="banner-bottom-slider">
                         <div class="row">
-                            <div class="col-lg-3 rank-left">
-                                <div class="top-rank-section">
-                                    <div class="bottom-slider-left px-3">
-                                        <h3>Top Rankings</h3>
-                                        <p>Dora Official Ranking</p>
-                                    </div>
-    
-                                    <a href="{{ route('topRankingProducts') }}">
-                                        View more
-                                    </a>
+                            <div class="col-lg-4">
+                                <div class="bottom-slider-left px-3">
+                                    <h3>Top Rankings</h3>
+                                    <p>Dora Official Ranking</p>
                                 </div>
+
+                                <a href="{{ route('topRankingProducts') }}">
+                                    <div style="margin-left: 20px;
+                                    margin-top: 62px;
+                                    color: #e2b306;">View more</div>
+                                </a>
 
                             </div>
 
@@ -283,10 +283,10 @@
     </section>
 
 
-    <section class="link-section">
+    <section class="mt-5 mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="{{route('free.shipping')}}" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
         vertical-align: middle;
         position: relative;
         /* top: -1%; */
@@ -294,7 +294,7 @@
          
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (1).png" alt=""> Free Shipping</a>
                 </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="{{route('digital.sheba')}}" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
     
                 <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; 
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (3).png"" alt=""> Grocery</a> </div>
@@ -305,7 +305,11 @@
             </div>
         </div>
          </section>
-         <section id="more_to_loves" class="feature-category">
+
+
+
+
+         <section id="more_to_loves">
             <div class="container p-0">
                 <div class="row">
                     <div class="col-12">

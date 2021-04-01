@@ -925,4 +925,32 @@ class HomeController extends Controller
         $featuredCategoryProducts = DB::table('products')->select('*')->where('published', 1)->where('category_id',$categoryId)->paginate(20);
         return view('frontend.alibaba.category_section.productBySingleCategory', compact('featuredCategoryProducts'));
     }
+
+
+    //Free shipping
+    public function freeShippingProducts(){
+        
+        $allCategory = Category::get();
+        return view('frontend.alibaba.free-shipping',compact('allCategory'));
+    }
+
+    public function SingleCategoryFreeShipping($id)
+    {
+        $subCategories = SubCategory::where('category_id',$id)->get();
+        return view('frontend.alibaba.subCategories-freeshipping', compact('subCategories'));
+    }
+
+
+    //digital Sheba
+    public function digitalSheba(){
+        $allCategory = Category::where('digital',1)->get();
+        return view('frontend.alibaba.digital-sheba',compact('allCategory'));
+    }
+
+    public function SingleCategoryDigital($id)
+    {
+        $subCategories = SubCategory::where('category_id',$id)->get();
+        return view('frontend.alibaba.subCategories-digital', compact('subCategories'));
+    }
+    
 }
