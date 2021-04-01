@@ -317,3 +317,44 @@ h2.mtl_product_price{
 .pop_rtl_01 .arrow-right{
   float: right;font-size: 23px;
 }
+#global-collection{
+  padding: 100px 10px;
+  background: #58ffc9;
+}
+.glo-head{
+  
+  border-radius: 5px;
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+.th-search-box{
+  padding: 0;
+  margin: auto;
+  text-align: center;
+}
+.th-search-box .global-search-bx{
+  width: 700px;
+
+}
+.global-search-bx input[type="text"]{
+    overflow: hidden;
+    height: 60px;
+    padding: 0 0 0 15px;
+    border: 1px solid #cbcbcb;
+    border-right: 0 none;
+    border-radius: 10px 0 0 10px;
+    font-size: 13px;
+}
+.global-search-bx button{
+    width: 48px;
+    border: 0;
+    padding: 0;
+    border-radius: 0 10px 10px 0;
+    height: 60px;
+    color: #fff;
+    font-size: 26px;
+    padding-left: 11px;
+    padding-right: 11px;
+}

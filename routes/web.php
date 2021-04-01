@@ -57,6 +57,12 @@ Route::get('/sitemap.xml', function(){
 	return base_path('sitemap.xml');
 });
 
+// -------------------Newly Added Route-------------------------//
+// ----global collection----------------------//
+Route::resource('global-collection','GlobalCollectionController');
+Route::get('global/product/{slug}', 'GlobalCollectionController@singleGlobalProduct');
+// -------------------Newly added end here------------------//
+
 
 Route::get('/customer-products', 'CustomerProductController@customer_products_listing')->name('customer.products');
 Route::get('/customer-products?subsubcategory={subsubcategory_slug}', 'CustomerProductController@search')->name('customer_products.subsubcategory');
@@ -303,3 +309,5 @@ Route::get('single-brand-products/{brandId}', 'HomeController@fetch_single_brand
 // Featured Category part ////
 Route::get('featured-category/categoryId/{categoryId}', 'HomeController@featured_category')->name('featured.category.categoryId');
 Route::get('single-category-products/{categoryId}', 'HomeController@fetch_single_category_product');
+
+

@@ -299,16 +299,12 @@
                 <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; 
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (3).png"" alt=""> Grocery</a> </div>
                 <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping (2).png" alt=""> Dora Mall</a> </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
-    
+
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="{{route('global-collection.index')}}" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; top: -4%;" src="{{ asset('alibaba') }}/images/shipping5.gif" alt=""> Global Collection</a> </div>
     
             </div>
         </div>
          </section>
-
-
-
-
          <section id="more_to_loves" class="feature-category">
             <div class="container p-0">
                 <div class="row">
