@@ -166,7 +166,7 @@
                                             <div class="owl-moritemes">
                                                 <a href="{{ route('single.product', $product->slug) }}">
                                                     <img src="{{ my_asset($product->thumbnail_img) }}" alt="" class="top-rank-img">
-                                                    <p>{{substr($product->name,0,15)}}</p>
+                                                    <p style="font-weight: 700;">{{substr($product->name,0,15)}}</p>
                                                 </a>
                                             </div>
                                             @empty
@@ -322,14 +322,15 @@
                 </div>      
     
                 <div id="loveProductss" class="row mt-3">
-                    @foreach (\App\Category::all()->take(11) as $key => $category)
+                    @foreach (\App\Category::all()->take(12) as $key => $category)
                     <div class="col-lg-2 pb-1"> 
-                        <div class="mtl_product_item">
+                        <div class="mtl_product_item d_cat_item">
                             <a href="" class="">
                                 <div class="mtl_product_item_img_wrap">
                                     <img src="@if(!empty($category->banner)) {{ my_asset($category->banner) }} @endif" alt="" class="img-fluid c_center">
                                 </div>
-                                <h2 class="text-dark">{{$category->name}}</h2>
+
+                                <h2 class="text-dark">{{substr($category->name,0,18)}}</h2>
                                 {{-- <h2 class="mtl_product_price">
                                    
                                 </h2> --}}
@@ -804,31 +805,23 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal fade" id="popUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered pop-modal-sm" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <img style="width: 444px;" src="{{asset('alibaba/images/modal_header.webp')}}" alt="">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <div class="modal-header pop-rtl-header">
+          <img src="{{asset('alibaba/img/coupon.webp')}}" class="img-responsive new-d-user">
+          <button type="button" class="close pop-close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times"></i>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <div class="new-user-disc">
+              <h4>Get 20% Discount</h4>
+              <h6>Order 500 BDT or more at DORA</h6>
+          </div>
         </div>
         <div class="modal-footer">
-          <a style="min-width: 200px;
-          padding: 7px 20px;
-          font-size: 16px;
-          border-radius: 48px;
-          text-align: center;
-          box-sizing: border-box;
-          cursor: pointer;
-          overflow: hidden;
-          background-image: linear-gradient(
-      94deg
-      , rgb(255, 10, 10) 0%, rgb(255, 117, 57) 100%);
-          color: rgb(255, 255, 255);">GET & USE NOW</a>
+          <a class="pop_rtl_01" href="{{url('users/registration')}}">GET & USE NOW &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-long-arrow-right arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -841,7 +834,7 @@
     <script>
         
         $(document).ready(function(){
-            $('#exampleModalCenter').modal('show')
+            $('#popUpModal').modal('show')
         });
 
         // function fetch_random_product(){
