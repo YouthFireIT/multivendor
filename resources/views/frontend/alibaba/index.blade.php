@@ -286,7 +286,7 @@
     <section class="mt-5 mb-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="{{route('free.shipping')}}" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
         vertical-align: middle;
         position: relative;
         /* top: -1%; */
@@ -294,7 +294,7 @@
          
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (1).png" alt=""> Free Shipping</a>
                 </div>
-                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
+                <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="{{route('digital.sheba')}}" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width:30px; position: relative; top: -4%; " src="{{ asset('alibaba') }}/images/mobile.gif" alt="" > Digital Sheba</a> </div>
     
                 <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid" style="width: 30px; position: relative; 
         top: -4%;" src="{{ asset('alibaba') }}/images/shipping (3).png"" alt=""> Grocery</a> </div>

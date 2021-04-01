@@ -24,8 +24,14 @@ Route::get('/demo/cron_2', 'DemoController@cron_2');
 Route::get('/free-shipping','HomeController@freeShippingProducts')->name('free.shipping');
 
 //Free shipping single category
-Route::get('single-category/freeshipping/{categoryId}', 'HomeController@SingleCategoryFreeShipping');
+Route::get('/single-category/freeshipping/{categoryId}', 'HomeController@SingleCategoryFreeShipping');
 
+
+//Digital sheba
+Route::get('/digital-sheba','HomeController@digitalSheba')->name('digital.sheba');
+
+//Digital sheba
+Route::get('/single-category/digital-sheba/{categoryId}', 'HomeController@SingleCategoryDigital');
 
 
 Auth::routes(['verify' => true]);

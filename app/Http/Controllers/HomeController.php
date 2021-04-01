@@ -939,4 +939,18 @@ class HomeController extends Controller
         $subCategories = SubCategory::where('category_id',$id)->get();
         return view('frontend.alibaba.subCategories-freeshipping', compact('subCategories'));
     }
+
+
+    //digital Sheba
+    public function digitalSheba(){
+        $allCategory = Category::where('digital',1)->get();
+        return view('frontend.alibaba.digital-sheba',compact('allCategory'));
+    }
+
+    public function SingleCategoryDigital($id)
+    {
+        $subCategories = SubCategory::where('category_id',$id)->get();
+        return view('frontend.alibaba.subCategories-digital', compact('subCategories'));
+    }
+    
 }
