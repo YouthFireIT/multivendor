@@ -19,6 +19,15 @@ Route::get('/demo/cron_2', 'DemoController@cron_2');
 // 	return new SupportMailManager();
 // });
 
+
+//Free shipping page
+Route::get('/free-shipping','HomeController@freeShippingProducts')->name('free.shipping');
+
+//Free shipping single category
+Route::get('single-category/freeshipping/{categoryId}', 'HomeController@SingleCategoryFreeShipping');
+
+
+
 Auth::routes(['verify' => true]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
@@ -56,6 +65,8 @@ Route::get('/flash-deal/{slug}', 'HomeController@flash_deal_details')->name('fla
 Route::get('/sitemap.xml', function(){
 	return base_path('sitemap.xml');
 });
+
+
 
 
 Route::get('/customer-products', 'CustomerProductController@customer_products_listing')->name('customer.products');
@@ -284,12 +295,18 @@ Route::any('/payhere/customer_package_payment/cancel', 'PayhereController@custom
 ////// newly addded /////
 Route::get('random/products', 'HomeController@fetch_random_products');
 Route::get('allFlash/products', 'HomeController@flash_deal_products')->name('allFlashProducts');
+
 // top ranking part ////
 Route::get('top-ranking/products', 'HomeController@top_ranking_products')->name('topRankingProducts');
 Route::get('single-category/{categoryId}', 'HomeController@fetch_single_category');
+
+
+
+
 /// top selection part ////
 Route::get('topSelected/products', 'HomeController@top_selected_products')->name('topSelectedProducts');
 Route::get('category-products/{categoryId}', 'HomeController@get_categorywise_products');
+
 //// New Arriaval Products ////
 Route::get('latest/products', 'HomeController@latest_products')->name('latestProducts');
 

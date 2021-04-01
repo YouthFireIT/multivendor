@@ -283,11 +283,7 @@
     </section>
 
 
-<<<<<<< HEAD
     <section class="mt-5 mb-5">
-=======
-    <section class="link-section">
->>>>>>> 80b50bd8e39837127dd7ba2927d36f7cad6efa71
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 mr-4 shadow-sm" style=""> <a href="" style="color: black;font-size: 13px;font-weight: 500;font-size: 15px;"> <img class="img-fluid img-edit" style="width: 30px;
