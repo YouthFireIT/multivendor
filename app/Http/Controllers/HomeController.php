@@ -952,5 +952,17 @@ class HomeController extends Controller
         $subCategories = SubCategory::where('category_id',$id)->get();
         return view('frontend.alibaba.subCategories-digital', compact('subCategories'));
     }
+
+    //Grocery
+    public function grocery(){
+        $allCategory = Category::where('name','Grocery')->get();
+        return view('frontend.alibaba.grocery',compact('allCategory'));
+    }
+
+    //Dora Mall
+    public function doraMall(){
+        $allCategory = Category::get();
+        return view('frontend.alibaba.dora-mall',compact('allCategory'));
+    }
     
 }

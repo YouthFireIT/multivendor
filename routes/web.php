@@ -33,6 +33,14 @@ Route::get('/digital-sheba','HomeController@digitalSheba')->name('digital.sheba'
 //Digital sheba
 Route::get('/single-category/digital-sheba/{categoryId}', 'HomeController@SingleCategoryDigital');
 
+//Grocery
+Route::get('/grocery','HomeController@grocery')->name('grocery');
+
+//Dora Mall
+Route::get('/dora-mall','HomeController@doraMall')->name('dora.mall');
+
+
+
 
 Auth::routes(['verify' => true]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
