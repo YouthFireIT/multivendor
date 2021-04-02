@@ -955,15 +955,14 @@ class HomeController extends Controller
 
     //Grocery
     public function grocery(){
-        $allCategory = Category::where('name','Grocery')->first();
+        $allCategory = Category::where('name','Grocery')->get();
         return view('frontend.alibaba.grocery',compact('allCategory'));
     }
 
     //Dora Mall
     public function doraMall(){
         $allCategory = Category::get();
-        $allShop = Shop::get()->take(20);
-        return view('frontend.alibaba.dora-mall',compact('allCategory','allShop'));
+        return view('frontend.alibaba.dora-mall',compact('allCategory'));
     }
     
 }
