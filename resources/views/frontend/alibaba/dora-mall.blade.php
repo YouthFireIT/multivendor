@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <section id="top_selection_and_new_arrival">
+  <section id="top_selection_and_new_arrival" style="background: #eff0f5;">
     <div class="container p-0">
      
 

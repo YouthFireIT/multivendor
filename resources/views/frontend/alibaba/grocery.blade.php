@@ -1,6 +1,23 @@
 @extends('frontend.alibaba.layouts.app')
+@section('custom_css')
+    <style>
+        .bg-img{
+        background-image: url("{{asset('alibaba/images/grocery.png')}}");
+        height: 30vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+    </style>
+@endsection
 @section('content')
-<section style="margin-top: 87px;" id="more_to_love">
+
+  <div class="container-fluid bg-img">
+    
+  </div>
+
+<section style="padding: 20px; background: #b8f3f3;" id="more_to_love">
   <div class="container p-0">
       <div class="row">
         @php

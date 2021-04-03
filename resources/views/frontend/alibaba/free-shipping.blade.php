@@ -1,8 +1,20 @@
 @extends('frontend.alibaba.layouts.app')
+@section('custom_css')
+    <style>
+        .bg-img{
+        background-image: url("{{asset('alibaba/images/freeshipping.jpg')}}");
+        height: 60vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+    </style>
+@endsection
 
 @section('content')
 
-<nav class="navbar navbar-expand-lg navbar-ligh py-4" style="background-color: #ff6505;">
+<nav class="navbar navbar-expand-lg navbar-ligh py-4" style="height: 98px; background-color: #ff6505;">
   <div class="container">
     <div class="collapse navbar-collapse" style="" id="navbarNav">
       <ul class="navbar-nav">
@@ -17,8 +29,12 @@
   </div>
 </nav>
 
+  <div class="container-fluid bg-img">
+    
+  </div>
 
-<section style="margin-top: 87px;" id="more_to_love">
+
+<section style="padding: 20px; background: #ff4747;" id="more_to_love">
   <div class="container p-0">
       <div class="row">
         @php

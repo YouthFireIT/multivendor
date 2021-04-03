@@ -2,19 +2,18 @@
 
 @section('content')
 
-  <section id="top_selection_and_new_arrival">
+  <section id="top_selection_and_new_arrival" style="background: #eff0f5;">
     <div class="container p-0">
-      @foreach($allCategory as $category)
+     
 
         <div class="pt-2 text-center ">
-          <h3 class="font-weight-bold">{{ $category->name }}</h3>
+          <h3 class="font-weight-bold"></h3>
         </div>
+
         <div class="row">
-            @php
-              $subCategories = App\SubCategory::where('category_id',$category->id)->get()->take(4);
-            @endphp
-            @foreach($subCategories as $subcategory)
-            <div class="col-lg-12 ">
+
+          @foreach ($allShop as $shop) 
+            <div class="col-lg-6">
                 <section id="flash_deal">
                     <div class="container" style="min-height: 296px">
                         <div class="flash_deal_wrap">
@@ -23,7 +22,7 @@
                                 <div class="col-lg-12">
                                     <div class="flash_deal_title">
                                         <div class="row">
-                                            <a href="" class="text-dark" style="margin-left: 0;">{{ $subcategory->name }}</a>
+                                            <a href="" class="text-dark" style="margin-left: 0;">{{$shop->name}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -31,7 +30,7 @@
 
                             <div class="product_wrap d-flex justify-content-between">
                               @php
-                                $products = App\Product::where('subcategory_id',$subcategory->id)->orderBy('num_of_sale', 'desc')->get()->take(4);
+                                $products = App\Product::where('user_id',$shop->user_id)->orderBy('num_of_sale', 'desc')->get()->take(4);
                               @endphp
                                 @foreach($products as $product)
                                 <div class="t_selection_product">
@@ -53,11 +52,12 @@
                 </section>
             </div>
             @endforeach
+           
         </div>
           <div class="pt-2 text-center ">
-            <a class="font-weight-bold btn btn-success" onclick="get_single_category(`{{ $category->id }}`)">View More</a>
+       
           </div>
-        @endforeach
+        
     </div>
 </section>
 
